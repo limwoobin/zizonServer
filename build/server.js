@@ -3,15 +3,24 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var apiRouter = require('./routes/router');
+var db = require('./routes/dbConnection');
+var router = require('./routes/router');
+var setting = require('./routes/setting');
+
+app.use(db);
+app.use(setting);
+app.use('/', express.static(__dirname + "/../../client/build"));
+app.use('/dr', router);
 
 app.use(bodyParser.json());
-app.use('/', express.static(__dirname + "/../../client/buiild"));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-//const apiRouter = require('./routes/router');
-app.use('/api', apiRouter);
+app.post('/test', function (req, res) {
+    var name = req.body.name;
+    res.send(name);
+});
 
-var port = 3000;
+var port = process.env.PORT || 4000;
 app.listen(port, function () {
     console.log(port + 'port Server Start!!');
 });

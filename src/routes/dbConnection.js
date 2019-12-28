@@ -8,6 +8,7 @@ db.once('open' , () => {
     console.log('Connected to mongod server');    
 });
 
-//mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
+require('../models/customer');
+mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
 
 module.exports = router;
