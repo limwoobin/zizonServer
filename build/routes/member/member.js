@@ -1,18 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
-const Customer = require('../../models/customer');
+'use strict';
+
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
+router.use(bodyParser.urlencoded({ extended: true }));
+var Customer = require('../../models/customer');
 
-
-router.get('/hi' , (req , res) => {
-    console.log('findAll...');
-    Customer.find(function(err , customers){
-        if(err) return res.status(500).send({error:'database fail'});
-        res.json(customers);
-    })
-    //});
+router.get('/hi', function (req, res) {
+    Customer.find(function (err, customers) {
+        res.send(customers);
+    });
 
     // res.send([
     //     {
@@ -43,13 +41,12 @@ router.get('/hi' , (req , res) => {
     //     );
 });
 
-
-router.post('/hi' , (req , res) => {
+router.post('/hi', function (req, res) {
     console.log(req.body);
-    let name = req.body.name;
-    let birthday = req.body.birthday;
-    let gender = req.body.gender;
-    let job = req.body.job;
+    var name = req.body.name;
+    var birthday = req.body.birthday;
+    var gender = req.body.gender;
+    var job = req.body.job;
     res.send(req.body);
 });
 
