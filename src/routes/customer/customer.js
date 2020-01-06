@@ -44,12 +44,6 @@ router.delete('/delete/:id' , (req , res) => {
     console.log('delete:' + req.params.id);
     Customer.remove({ id:req.params.id } , function(err , output){
         if(err) return res.status(500).json({ error:'database fail' });
-
-        /*
-        if(!output.result.n) return res.status(404).json({ error: 'customer not found' });
-        res.json({ message:'customer is deleted' });
-        */
-
         res.status(204).end();
     });
 });
