@@ -7,4 +7,4 @@ console.log('Router...')
 router.use('/member' , memberRouter);
 router.use('/customer' , customerRouter);
 
-module.exports = router
+module.exports = router;
