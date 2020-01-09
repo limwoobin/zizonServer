@@ -9,7 +9,7 @@ app.use(db);
 app.use(setting);
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
-
+console.log('dirname:'+__dirname);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

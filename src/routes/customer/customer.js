@@ -8,7 +8,6 @@ const multer = require('multer');
 const upload = multer({dest:'./upload'});
 
 router.get('/customers' , (req , res) => {
-    console.log('findAll...');
     Customer.find(function(err , customers){
         if(err) return res.status(500).send({error:'database fail'});
         res.json(customers);
