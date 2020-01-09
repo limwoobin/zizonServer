@@ -1,12 +1,8 @@
-var person = {
-    name: 'aa',
-    fisrtName:'bb',
-    'fisrt-name':'cc',
-    fisrt_name:'dd'
-};
+var express = require('express');
+var app = express();
 
-console.log(person.fisrtName);
+app.use((req , res , next) => {
+    res.redirect('https://google.com');
+})
 
-console.log(person.fisrt_name);
-
-console.log(person["fisrt-name"]);
+app.listen(3000);
