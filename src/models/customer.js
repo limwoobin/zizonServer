@@ -21,5 +21,5 @@ customerSchema.plugin(autoIncrement.plugin , {
 });
 
 
-const Customer = connection.model('customer' , customerSchema);
+// const Customer = connection.model('customer' , customerSchema);
 module.exports = mongoose.model('customer' , customerSchema);
