@@ -16,7 +16,6 @@ router.get('/hi' , (req , res) => {
 
 
 router.post('/insert' , (req , res) => {
-    console.log(req.body);
     // let customer = new Customer();
     // customer.userEmail = req.body.userEmail;
     // customer.userPwd = req.body.userPwd;
