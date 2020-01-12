@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const Customer = require('../../models/customer');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
-const multer = require('multer');
-const upload = multer({dest:'./upload'});
 
 router.get('/customers' , (req , res) => {
+    console.log('getCUstomer');
     Customer.find(function(err , customers){
         if(err) return res.status(500).send({error:'database fail'});
         res.json(customers);
@@ -18,8 +14,7 @@ router.get('/test' , (req , res) => {
     res.send('teetete');
 });
 
-router.use('image' , express.static('./upload'));
-router.post('/insert' , upload.single('image') , (req , res) => {
+router.post('/insert' , (req , res) => {
     console.log(req.body);
     console.log(req.file);
     let customer = new Customer();
