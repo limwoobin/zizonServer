@@ -1,43 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-const Customer = require('../../models/customer');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
+const Member = require('../../models/member');
+const common = require('../../common/common');
 
-
-router.get('/hi' , (req , res) => {
+router.get('/members' , (req , res) => {
     console.log('findAll...');
-    Customer.find(function(err , customers){
+    Member.find(function(err , members){
         if(err) return res.status(500).send({error:'database fail'});
-        res.json(customers);
+        res.json(members);
     })
 });
 
-
 router.post('/insert' , (req , res) => {
-    // let customer = new Customer();
-    // customer.userEmail = req.body.userEmail;
-    // customer.userPwd = req.body.userPwd;
-    // customer.birthday = '';
-    // customer.userNm = req.body.userNm;
-    // customer.userPhone = req.body.userPhone;
-    // customer.save((err) => {
-    //     if(err){
-    //         console.error(err);
-    //         res.json({result: 0});
-    //         return;
-    //     }
-    //     res.json({result: 1});
-    // });
-    
-    let userEmail = req.body.userEmail;
-    let userPwd = req.body.userPwd;
-    let birthday = '';
-    let userNm = req.body.userNm;
-    let userPhone = req.body.userPhone;
     console.log(req.body);
-    res.send(req.body);
+    let member = new Member();
+    member.userEmail = req.body.userEmail;
+    member.userPwd = req.body.userPwd;
+    member.birthday = req.body.birthday;
+    member.userNm = req.body.userNm;
+    member.userPhone = req.body.userPhone;
+    member.save((err) => {
+        if(err){
+            console.error(err);
+            common.result.code = 'DRG01';
+            common.result.message = common.status.DRG01;
+            res.json(common.result);
+            return;
+        }
+        common.result.code = 'DRG00';
+        common.result.message = common.status.DRG00;
+        res.json(common.result);
+    });
 });
 
 
