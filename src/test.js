@@ -1,9 +1,9 @@
-const test = require('./common/common');
+let a = 10;
+{
+  console.log(a);
+  let a = 20;
+}
 
-
-test.result.code = 'DRG00';
-test.result.message = test.status.DRG00;
-
-console.log(test.status.DRG00);
-
-console.log(test.result);
+// (function() {
+//     console.log(a);
+// }());

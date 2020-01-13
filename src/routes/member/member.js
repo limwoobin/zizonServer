@@ -33,6 +33,26 @@ router.post('/insert' , (req , res) => {
     });
 });
 
+router.post('/login' , (req , res) => {
+    if(req.session.userEmail){
+
+    }else{
+
+    }
+});
+
+
+router.get('/logout' , (req , res) => {
+    if(req.session.userEmail){
+        console.log('logout...');
+        req.session.destroy((err) => {
+            if(err) {throw err;}
+        });
+    }else{
+        
+    }
+});
+
 
 
 module.exports = router;
