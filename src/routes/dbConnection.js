@@ -8,7 +8,7 @@ db.once('open' , () => {
     console.log('Connected to mongod server');    
 });
 
-require('../models/customer');
+// require('../models/customer');   굳이 필요한지 확인해야함
 mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
 
 module.exports = router;

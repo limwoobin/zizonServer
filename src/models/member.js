@@ -10,7 +10,8 @@ const memberSchema = new mongoose.Schema({
     userPwd: {type: String},
     userNm: {type: String},
     birthday: {type: String},
-    regDate: {type:Date , default:Date.now}
+    regDate: {type:Date , default:Date.now},
+    salt: {type:String}
 });
 
 memberSchema.plugin(autoIncrement.plugin , {

@@ -3,7 +3,6 @@ const router = express.Router();
 const Customer = require('../../models/customer');
 
 router.get('/customers' , (req , res) => {
-    console.log('getCUstomer');
     Customer.find(function(err , customers){
         if(err) return res.status(500).send({error:'database fail'});
         res.json(customers);
