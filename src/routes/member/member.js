@@ -19,6 +19,9 @@ router.post('/insert' , (req , res) => {
     member.birthday = req.body.birthday;
     member.userNm = req.body.userNm;
     member.userPhone = req.body.userPhone;
+    
+    // id 찾기 , 패스워드 찾기 로직
+    
     member.save((err) => {
         if(err){
             console.error(err);
