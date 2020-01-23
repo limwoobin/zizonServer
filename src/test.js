@@ -1,17 +1,18 @@
-function Person(name, gender){
-  this.name = name;
-  this.gender = gender;
-}
-Person.prototype.hi = function(){
-  console.log(this.name + '까쟈');
-}
+function add(a,b,callback){
+  var result = a + b;
+  var cnt = 0;
+    callback(result);
 
-var zero = new Person('ZZ' , 'A');
-var rog = new Person('XX' , 'B');
+  var history = function(){
+      cnt ++;
+      return a + '+' + b + ' = ' + result;
+  }
+  return history;
+};
 
 
-console.log(Person.prototype.constructor);
-console.log(Person.prototype);
-console.log(zero.__proto__);
+var add_history = add(10,10,function(result){
 
-console.log(zero.constructor);
+  console.log('파라미터로 전달된 콜백함수 호출됨');
+  console.log('더하기 (10,10)의 결과 : %d',result);
+});
