@@ -8,6 +8,7 @@ const memberSchema = new mongoose.Schema({
     id: {type: Number , required:true , unique:true},
     userEmail: {type: String , required:true , unique:true},
     userPwd: {type: String},
+    salt: {type: String},
     userNm: {type: String},
     birthday: {type: String},
     regDate: {type:Date , default:Date.now},
@@ -20,6 +21,15 @@ memberSchema.plugin(autoIncrement.plugin , {
     startAt: 0,
     increment: 1
 });
+
+memberSchema.statics.findByUserEmail = function(userEmail){
+    return this.findOne({userEmail}).exec();
+}
+
+memberSchema.statics.findByUserEmailOrUserNm = function(userEmail){
+    return this.findOne({userEmail}).exec();
+}
+// ex) Book.findByTitle('React Tutorials');
 
 // const Member = connection.model('member' , memberSchema);
 module.exports = mongoose.model('member' , memberSchema);
