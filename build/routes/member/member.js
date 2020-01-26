@@ -2,52 +2,106 @@
 
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
-var Customer = require('../../models/customer');
+var Member = require('../../models/member');
+var common = require('../../common/common');
+var crypto = require('crypto');
+var pbkdf2Password = require('pbkdf2-password');
 
-router.get('/hi', function (req, res) {
-    Customer.find(function (err, customers) {
-        res.send(customers);
+router.get('/members', function (req, res) {
+    console.log('findAll...');
+    Member.find(function (err, members) {
+        if (err) return res.status(500).send({ error: 'database fail' });
+        res.json(members);
     });
-
-    // res.send([
-    //     {
-    //     'id': 1,
-    //     'image': 'https://placeimg.com/64/64/1',
-    //     'name': '홍길동',
-    //     'birthday': '961222',
-    //     'gender': '남자',
-    //     'job': '대학생'
-    //     },
-    //     {
-    //     'id': 2,
-    //     'image': 'https://placeimg.com/64/64/2',
-    //     'name': '임우빈',
-    //     'birthday': '940801',
-    //     'gender': '남자',
-    //     'job': '근본'
-    //     },
-    //     {
-    //     'id': 3,
-    //     'image': 'https://placeimg.com/64/64/3',
-    //     'name': '이순신',
-    //     'birthday': '961127',
-    //     'gender': '남자',
-    //     'job': '디자이너'
-    //     }
-    //     ]
-    //     );
 });
 
-router.post('/hi', function (req, res) {
+router.get('/overlap/check/:userEmail', function (req, res) {
+    console.log('param:' + req.params.userEmail);
+    common.res = {};
+    Member.findOne({ userEmail: req.params.userEmail }, function (err, member) {
+        console.log('mem:' + member);
+        if (err) {
+            console.log('err:' + err);
+            throw err;
+        }
+        if (!member) {
+            common.result.code = 'DRG00';
+            common.result.message = common.status.DRG00;
+            res.json(common.result);
+            return;
+        } else {
+            common.result.code = 'DRG01';
+            common.result.message = common.status.DRG01;
+            common.result.res = member;
+            res.json(common.result);
+        }
+    });
+});
+
+router.post('/insert', function (req, res) {
     console.log(req.body);
-    var name = req.body.name;
-    var birthday = req.body.birthday;
-    var gender = req.body.gender;
-    var job = req.body.job;
-    res.send(req.body);
+    // let member = new Member();
+    // member.userEmail = req.body.userEmail;
+    // member.userPwd = req.body.userPwd;
+    // member.birthday = req.body.birthday;
+    // member.userNm = req.body.userNm;
+    // member.userPhone = req.body.userPhone;
+
+    // password encrypt
+    crypto.randomBytes(64, function (err, buf) {
+        crypto.pbkdf2(req.body.userPwd, buf.toString('base64'), 102391, 64, 'sha512', function (err, key) {
+            var member = new Member();
+            member.userEmail = req.body.userEmail;
+            member.userPwd = key.toString('base64');
+            member.salt = buf.toString('base64');
+            member.birthday = req.body.birthday;
+            member.userNm = req.body.userNm;
+            member.userPhone = req.body.userPhone;
+
+            member.save(function (err) {
+                if (err) {
+                    console.error(err);
+                    common.result.code = 'DRG01';
+                    common.result.message = common.status.DRG01;
+                    res.json(common.result);
+                    return;
+                }
+                common.result.code = 'DRG00';
+                common.result.message = common.status.DRG00;
+                res.json(common.result);
+            });
+        });
+    });
+
+    // id 찾기 , 패스워드 찾기 로직
+
+    // member.save((err) => {
+    //     if(err){
+    //         console.error(err);
+    //         common.result.code = 'DRG01';
+    //         common.result.message = common.status.DRG01;
+    //         res.json(common.result);
+    //         return;
+    //     }
+    //     common.result.code = 'DRG00';
+    //     common.result.message = common.status.DRG00;
+    //     res.json(common.result);
+    // });
+});
+
+router.post('/login', function (req, res) {
+    if (req.session.userEmail) {} else {}
+});
+
+router.get('/logout', function (req, res) {
+    if (req.session.userEmail) {
+        console.log('logout...');
+        req.session.destroy(function (err) {
+            if (err) {
+                throw err;
+            }
+        });
+    } else {}
 });
 
 module.exports = router;
