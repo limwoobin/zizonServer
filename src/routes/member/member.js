@@ -24,14 +24,14 @@ router.get('/overlap/check/:userEmail' , (req , res) => {
         }
         if(!member) {
             common.result.code = 'DR00';
-            common.result.message = common.status.DRG00;
+            common.result.message = common.status.DR00;
             res.json(common.result);
             return;
         }else{
             common.result.code = 'DR01';
-            common.result.message = common.status.DRG01;
+            common.result.message = common.status.DR01;
             common.result.data = member;
-            res.json(common.result);
+            return res.json(common.result);
         }
     })
 });
@@ -50,6 +50,7 @@ router.post('/insert' , (req , res) => {
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.userPwd , buf.toString('base64'), 102391, 64, 'sha512', (err, key) => {
             let member = new Member();
+            console.log(req.body);
             member.userEmail = req.body.userEmail;
             member.userPwd = key.toString('base64');
             member.salt = buf.toString('base64');
@@ -61,13 +62,14 @@ router.post('/insert' , (req , res) => {
                 if(err){
                     console.error(err);
                     common.result.code = 'DR01';
-                    common.result.message = common.status.DRG01;
+                    common.result.message = common.status.DR01;
                     res.json(common.result);
                     return;
                 }
                 common.result.code = 'DR00';
-                common.result.message = common.status.DRG00;
-                res.json(common.result);
+                common.result.message = common.status.DR00;
+                console.log(common.result);
+                return res.json(common.result);
             });
         });
     });
@@ -83,25 +85,24 @@ router.post('/login' , (req , res) => {
         }
         if(!member) {
             common.result.code = 'DR02';
-            common.result.message = common.status.DRG02;
+            common.result.message = common.status.DR02;
             res.json(common.result);
             return;
         }else{
             console.log(member);
             console.log('salt:' + member.salt);
-            // res.json(common.result);
             crypto.pbkdf2(req.body.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
                 if(key.toString('base64') === member.userPwd){
                     // Login Success
                     console.log('Login Success');
                     common.result.code = 'DR00';
-                    common.result.message = common.status.DRG00;
+                    common.result.message = common.status.DR00;
                     res.send(common.result);
                 }else{
                     // Login Fail
                     console.log('Fail');
                     common.result.code = 'DR03';
-                    common.result.message = common.status.DRG03;
+                    common.result.message = common.status.DR03;
                     res.send(common.result);
                 }
             });
