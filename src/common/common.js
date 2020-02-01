@@ -1,8 +1,8 @@
 const status = {
-    'DR00': 'SUCCESS',
-    'DR01': 'FAIL',
-    'DR02': 'This email does not exist.',
-    'DR03': 'Password does not match',
+    DR00: 'SUCCESS',
+    DR01: 'FAIL',
+    DR02: 'This email does not exist.',
+    DR03: 'Password does not match',
 };
 
 let result = {
