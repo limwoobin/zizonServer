@@ -1,8 +1,5 @@
-const config = {
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-    }
+const API = {
+  LOGIN : 'asdasd',
 }
 
-console.log(config);
-console.log(config.headers);
+console.log(API.LOGIN);
