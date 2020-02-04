@@ -5,7 +5,7 @@ var router = express.Router();
 var Member = require('../../models/member');
 var common = require('../../common/common');
 var crypto = require('crypto');
-var pbkdf2Password = require('pbkdf2-password');
+// const pbkdf2Password = require('pbkdf2-password');
 
 router.get('/members', function (req, res) {
     console.log('findAll...');
@@ -25,15 +25,15 @@ router.get('/overlap/check/:userEmail', function (req, res) {
             throw err;
         }
         if (!member) {
-            common.result.code = 'DRG00';
-            common.result.message = common.status.DRG00;
+            common.result.code = 'DR00';
+            common.result.message = common.status.DR00;
             res.json(common.result);
             return;
         } else {
-            common.result.code = 'DRG01';
-            common.result.message = common.status.DRG01;
-            common.result.res = member;
-            res.json(common.result);
+            common.result.code = 'DR01';
+            common.result.message = common.status.DR01;
+            common.result.data = member;
+            return res.json(common.result);
         }
     });
 });
@@ -51,6 +51,7 @@ router.post('/insert', function (req, res) {
     crypto.randomBytes(64, function (err, buf) {
         crypto.pbkdf2(req.body.userPwd, buf.toString('base64'), 102391, 64, 'sha512', function (err, key) {
             var member = new Member();
+            console.log(req.body);
             member.userEmail = req.body.userEmail;
             member.userPwd = key.toString('base64');
             member.salt = buf.toString('base64');
@@ -61,36 +62,54 @@ router.post('/insert', function (req, res) {
             member.save(function (err) {
                 if (err) {
                     console.error(err);
-                    common.result.code = 'DRG01';
-                    common.result.message = common.status.DRG01;
+                    common.result.code = 'DR01';
+                    common.result.message = common.status.DR01;
                     res.json(common.result);
                     return;
                 }
-                common.result.code = 'DRG00';
-                common.result.message = common.status.DRG00;
-                res.json(common.result);
+                common.result.code = 'DR00';
+                common.result.message = common.status.DR00;
+                console.log(common.result);
+                return res.json(common.result);
             });
         });
     });
-
-    // id 찾기 , 패스워드 찾기 로직
-
-    // member.save((err) => {
-    //     if(err){
-    //         console.error(err);
-    //         common.result.code = 'DRG01';
-    //         common.result.message = common.status.DRG01;
-    //         res.json(common.result);
-    //         return;
-    //     }
-    //     common.result.code = 'DRG00';
-    //     common.result.message = common.status.DRG00;
-    //     res.json(common.result);
-    // });
 });
 
 router.post('/login', function (req, res) {
-    if (req.session.userEmail) {} else {}
+    console.log('userEmail:' + req.body.userEmail);
+    console.log('userPwd:' + req.body.userPwd);
+    Member.findOne({ userEmail: req.body.userEmail }, function (err, member) {
+        if (err) {
+            console.log('err:' + err);
+            throw err;
+        }
+        if (!member) {
+            common.result.code = 'DR02';
+            common.result.message = common.status.DR02;
+            res.json(common.result);
+            return;
+        } else {
+            console.log(member);
+            console.log('salt:' + member.salt);
+            crypto.pbkdf2(req.body.userPwd, member.salt, 102391, 64, 'sha512', function (err, key) {
+                if (key.toString('base64') === member.userPwd) {
+                    // Login Success
+                    console.log('Login Success');
+                    common.result.code = 'DR00';
+                    common.result.message = common.status.DR00;
+                    res.send(common.result);
+                } else {
+                    // Login Fail
+                    console.log('Fail');
+                    common.result.code = 'DR03';
+                    common.result.message = common.status.DR03;
+                    res.send(common.result);
+                }
+            });
+        }
+    });
+    // res.send('좆까');
 });
 
 router.get('/logout', function (req, res) {

@@ -3,7 +3,7 @@ const router = express.Router();
 const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
-const pbkdf2Password = require('pbkdf2-password');
+// const pbkdf2Password = require('pbkdf2-password');
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
