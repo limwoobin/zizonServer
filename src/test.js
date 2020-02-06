@@ -1,8 +1,9 @@
-const config = {
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-    }
+handle = () => {
+    console.log('좆까까');
 }
 
-console.log(config);
-console.log(config.headers);
+asd = () => {
+    setTimeout(handle , 3000);
+};
+
+asd();

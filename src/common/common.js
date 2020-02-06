@@ -5,10 +5,7 @@ const status = {
     DR03: 'Password does not match',
 };
 
-let result = {
-    
-    
-};
+let result = {};
 
 result.prototype = function(code , message , data){
     this.code = code;
@@ -16,11 +13,20 @@ result.prototype = function(code , message , data){
     this.data = data;
 }
 
-let data = {
-
-}
+let data = {};
 
 module.exports.status = status;
 module.exports.result = result;
 module.exports.data = data;
-// module.exports.RESULT2 = RESULT;
+
+// -----------------------------------------------
+
+// function Result(code , message , data){
+//     this.code = code;
+//     this.message = message;
+//     this.data = data;
+// }
+
+// Result.prototype = new Result();
+
+// module.exports.Result = Result;
