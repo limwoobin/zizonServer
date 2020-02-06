@@ -20,10 +20,6 @@ var data = {};
 module.exports.status = status;
 module.exports.result = result;
 module.exports.data = data;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/master
 
 // -----------------------------------------------
 
@@ -35,11 +31,4 @@ module.exports.data = data;
 
 // Result.prototype = new Result();
 
-<<<<<<< HEAD
 // module.exports.Result = Result;
-=======
-// module.exports.RESULT2 = RESULT;
->>>>>>> 082b46d
-=======
-// module.exports.Result = Result;
->>>>>>> refs/remotes/origin/master
