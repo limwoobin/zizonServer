@@ -2,8 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-var memberRouter = require('./member/member');
-var customerRouter = require('./customer/customer');
+var memberRouter = require('./member/MemberController');
+var customerRouter = require('./customer/CustomerController');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer();
