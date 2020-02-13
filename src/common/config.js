@@ -1,9 +1,11 @@
-// const sha256 = require('sha256');
-// let password = '111';
-// let salt='asd';
-// const securePassword = sha256(password+salt);
+module.exports = function(){
+    const express = require('express');
+    const app = express();
+    const session = require('express-session');
 
-// console.log(securePassword);
-
-
-// PBKDF2 - secure password
+    app.use(session({
+        secret: 'drogbaSession',
+        resave: false,
+        saveUninitialized: true
+    }));
+}

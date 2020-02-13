@@ -113,14 +113,22 @@ router.post('/login', function (req, res) {
 });
 
 router.get('/logout', function (req, res) {
+    common.result = {};
     if (req.session.userEmail) {
-        console.log('logout...');
         req.session.destroy(function (err) {
             if (err) {
                 throw err;
             }
         });
-    } else {}
+        console.log('Logout Success');
+        common.result.code = 'DR00';
+        common.result.message = common.status.DR00;
+    } else {
+        console.log('Logout Fail');
+        common.result.code = 'DR01';
+        common.result.message = common.status.DR01;
+    }
+    res.send(common.result);
 });
 
 module.exports = router;
