@@ -3,7 +3,15 @@ const router = express.Router();
 const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
-// const pbkdf2Password = require('pbkdf2-password');
+const sessionConfig = require('../../common/config');
+// router.use(sessionConfig);
+
+const session = require('express-session');
+router.use(session({
+    secret: 'drogbaSession',
+    resave: false,
+    saveUninitialized: true
+}));
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
@@ -95,6 +103,10 @@ router.post('/login' , (req , res) => {
                 if(key.toString('base64') === member.userPwd){
                     // Login Success
                     console.log('Login Success');
+                    // sessionConfig.user = req.body.userEmail;
+                    // console.log(sessionConfig);
+                    req.session.user = req.body.userEmail;
+                    console.log(req.session.user);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
                     res.send(common.result);
@@ -106,7 +118,7 @@ router.post('/login' , (req , res) => {
                     res.send(common.result);
                 }
             });
-        }
+        }        
     });
     // res.send('좆까');
 });
@@ -114,9 +126,13 @@ router.post('/login' , (req , res) => {
 
 router.get('/logout' , (req , res) => {
     common.result = {};
-    if(req.session.userEmail){
-        req.session.destroy((err) => {
-            if(err) {throw err;}
+    console.log(req.session.user);
+    if(req.session.user){
+        // sessionConfig.destroy((err) => {
+        //     if(err) {throw err;}
+        // });
+        req.session.destroy(function(err){
+            if(err) console.log(err);
         });
         console.log('Logout Success');
         common.result.code = 'DR00';

@@ -1,6 +1,8 @@
-function a(){
-    function b(){
-        function c(){
+'use strict';
+
+function a() {
+    function b() {
+        function c() {
             console.log('씨발');
         }
         c();
