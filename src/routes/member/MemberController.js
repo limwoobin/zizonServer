@@ -3,10 +3,8 @@ const router = express.Router();
 const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
-const sessionConfig = require('../../common/config');
-// router.use(sessionConfig);
-
 const session = require('express-session');
+
 router.use(session({
     secret: 'drogbaSession',
     resave: false,
@@ -84,6 +82,7 @@ router.post('/insert' , (req , res) => {
 });
 
 router.post('/login' , (req , res) => {
+    const rs = req.session;
     console.log('userEmail:' + req.body.userEmail);
     console.log('userPwd:' + req.body.userPwd);
     Member.findOne({userEmail:req.body.userEmail} , (err , member) => {
@@ -103,10 +102,10 @@ router.post('/login' , (req , res) => {
                 if(key.toString('base64') === member.userPwd){
                     // Login Success
                     console.log('Login Success');
-                    // sessionConfig.user = req.body.userEmail;
-                    // console.log(sessionConfig);
-                    req.session.user = req.body.userEmail;
-                    console.log(req.session.user);
+                    rs.user = req.body.userEmail;
+                    console.log(rs);
+                    // req.session.user = req.body.userEmail;
+                    // console.log(req.session.user);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
                     res.send(common.result);
@@ -120,20 +119,20 @@ router.post('/login' , (req , res) => {
             });
         }        
     });
-    // res.send('좆까');
 });
 
 
 router.get('/logout' , (req , res) => {
     common.result = {};
-    console.log(req.session.user);
-    if(req.session.user){
-        // sessionConfig.destroy((err) => {
-        //     if(err) {throw err;}
-        // });
-        req.session.destroy(function(err){
-            if(err) console.log(err);
+    const rs = req.session;
+    console.log(rs.user);
+    if(rs.user){
+        rs.destroy((err) => {
+            if(err) {throw err;}
         });
+        // req.session.destroy(function(err){
+        //     if(err) console.log(err);
+        // });
         console.log('Logout Success');
         common.result.code = 'DR00';
         common.result.message = common.status.DR00;
