@@ -9,8 +9,8 @@ db.once('open' , () => {
 });
 
 //굳이 필요한지 확인해야함
-require('../models/customer');   
-require('../models/member');
+// require('../models/customer');   
+// require('../models/member');
 mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
 
 module.exports = router;

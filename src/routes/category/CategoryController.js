@@ -5,7 +5,6 @@ const common = require('../../common/common');
 
 router.get('/list' , (req , res) => {
     Category.find((err , categories) => {
-        // Category.find(function(err , categories)  {    
         if(err){
             common.result.code = 'DR01';
             common.result.message = common.status.DR00;

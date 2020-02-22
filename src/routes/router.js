@@ -8,7 +8,6 @@ const memberRouter = require('./member/MemberController');
 const customerRouter = require('./customer/CustomerController');
 const categoryRouter = require('./category/CategoryController');
 
-console.log('Router...')
 router.use(upload.array());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));

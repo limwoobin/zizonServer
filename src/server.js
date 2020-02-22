@@ -6,17 +6,23 @@ const router = require('./routes/router');
 const setting = require('./routes/setting');
 const expressErrorHandler = require('express-error-handler');
 const logger = require('morgan');
+const visitorCount = require('./visitor/VisitorFunc').visitorCount;
+
 const errorHandler = expressErrorHandler({
     static: {
         '404':'./public/404.html'
     }
 });
 
+
 app.use(db);
 app.use(setting);
+app.get('/' , (req , res , next) => {
+    console.log(visitorCount(req));
+    next();
+});
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
-console.log('dirname:'+__dirname);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(bodyParse.json{limit : '50mb'}));    -- body 크기 설정

@@ -1,11 +1,10 @@
-module.exports = function(){
-    const express = require('express');
-    const app = express();
-    const session = require('express-session');
-
-    app.use(session({
-        secret: 'drogbaSession',
-        resave: false,
-        saveUninitialized: true
-    }));
+const getIpAddressFromRequest = (request) => {
+    console.log('ip함수');
+    let ipAddr = request.connection.remoteAddress;
+    if(request.headers && request.headers['x-forwarded-for']){
+        [ipAddr] = request.headers['x-forwarded-for'].split(',');
+    }
+    return ipAddr;
 }
+
+module.exports.getIpAddressFromRequest = getIpAddressFromRequest;
