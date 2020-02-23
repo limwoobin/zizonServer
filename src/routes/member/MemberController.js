@@ -45,14 +45,6 @@ router.get('/overlap/check/:userEmail' , (req , res) => {
 
 router.post('/insert' , (req , res) => {
     console.log(req.body);
-    // let member = new Member();
-    // member.userEmail = req.body.userEmail;
-    // member.userPwd = req.body.userPwd;
-    // member.birthday = req.body.birthday;
-    // member.userNm = req.body.userNm;
-    // member.userPhone = req.body.userPhone;
-    
-    // password encrypt
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.userPwd , buf.toString('base64'), 102391, 64, 'sha512', (err, key) => {
             let member = new Member();
@@ -104,8 +96,6 @@ router.post('/login' , (req , res) => {
                     console.log('Login Success');
                     rs.user = req.body.userEmail;
                     console.log(rs);
-                    // req.session.user = req.body.userEmail;
-                    // console.log(req.session.user);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
                     res.send(common.result);
@@ -131,9 +121,6 @@ router.get('/logout' , (req , res) => {
         rs.destroy((err) => {
             if(err) {throw err;}
         });
-        // req.session.destroy(function(err){
-        //     if(err) console.log(err);
-        // });
         console.log('Logout Success');
         common.result.code = 'DR00';
         common.result.message = common.status.DR00;

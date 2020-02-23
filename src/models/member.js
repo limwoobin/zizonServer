@@ -29,7 +29,5 @@ memberSchema.statics.findByUserEmail = function(userEmail){
 memberSchema.statics.findByUserEmailOrUserNm = function(userEmail){
     return this.findOne({userEmail}).exec();
 }
-// ex) Book.findByTitle('React Tutorials');
 
-// const Member = connection.model('member' , memberSchema);
 module.exports = mongoose.model('member' , memberSchema);

@@ -1,10 +1,23 @@
-const getIpAddressFromRequest = (request) => {
-    console.log('ip함수');
-    let ipAddr = request.connection.remoteAddress;
-    if(request.headers && request.headers['x-forwarded-for']){
-        [ipAddr] = request.headers['x-forwarded-for'].split(',');
-    }
+// const session = require('express-session');
+// const express = require('express');
+// const app = express();
+
+const getIpAddressFromRequest = (req) => {
+    const ipAddr = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     return ipAddr;
 }
 
+// const sessionConfig = {
+//     session : session,
+//     sessionUse : function(){
+//         app.use(session({
+//         secret: 'drogbaSession',
+//         resave: false,
+//         saveUninitialized: true
+//         }));
+//     }
+// }
+
+
 module.exports.getIpAddressFromRequest = getIpAddressFromRequest;
+// module.exports.sessionConfig = sessionConfig;

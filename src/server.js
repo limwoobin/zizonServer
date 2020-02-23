@@ -18,15 +18,14 @@ const errorHandler = expressErrorHandler({
 app.use(db);
 app.use(setting);
 app.get('/' , (req , res , next) => {
-    console.log(visitorCount(req));
+    console.log('middleware');
+    visitorCount(req);
     next();
 });
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParse.json{limit : '50mb'}));    -- body 크기 설정
-// app.use(bodyParser.urlencoded({limit: '50mb' , extended: true})); -- url 크기 설정
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
 app.use(logger('dev'));
