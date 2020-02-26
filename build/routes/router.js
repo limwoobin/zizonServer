@@ -10,7 +10,6 @@ var memberRouter = require('./member/MemberController');
 var customerRouter = require('./customer/CustomerController');
 var categoryRouter = require('./category/CategoryController');
 
-console.log('Router...');
 router.use(upload.array());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));

@@ -17,11 +17,12 @@ const errorHandler = expressErrorHandler({
 
 app.use(db);
 app.use(setting);
-app.get('/' , (req , res , next) => {
-    console.log('middleware');
-    visitorCount(req);
-    next();
-});
+// 방문객 카운터 미들웨어
+// app.get('/' , (req , res , next) => {
+//     console.log('middleware');
+//     visitorCount(req);
+//     next();
+// });
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());

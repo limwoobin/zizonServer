@@ -8,6 +8,8 @@ var router = require('./routes/router');
 var setting = require('./routes/setting');
 var expressErrorHandler = require('express-error-handler');
 var logger = require('morgan');
+var visitorCount = require('./visitor/VisitorFunc').visitorCount;
+
 var errorHandler = expressErrorHandler({
     static: {
         '404': './public/404.html'
@@ -16,13 +18,15 @@ var errorHandler = expressErrorHandler({
 
 app.use(db);
 app.use(setting);
+app.get('/', function (req, res, next) {
+    console.log('middleware');
+    visitorCount(req);
+    next();
+});
 app.use('/', express.static(__dirname + "/../../client/build"));
 app.use('/dr', router);
-console.log('dirname:' + __dirname);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParse.json{limit : '50mb'}));    -- body 크기 설정
-// app.use(bodyParser.urlencoded({limit: '50mb' , extended: true})); -- url 크기 설정
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
 app.use(logger('dev'));

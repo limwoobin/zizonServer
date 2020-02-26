@@ -1,10 +1,25 @@
-// const sha256 = require('sha256');
-// let password = '111';
-// let salt='asd';
-// const securePassword = sha256(password+salt);
+'use strict';
 
-// console.log(securePassword);
+// const session = require('express-session');
+// const express = require('express');
+// const app = express();
+
+var getIpAddressFromRequest = function getIpAddressFromRequest(req) {
+    var ipAddr = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    return ipAddr;
+};
+
+// const sessionConfig = {
+//     session : session,
+//     sessionUse : function(){
+//         app.use(session({
+//         secret: 'drogbaSession',
+//         resave: false,
+//         saveUninitialized: true
+//         }));
+//     }
+// }
 
 
-// PBKDF2 - secure password
-"use strict";
+module.exports.getIpAddressFromRequest = getIpAddressFromRequest;
+// module.exports.sessionConfig = sessionConfig;

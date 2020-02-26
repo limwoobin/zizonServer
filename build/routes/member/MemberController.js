@@ -5,7 +5,13 @@ var router = express.Router();
 var Member = require('../../models/member');
 var common = require('../../common/common');
 var crypto = require('crypto');
-// const pbkdf2Password = require('pbkdf2-password');
+var session = require('express-session');
+
+router.use(session({
+    secret: 'drogbaSession',
+    resave: false,
+    saveUninitialized: true
+}));
 
 router.get('/members', function (req, res) {
     console.log('findAll...');
@@ -40,14 +46,6 @@ router.get('/overlap/check/:userEmail', function (req, res) {
 
 router.post('/insert', function (req, res) {
     console.log(req.body);
-    // let member = new Member();
-    // member.userEmail = req.body.userEmail;
-    // member.userPwd = req.body.userPwd;
-    // member.birthday = req.body.birthday;
-    // member.userNm = req.body.userNm;
-    // member.userPhone = req.body.userPhone;
-
-    // password encrypt
     crypto.randomBytes(64, function (err, buf) {
         crypto.pbkdf2(req.body.userPwd, buf.toString('base64'), 102391, 64, 'sha512', function (err, key) {
             var member = new Member();
@@ -77,6 +75,7 @@ router.post('/insert', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
+    var rs = req.session;
     console.log('userEmail:' + req.body.userEmail);
     console.log('userPwd:' + req.body.userPwd);
     Member.findOne({ userEmail: req.body.userEmail }, function (err, member) {
@@ -96,6 +95,8 @@ router.post('/login', function (req, res) {
                 if (key.toString('base64') === member.userPwd) {
                     // Login Success
                     console.log('Login Success');
+                    rs.user = req.body.userEmail;
+                    console.log(rs);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
                     res.send(common.result);
@@ -109,13 +110,14 @@ router.post('/login', function (req, res) {
             });
         }
     });
-    // res.send('좆까');
 });
 
 router.get('/logout', function (req, res) {
     common.result = {};
-    if (req.session.userEmail) {
-        req.session.destroy(function (err) {
+    var rs = req.session;
+    console.log(rs.user);
+    if (rs.user) {
+        rs.destroy(function (err) {
             if (err) {
                 throw err;
             }

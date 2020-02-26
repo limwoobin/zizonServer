@@ -7,9 +7,9 @@ var status = {
     DR03: 'Password does not match'
 };
 
-var result = {};
+var Result = {};
 
-result.prototype = function (code, message, data) {
+Result.prototype = function (code, message, data) {
     this.code = code;
     this.message = message;
     this.data = data;
@@ -17,18 +17,8 @@ result.prototype = function (code, message, data) {
 
 var data = {};
 
-module.exports.status = status;
-module.exports.result = result;
-module.exports.data = data;
-
-// -----------------------------------------------
-
-// function Result(code , message , data){
-//     this.code = code;
-//     this.message = message;
-//     this.data = data;
-// }
-
-// Result.prototype = new Result();
-
-// module.exports.Result = Result;
+module.exports = {
+    status: status,
+    result: Result,
+    data: data
+};
