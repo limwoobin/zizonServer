@@ -10,6 +10,7 @@ router.get('/list' , (req , res) => {
             common.result.message = common.status.DR00;
             return res.json(common.result);
         } 
+        
         common.result.code = 'DR00';
         common.result.message = common.status.DR00;
         common.result.data = categories;
