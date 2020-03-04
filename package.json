@@ -1,10 +1,16 @@
 {
-  "name": "server",
+  "name": "codrogba-blog",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "",
+  "description": "blog of Codrogba",
+  "keywords":["codrogba" , "log"],
+  "private": true,
+  "main": "src/server.js",
+  "author": "woobeen is Codrogba",
   "license": "ISC",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limwoobin/zizonServer"
+  },
   "scripts": {
     "build": "babel src -d build --presets=es2015",
     "start": "node ./src/server.js",
