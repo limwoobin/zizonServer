@@ -4,6 +4,11 @@ const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_
 
 autoIncrement.initialize(connection);
 
+const imageSchema = new mongoose.Schema({
+    width: Number,
+    height: Number,
+});
+
 const memberSchema = new mongoose.Schema({
     id: {type: Number , required:true , unique:true},
     userEmail: {type: String , required:true , unique:true},
@@ -11,6 +16,7 @@ const memberSchema = new mongoose.Schema({
     salt: {type: String},
     userNm: {type: String},
     birthday: {type: String},
+    profileImage: imageSchema,
     regDate: {type:Date , default:Date.now},
     salt: {type:String}
 });

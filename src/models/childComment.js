@@ -4,10 +4,11 @@ const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_
 
 autoIncrement.initialize(connection);
 
-const commentSchema = new mongoose.Schema({
+const childCommentSchema = new mongoose.Schema({
     boardId : {type:Number},
     boardType : {type:String},
-    id: {type:Number},
+    parentId : {type:Number},
+    id : {type:Number},
     userEmail: {type:String},
     content: {type:String},
     image: {type: String},
@@ -15,11 +16,11 @@ const commentSchema = new mongoose.Schema({
     modiDate: {type:Date , default:Date.now},
 });
 
-commentSchema.plugin(autoIncrement.plugin , {
-    model : 'comment',
+childCommentSchema.plugin(autoIncrement.plugin , {
+    model : 'childComment',
     field : 'id',
     startAt : 0,
     increment : 1
-});
+})
 
-module.exports = mongoose.model('comment' , commentSchema);
+module.exports = mongoose.model('childComment' , childCommentSchema);

@@ -14,7 +14,7 @@ const errorHandler = expressErrorHandler({
     }
 });
 
-// app.use(db);
+app.use(db);
 app.use(setting);
 // 방문객 카운터 미들웨어
 // app.get('/' , (req , res , next) => {

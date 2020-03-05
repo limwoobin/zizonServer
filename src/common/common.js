@@ -7,13 +7,14 @@ const status = {
 
 let Result = {};
 
+let data = {};
+
+
 Result.prototype = function(code , message , data){
     this.code = code;
     this.message = message;
     this.data = data;
 }
-
-let data = {};
 
 module.exports = {
     status : status,

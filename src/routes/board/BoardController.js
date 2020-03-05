@@ -3,10 +3,31 @@ const router = express.Router();
 const Board = require('../../models/board');
 const common = require('../../common/common');
 
+const result = common.result;
+
+router.post('/test' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    let board = new Board();
+    board = req.body;
+    Board.findOneAndUpdate(({id:board.id , userEmail:board.userEmail}) , ({content:board.content}) , {new:true} , (err , data) => {
+        if(err){
+            console.log(err);
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = status(500).json({err});
+            return res.json(result);
+        }
+
+        console.log(data);
+        result.data = data;
+        return res.json(result);
+    })
+})
+
 
 router.get('/list' , (req , res) => {
     console.log('board...')
-    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     
@@ -21,5 +42,70 @@ router.get('/list' , (req , res) => {
     })
     return res.json(result);
 })
+
+router.post('/add' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    console.log(req.body);
+    let board = new Board();
+    board = req.body;
+
+    board.save((err) => {
+        if(err){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = status(500).json({err});
+            return res.json(result);
+        }
+        console.log(common.result);
+        return res.json(result);
+    })
+});
+
+router.put('/update' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+
+    let board = new Board();
+    board = req.body;
+
+    Board.findOneAndUpdate({id:board.id , userEmail:board.userEmail}, (
+        {
+            title:board.title , 
+            content:board.content,
+            image:board.image,
+            modiDate:board.modiDate
+        }) , {new:true} , (err , data) => {
+        if(err){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = status(500).json({err});
+            return res.json(result);
+        }
+        console.log(data);
+        result.data = data;
+        return res.json(result);
+    });
+});
+
+router.delete('/delete' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+
+    let board = new Board();
+    board = req.body;
+    Board.findOneAndDelete({id:board.id , userEmail:board.userEmail} , {new: true} , (err , data) => {
+        if(err){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = status(500).json({err});
+            return res.json(result);
+        }
+        console.log(data);
+        return res.json(result);
+    })
+});
+
+
 
 module.exports = router;

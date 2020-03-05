@@ -4,15 +4,20 @@ const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_
 
 autoIncrement.initialize(connection);
 
+const imageSchema = new mongoose.Schema({
+    width: Number,
+    height: Number,
+});
+
 const boardSchema = new mongoose.Schema({
-    id: {type:Number},
-    boardType : {type:String},
-    userEmail: {type:String},
-    title: {type:String},
-    content: {type:String},
-    image: {type: String},
-    comment: {type:String},
-    regDate: {type:Date , default:Date.now},
+    id: {type:Number},                                       // id
+    boardType : {type:String , trim:true , required:true },  // '01 - 게시판 , 02 - 공지사항'
+    userEmail: {type:String , required:true},                // 사용자 계정
+    title: {type:String , required:true},                    // 제목
+    content: {type:String},                                  // 내용
+    image: imageSchema,                                      // 이미지
+    regDate: {type:Date , default:Date.now , required:true}, // 등록일
+    modiDate : {type:Date , default:Date.now }               // 수정일
 });
 
 boardSchema.plugin(autoIncrement.plugin , {
@@ -21,5 +26,6 @@ boardSchema.plugin(autoIncrement.plugin , {
     startAt : 0,
     increment : 1
 });
+
 
 module.exports = mongoose.model('board' , boardSchema);
