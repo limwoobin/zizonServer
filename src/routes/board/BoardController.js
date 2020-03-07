@@ -27,7 +27,6 @@ router.post('/test' , (req , res) => {
 
 
 router.get('/list' , (req , res) => {
-    console.log('board...')
     result.code = 'DR00';
     result.message = common.status.DR00;
     
@@ -41,6 +40,21 @@ router.get('/list' , (req , res) => {
         result.data = boards;
     })
     return res.json(result);
+})
+
+router.get('/view/:id' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    Board.findOne({id:req.params.id} , (err , boardData) => {
+        if(err){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = err;
+            return res.json(result);
+        }
+        result.data = boardData;
+        return res.json(result);
+    })
 })
 
 router.post('/add' , (req , res) => {
@@ -106,6 +120,53 @@ router.delete('/delete' , (req , res) => {
     })
 });
 
+
+router.post('/comment/add' , (req , res) => {
+    result.code = 'DR00';
+    result.status = common.status.DR00;
+    let comment = Comment();
+    comment = req.body;
+    comment.save((err) => {
+        if(err){
+            result.code = 'DR01';
+            result.status = common.status.DR01;
+            result.data = err;
+            return res.json(result);
+        }
+
+        result.data = comment;
+        return res.json(result);
+    });
+})
+
+router.post('/comment/update' , (req , res) => {
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    let comment = Comment();
+    comment = req.body;
+    Comment.findOneAndUpdate(
+        {
+            parentId: comment.parentId, 
+            parentType: comment.parentType,
+            userEmail: comment.userEmail,
+            id: comment.id,
+        } , 
+        {
+            content: comment.content,
+            image: comment.image,
+            modiDate: comment.modiDate,
+        } , {new:true}, (err , comment) => {
+        if(err){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = err;
+            return res.json(result);
+        }
+
+        result.data = comment;
+        return res.json(result);
+    })
+})
 
 
 module.exports = router;

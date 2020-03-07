@@ -1,6 +1,16 @@
-let data = {};
+var a = 5;
 
-data.comment = 'aaa';
-data.childComment = 'aasdasdasd';
+function Outer(){
+    console.log(a);
+}
 
-console.log(data);
+
+function Inner(){
+    var a = 3;
+    console.log(a);
+    // Outer() -> console.log(a);
+}
+
+Inner();
+
+
