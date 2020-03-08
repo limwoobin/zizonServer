@@ -10,6 +10,18 @@ const categoryRouter = require('./category/CategoryController');
 const boardRouter = require('./board/BoardController');
 const commentRouter = require('./comment/CommentController');
 
+const common = require('../common/common');
+
+router.get('/search/:keyword' , (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    
+    const keyword = req.params.keyword;
+    result.data = keyword;
+    return res.json(result);
+})
+
 router.use(upload.array());
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Comment = require('../../models/comment');
-const ChildComment = require('../../models/childComment');
+const Board = require('../../models/board');
 const common = require('../../common/common');
 
 const result = common.result;
@@ -13,13 +12,13 @@ router.get('/test' , (req , res) => {
     return res.json(result);
 })
 
-router.get('/comments/:id' , (req , res) => {
+router.get('/comments/:boardType/:userEmail' , (req , res) => {
     result.code = 'DR00';
     result.message = common.status.DR00;
     console.log(req.params.id);
-    let comment = new Comment();
-    comment.parentId = req.params.id;
-    Comment.findById(({parentId:comment.parentId}) , (err , comments) => {
+    let board = new Board();
+    board.comment.userEmail = req.params.userEmail;
+    Board.comment.findById(({userEmail:board.userEmail}) , (err , comments) => {
         if(err){
             result.code = 'DR01';
             result.message = common.status.DR01;
@@ -27,14 +26,14 @@ router.get('/comments/:id' , (req , res) => {
             return res.json(result);
         }
         result.data.comment = comments;
-        ChildComment.findById({boardId:comment.parentId} , (err , childComments) => {
+        Board.childComment.findById({boardId:comment.parentId} , (err , childComments) => {
             if(err){
                 result.code = 'DR01';
                 result.message = common.status.DR01;
                 result.data = err;
                 return res.json(result);
             }
-            result.data.comment.id = childComment;
+            result.data.comment.childComment = childComment;
         })
         return res.json(result);
     })
@@ -43,37 +42,26 @@ router.get('/comments/:id' , (req , res) => {
 router.post('/add' , (req , res) => {
     result.code = 'DR00';
     result.status = common.status.DR00;
-    let comment = Comment();
-    comment = req.body;
-    comment.save((err , comments) => {
-        if(err){
-            result.code = 'DR01';
-            result.status = common.status.DR01;
-            result.data = err;
-            return res.json(result);
-        }
+    let board = new Board();
+    board = req.body.id;
+    board.save({id:board.id , comment:req.body.comment} , (req , res) => {
 
-        result.data = comment;
-        return res.json(result);
-    });
+    })
 })
 
 router.post('/update' , (req , res) => {
     result.code = 'DR00';
     result.message = common.status.DR00;
-    let comment = Comment();
-    comment = req.body;
-    Comment.findOneAndUpdate(
+    let board = new Board();
+    board = req.body;
+    Board.findOneAndUpdate(
         {
-            parentId: comment.parentId, 
-            parentType: comment.parentType,
-            userEmail: comment.userEmail,
-            id: comment.id,
+            userEmail: board.userEmail,
+            id: board.id,
+            comment : board.comment
         } , 
         {
-            content: comment.content,
-            image: comment.image,
-            modiDate: comment.modiDate,
+            comment : board.comment,
         } , {new:true}, (err , comment) => {
         if(err){
             result.code = 'DR01';

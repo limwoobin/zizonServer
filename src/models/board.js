@@ -10,10 +10,7 @@ const imageSchema = new mongoose.Schema({
 });
 
 const childCommentSchema = new mongoose.Schema({
-    boardId : {type:Number},
-    boardType : {type:String},
-    parentId : {type:Number},
-    id : {type:Number},
+    childCommentId : {type:Number},
     userEmail: {type:String},
     content: {type:String},
     image: {type: String},
@@ -22,9 +19,7 @@ const childCommentSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
-    boardId : {type:Number},
-    boardType : {type:String},
-    id: {type:Number},
+    commentId: {type:Number},
     userEmail: {type:String},
     content: {type:String},
     image: {type: String},
@@ -45,9 +40,16 @@ const boardSchema = new mongoose.Schema({
     modiDate : {type:Date , default:Date.now }               // 수정일
 });
 
+childCommentSchema.plugin(autoIncrement.plugin , {
+    model : 'childComment',
+    field : 'childCommentId',
+    startAt : 0,
+    increment : 1
+})
+
 commentSchema.plugin(autoIncrement.plugin , {
     model : 'comment',
-    field : 'id',
+    field : 'commentId',
     startAt : 0,
     increment : 1
 });
@@ -58,13 +60,5 @@ boardSchema.plugin(autoIncrement.plugin , {
     startAt : 0,
     increment : 1
 });
-
-childCommentSchema.plugin(autoIncrement.plugin , {
-    model : 'childComment',
-    field : 'id',
-    startAt : 0,
-    increment : 1
-})
-
 
 module.exports = mongoose.model('board' , boardSchema);
