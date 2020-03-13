@@ -3,9 +3,8 @@ const router = express.Router();
 const Board = require('../../models/board');
 const common = require('../../common/common');
 
-const result = common.result;
-
 router.post('/test' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     let board = new Board();
@@ -27,22 +26,28 @@ router.post('/test' , (req , res) => {
 
 
 router.get('/list' , (req , res) => {
+    // 예시코드  
+    const result = {};
+    const resJson = common.resJson;
     result.code = 'DR00';
-    result.message = common.status.DR00;
+    result.message = resJson.DR00;
     
     Board.find((err , boards) => {
         if(err){
             result.code = 'DR01';
-            result.message = common.status.DR01;
+            result.message = resJson.DR00;
             result.data = err;
-            return result;
+            resJson.result(result);
+            return res.json(resJson);
         } 
         result.data = boards;
+        resJson.result(result);
     })
-    return res.json(result);
+    return res.json(resJson);
 })
 
 router.get('/view/:id' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     Board.findOne({id:req.params.id} , (err , boardData) => {
@@ -58,6 +63,7 @@ router.get('/view/:id' , (req , res) => {
 })
 
 router.post('/add' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     console.log(req.body);
@@ -77,6 +83,7 @@ router.post('/add' , (req , res) => {
 });
 
 router.put('/update' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
 
@@ -103,6 +110,7 @@ router.put('/update' , (req , res) => {
 });
 
 router.delete('/delete' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
 
@@ -122,6 +130,7 @@ router.delete('/delete' , (req , res) => {
 
 
 router.post('/comment/add' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.status = common.status.DR00;
     let comment = Comment();
@@ -140,6 +149,7 @@ router.post('/comment/add' , (req , res) => {
 })
 
 router.post('/comment/update' , (req , res) => {
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     let comment = Comment();

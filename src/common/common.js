@@ -5,19 +5,36 @@ const status = {
     DR03: 'Password does not match',
 };
 
-let Result = {};
+let Result = {
+    
+};
 
-let data = {};
-
-
-Result.prototype = function(code , message , data){
-    this.code = code;
-    this.message = message;
-    this.data = data;
+const state = {
+    // DR00 : 'DR00',
 }
+
+
+function State(){};
+State.prototype.DR00 = 'SUCCESS';
+State.prototype.DR01 = 'FAIL';
+State.prototype.DR02 = 'This email does not exist.';
+State.prototype.DR03 = 'Password does not match';
+
+const resState = new State();
+
+function Response(){};
+
+Response.prototype.result = function(obj){
+    this.code = obj.code;
+    this.message = obj.message;
+    this.data = obj.data;
+}
+
+const response = new Response();
 
 module.exports = {
     status : status,
     result : Result,
-    data : data
+    resJson : response,
+    resState : resState,
 };
