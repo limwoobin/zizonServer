@@ -6,7 +6,8 @@ const router = require('./routes/router');
 const setting = require('./routes/setting');
 const expressErrorHandler = require('express-error-handler');
 const logger = require('morgan');
-const visitorCount = require('./visitor/VisitorFunc').visitorCount;
+const expressSession = require('express-session');
+// const visitorCount = require('./visitor/VisitorFunc').visitorCount;
 
 const errorHandler = expressErrorHandler({
     static: {
@@ -22,6 +23,15 @@ app.use(setting);
 //     visitorCount(req);
 //     next();
 // });
+app.use(expressSession({
+    secret: 'drogbaSession',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly : true,
+        secure : false,
+    }
+}));
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());

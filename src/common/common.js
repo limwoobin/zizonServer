@@ -9,19 +9,6 @@ let Result = {
     
 };
 
-const state = {
-    // DR00 : 'DR00',
-}
-
-
-function State(){};
-State.prototype.DR00 = 'SUCCESS';
-State.prototype.DR01 = 'FAIL';
-State.prototype.DR02 = 'This email does not exist.';
-State.prototype.DR03 = 'Password does not match';
-
-const resState = new State();
-
 function Response(){};
 
 Response.prototype.result = function(obj){
@@ -36,5 +23,4 @@ module.exports = {
     status : status,
     result : Result,
     resJson : response,
-    resState : resState,
 };

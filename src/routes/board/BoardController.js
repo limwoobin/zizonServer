@@ -30,12 +30,12 @@ router.get('/list' , (req , res) => {
     const result = {};
     const resJson = common.resJson;
     result.code = 'DR00';
-    result.message = resJson.DR00;
+    result.message = common.status.DR00;
     
     Board.find((err , boards) => {
         if(err){
             result.code = 'DR01';
-            result.message = resJson.DR00;
+            result.message = common.status.DR01;
             result.data = err;
             resJson.result(result);
             return res.json(resJson);

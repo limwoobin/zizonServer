@@ -4,14 +4,6 @@ const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
 const session = require('express-session');
-// const RedisStore = require('connect-redis')(session);
-
-router.use(session({
-    // store: new RedisStore({}),
-    secret: 'drogbaSession',
-    resave: false,
-    saveUninitialized: true
-}));
 
 // app.get('redis-store-counter' , (req , res) => {
 //     const session = req.session;
