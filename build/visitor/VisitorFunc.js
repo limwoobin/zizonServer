@@ -31,6 +31,7 @@ var visitorCount = function visitorCount(req) {
         }
         if (!visitor) {
             // insert
+            console.log(reqDate);
             console.log('insert');
             var _visitor = new Visitor();
             _visitor.reqDate = reqDate;

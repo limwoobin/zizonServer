@@ -8,6 +8,11 @@ var connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tu
 
 autoIncrement.initialize(connection);
 
+var imageSchema = new mongoose.Schema({
+    width: Number,
+    height: Number
+});
+
 var memberSchema = new mongoose.Schema(_defineProperty({
     id: { type: Number, required: true, unique: true },
     userEmail: { type: String, required: true, unique: true },
@@ -15,6 +20,7 @@ var memberSchema = new mongoose.Schema(_defineProperty({
     salt: { type: String },
     userNm: { type: String },
     birthday: { type: String },
+    profileImage: imageSchema,
     regDate: { type: Date, default: Date.now }
 }, 'salt', { type: String }));
 

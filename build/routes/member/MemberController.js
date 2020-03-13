@@ -6,12 +6,24 @@ var Member = require('../../models/member');
 var common = require('../../common/common');
 var crypto = require('crypto');
 var session = require('express-session');
+// const RedisStore = require('connect-redis')(session);
 
 router.use(session({
+    // store: new RedisStore({}),
     secret: 'drogbaSession',
     resave: false,
     saveUninitialized: true
 }));
+
+// app.get('redis-store-counter' , (req , res) => {
+//     const session = req.session;
+//     if(session && session.count){
+//         session.count++;
+//     }else{
+//         session.count = 1;
+//     }
+//     res.send('count is' + session.count);
+// });
 
 router.get('/members', function (req, res) {
     console.log('findAll...');
