@@ -8,7 +8,8 @@ var router = require('./routes/router');
 var setting = require('./routes/setting');
 var expressErrorHandler = require('express-error-handler');
 var logger = require('morgan');
-var visitorCount = require('./visitor/VisitorFunc').visitorCount;
+var expressSession = require('express-session');
+// const visitorCount = require('./visitor/VisitorFunc').visitorCount;
 
 var errorHandler = expressErrorHandler({
     static: {
@@ -24,13 +25,27 @@ app.use(setting);
 //     visitorCount(req);
 //     next();
 // });
+app.use(expressSession({
+    secret: 'drogbaSession',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        secure: false
+    }
+}));
+
+app.use(function (req, res, next) {
+    console.log('request URL:' + req.url);
+    next();
+});
 app.use('/', express.static(__dirname + "/../../client/build"));
 app.use('/dr', router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
-app.use(logger('dev'));
+app.use(logger('local'));
 
 var port = process.env.PORT || 4000;
 app.listen(port, function () {

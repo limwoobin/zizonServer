@@ -31,12 +31,12 @@ router.get('/list', function (req, res) {
     var result = {};
     var resJson = common.resJson;
     result.code = 'DR00';
-    result.message = resJson.DR00;
+    result.message = common.status.DR00;
 
     Board.find(function (err, boards) {
         if (err) {
             result.code = 'DR01';
-            result.message = resJson.DR00;
+            result.message = common.status.DR01;
             result.data = err;
             resJson.result(result);
             return res.json(resJson);
@@ -63,22 +63,24 @@ router.get('/view/:id', function (req, res) {
     });
 });
 
-router.post('/add', function (req, res) {
+router.post('/write', function (req, res) {
     var result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-    console.log(req.body);
     var board = new Board();
     board = req.body;
+    if (board.id) delete board.id;
+    console.log('board:', board);
 
     board.save(function (err) {
         if (err) {
+            console.log('err', err);
             result.code = 'DR01';
             result.message = common.status.DR01;
             result.data = status(500).json({ err: err });
             return res.json(result);
         }
-        console.log(common.result);
+        console.log('result', common.result);
         return res.json(result);
     });
 });
