@@ -62,22 +62,27 @@ router.get('/view/:id' , (req , res) => {
     })
 })
 
-router.post('/add' , (req , res) => {
+router.post('/write' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-    console.log(req.body);
     let board = new Board();
-    board = req.body;
+    board.boardType = req.body.boardType;
+    board.userEmail = req.body.userEmail;
+    board.title = req.body.title;
+    board.content = req.body.content;
+    board.image = req.body.image;
+    console.log('board:' , board);
 
     board.save((err) => {
         if(err){
+            console.log('err' , err);
             result.code = 'DR01';
             result.message = common.status.DR01;
-            result.data = status(500).json({err});
+            result.data = err;
             return res.json(result);
         }
-        console.log(common.result);
+        console.log('result' , common.result);
         return res.json(result);
     })
 });

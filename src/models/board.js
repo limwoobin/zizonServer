@@ -10,7 +10,7 @@ const imageSchema = new mongoose.Schema({
 });
 
 const childCommentSchema = new mongoose.Schema({
-    childCommentId : {type:Number},
+    childCommentId : {type:Number , unique:true},
     userEmail: {type:String},
     content: {type:String},
     image: {type: String},
@@ -19,25 +19,25 @@ const childCommentSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
-    commentId: {type:Number},
+    commentId: {type:Number , unique:true},
     userEmail: {type:String},
     content: {type:String},
     image: {type: String},
-    childComment : childCommentSchema,
+    childComment : [childCommentSchema],
     regDate: {type:Date , default:Date.now},
     modiDate: {type:Date , default:Date.now},
 });
 
 const boardSchema = new mongoose.Schema({
-    id: {type:Number},                                       // id
-    boardType : {type:String , trim:true , required:true },  // '01 - 게시판 , 02 - 공지사항'
-    userEmail: {type:String , required:true},                // 사용자 계정
-    title: {type:String , required:true},                    // 제목
-    content: {type:String},                                  // 내용
-    image: imageSchema,
-    comment : commentSchema,                                      // 이미지
-    regDate: {type:Date , default:Date.now , required:true}, // 등록일
-    modiDate : {type:Date , default:Date.now }               // 수정일
+    boardId: {type:Number , required:true},        // id
+    userEmail: {type:String , required:true},                     // 사용자 계정
+    boardType : {type:String , required:true },                   // '01 - 게시판 , 02 - 공지사항'
+    title: {type:String , required:true},                         // 제목
+    content: {type:String},                                       // 내용
+    image: imageSchema,                                        // 이미지
+    comment : [commentSchema],                                 // 코멘트
+    regDate: {type:Date , default:Date.now },                     // 등록일
+    modiDate : {type:Date , default:Date.now }                 // 수정일
 });
 
 childCommentSchema.plugin(autoIncrement.plugin , {
@@ -56,9 +56,11 @@ commentSchema.plugin(autoIncrement.plugin , {
 
 boardSchema.plugin(autoIncrement.plugin , {
     model : 'board',
-    field : 'id',
+    field : 'boardId',
     startAt : 0,
     increment : 1
 });
 
+// module.exports = mongoose.model('childComment' , childCommentSchema);
+// module.exports = mongoose.model('comment' , commentSchema);
 module.exports = mongoose.model('board' , boardSchema);

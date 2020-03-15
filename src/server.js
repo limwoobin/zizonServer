@@ -32,13 +32,18 @@ app.use(expressSession({
         secure : false,
     }
 }));
+
+app.use(function(req , res , next){
+    console.log('request URL:' + req.url);
+    next();
+})
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressErrorHandler.httpError(404));
 app.use(errorHandler);
-app.use(logger('dev'));
+app.use(logger('local'));
 
 const port = process.env.PORT || 4000;
 app.listen(port , () => {
