@@ -50,7 +50,7 @@ router.get('/view/:id' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-    Board.findOne({id:req.params.id} , (err , boardData) => {
+    Board.findOne({boardId:req.params.id} , (err , boardData) => {
         if(err){
             result.code = 'DR01';
             result.message = common.status.DR01;
