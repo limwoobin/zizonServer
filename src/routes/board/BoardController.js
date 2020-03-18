@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Board = require('../../models/board');
+const Comment = require('../../models/comment');
 const common = require('../../common/common');
+
 
 router.post('/test' , (req , res) => {
     const result = common.result;
@@ -57,8 +59,19 @@ router.get('/view/:id' , (req , res) => {
             result.data = err;
             return res.json(result);
         }
-        result.data = boardData;
-        return res.json(result);
+        boardData.views++;
+        boardData.save();
+        Comment.findOne({board:boardData._id} , (err , comments) => {
+            if(err){
+                result.code = 'DR01';
+                result.message = common.status.DR01;
+                result.data = err;
+                return res.json(result);
+            }
+            boardData.comments = comments;
+            result.data = boardData;
+            return res.json(result);        
+        })
     })
 })
 
@@ -134,12 +147,16 @@ router.delete('/delete' , (req , res) => {
 });
 
 
-router.post('/comment/add' , (req , res) => {
+router.post('/comment/write' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.status = common.status.DR00;
-    let comment = Comment();
-    comment = req.body;
+    let comment = new Comment();
+    // comment._id = req.body._id;
+    comment.userEmail = req.body.userEmail;
+    comment.board = req.body._id;
+    comment.content = req.body.content;
+    comment.image = req.body.image;
     comment.save((err) => {
         if(err){
             result.code = 'DR01';
@@ -185,3 +202,13 @@ router.post('/comment/update' , (req , res) => {
 
 
 module.exports = router;
+
+// private functions
+function checkPostId(req, res, next){ // 1
+    Board.findOne({_id:req.query.postId},function(err, post){
+      if(err) return res.json(err);
+  
+      res.locals.post = post; // 1-1
+      next();
+    });
+}

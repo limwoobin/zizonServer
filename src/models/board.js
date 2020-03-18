@@ -16,7 +16,8 @@ const boardSchema = new mongoose.Schema({
     title: {type:String , required:true},                      // 제목
     content: {type:String},                                    // 내용
     image: imageSchema,                                        // 이미지
-    view : {type:Number , default:0},                                      // 조회수
+    comments: [],
+    views : {type:Number , default:0},                                      // 조회수
     regDate: {type:Date , default:Date.now },                  // 등록일
     modiDate : {type:Date , default:Date.now }                 // 수정일
 });

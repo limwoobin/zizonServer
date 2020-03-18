@@ -33,7 +33,7 @@ commentSchema.virtual('childComments')
 commentSchema.plugin(autoIncrement.plugin , {
     model : 'comment',
     field : 'commentId',
-    startAt : 1,
+    startAt : 0,
     increment : 1
 });
 
