@@ -12,6 +12,7 @@ const imageSchema = new mongoose.Schema({
 const commentSchema = new mongoose.Schema({
     commentId: {type:Number},
     board:{type:mongoose.Schema.Types.ObjectId, ref:'board' , required:true},
+    parentComment:{type:mongoose.Schema.Types.ObjectId, ref:'comment'},
     userEmail: {type:String},
     content: {type:String},
     image: imageSchema,
@@ -21,14 +22,9 @@ const commentSchema = new mongoose.Schema({
     toObject:{virtuals:true}
 });
 
-
-commentSchema.virtual('childComments')
-    .get(function(){
-        return this._childComments;
-    })
-    .set(function(value){
-        this._childComments = value;
-    })
+commentSchema.virtual('childComments') //4
+  .get(function(){ return this._childComments; })
+  .set(function(value){ this._childComments=value; });
 
 commentSchema.plugin(autoIncrement.plugin , {
     model : 'comment',

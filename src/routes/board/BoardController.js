@@ -4,7 +4,6 @@ const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const common = require('../../common/common');
 
-
 router.post('/test' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
@@ -44,8 +43,8 @@ router.get('/list' , (req , res) => {
         } 
         result.data = boards;
         resJson.result(result);
+        return res.json(resJson);
     })
-    return res.json(resJson);
 })
 
 router.get('/view/:id' , (req , res) => {
