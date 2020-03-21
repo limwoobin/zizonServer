@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const Visitor = require('../models/visitor');
 const moment = require('moment');
-    require('moment-timezone');
-    moment.tz.setDefault("Asia/Seoul");
+               require('moment-timezone');
+               moment.tz.setDefault("Asia/Seoul");
 const session = require('express-session');
 app.use(session({
     secret: 'drogbaSession',
@@ -11,7 +11,7 @@ app.use(session({
     saveUninitialized: true
 }));
     
-const visitorCount = (req) => {
+const visitorCount = (req , res , next) => {
     const getIp = require('../common/config').getIpAddressFromRequest(req);    
     console.log('sessionIp:' + session.getIp);
     console.log('ip -> ' + getIp);
@@ -51,6 +51,7 @@ const visitorCount = (req) => {
         }
     })
     return 'Success';
+    next();
 }
 
 

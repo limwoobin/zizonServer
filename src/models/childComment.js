@@ -9,22 +9,22 @@ const imageSchema = new mongoose.Schema({
     height: Number,
 });
 
-const commentSchema = new mongoose.Schema({
-    commentId: {type:Number},
+const childCommentSchema = new mongoose.Schema({
+    childCommentId: {type:Number},
     board:{type:mongoose.Schema.Types.ObjectId, ref:'board' , required:true},
+    commentId:{type:mongoose.Schema.Types.ObjectId , ref:'comment' , required:true},
     userEmail: {type:String},
     content: {type:String},
     image: imageSchema,
-    childComments:[],
     regDate: {type:Date , default:Date.now},
     modiDate: {type:Date , default:Date.now},
 })
 
-commentSchema.plugin(autoIncrement.plugin , {
-    model : 'comment',
-    field : 'commentId',
-    startAt : 0,
+childCommentSchema.plugin(autoIncrement.plugin , {
+    model : 'childComment',
+    field : 'childCommentId',
+    startAt : 1,
     increment : 1
 });
 
-module.exports = mongoose.model('comment' , commentSchema);
+module.exports = mongoose.model('childComment' , childCommentSchema);
