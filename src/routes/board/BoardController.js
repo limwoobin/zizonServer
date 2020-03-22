@@ -48,7 +48,7 @@ router.get('/list' , (req , res) => {
     })
 })
 
-router.get('/view/:id' , (req , res) => {
+router.get('/view/:id' , checkBoardId , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
@@ -69,51 +69,29 @@ router.get('/view/:id' , (req , res) => {
                 result.data = err;
                 return res.json(result);
             }
-            comments.map((c) => {
-                ChildComment.find({commentId:c._id} , (err , childComments) => {
-                    if(childComments){
-                        c.childComments = childComments;
-                    }
-                })
-            })
-            boardData.comments = comments;
-        })
-        setTimeout(() => {
-            result.data = boardData;
-            return res.json(result); 
-        },500);
-        // result.data = boardData;
-        // return res.json(result);
-    })
 
-    // new Promise((resolve , reject) => {
-    //     Board.findOne({_id:_id} , (err , boardData) => {
-    //         boardData.views++;
-    //         boardData.save();
-    //         return function(boardData){};
-    //     })
-    //     .then((boardData) => {
-    //         Comment.find({board:_id} , (err , comments) => {
-    //             boardData.comments = comments;
-    //             return function(boardData){};
-    //         })
-    //     })
-    //     .then((boardData) => {
-    //         let comments = boardData.comments;
-    //         comments.map((c) => {
-    //             ChildComment.find({commentId:c._id} , (err , childComments) => {
-    //                 if(childComments){
-    //                     c.childComments = childComments;
-    //                     return function(boardData){};
-    //                 }
-    //             })
-    //         })
-    //     })
-    //     .then((boardData) => {
-    //         result.data = boardData;
-    //         return boardData;
-    //     })
-    // })    
+            function setChildValue(c){
+                return new Promise((resolve , reject) => {
+                    ChildComment.find({commentId:c._id} , (err , childComments) => {
+                        if(childComments.length !== 0){
+                            c.childComments = childComments;
+                        }
+                        resolve();
+                    })
+                })
+            }        
+
+            async function setChildComments(comments){
+                for(let c in comments){
+                    await setChildValue(comments[c]);
+                }
+                boardData.comments = comments; 
+                result.data = boardData;
+                return res.json(result);  
+            }
+            setChildComments(comments);  
+        })
+    })
 })
 
 router.post('/write' , (req , res) => {
@@ -190,12 +168,16 @@ router.delete('/delete' , (req , res) => {
 
 module.exports = router;
 
-// private functions
-function checkBoardId(req, res, next){ // 1
-    Board.findOne({_id:req.query.postId},function(err, post){
-      if(err) return res.json(err);
-  
-      res.locals.post = post; // 1-1
+function checkBoardId(req, res, next){ 
+    const result = common.result;
+    const _id = req.params.id || req.body._id;
+    Board.findOne({_id:_id} , (err , boardData) => {
+      if(err) {
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err.message;
+        return res.json(result); 
+      }
       next();
     });
 }
