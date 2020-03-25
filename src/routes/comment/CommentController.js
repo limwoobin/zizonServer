@@ -4,7 +4,7 @@ const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const ChildComment = require('../../models/childComment');
 const common = require('../../common/common');
-
+const util = require('../../util/util');
 
 router.get('/test' , (req , res) => {
     result.code = 'DR00';
@@ -41,7 +41,7 @@ router.get('/comments/:boardType/:userEmail' , (req , res) => {
     })
 })
 
-router.post('/write' , checkBoardId , (req , res) => {
+router.post('/write' , util.checkBoardId , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.status = common.status.DR00;
@@ -109,17 +109,3 @@ router.post('/update' , (req , res) => {
 })
 
 module.exports = router;
-
-function checkBoardId(req, res, next){ 
-    const result = common.result;
-    const _id = req.params.id || req.body._id;
-    Board.findOne({_id:_id} , (err , boardData) => {
-      if(err) {
-        result.code = 'DR01';
-        result.message = common.status.DR01;
-        result.data = err.message;
-        return res.json(result); 
-      }
-      next();
-    });
-}

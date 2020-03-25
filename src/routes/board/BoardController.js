@@ -4,6 +4,7 @@ const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const ChildComment = require('../../models/childComment');
 const common = require('../../common/common');
+const util = require('../../util/util');
 
 router.post('/test' , (req , res) => {
     const result = common.result;
@@ -48,7 +49,7 @@ router.get('/list' , (req , res) => {
     })
 })
 
-router.get('/view/:id' , checkBoardId , (req , res) => {
+router.get('/view/:id' , util.checkBoardId , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
@@ -167,17 +168,3 @@ router.delete('/delete' , (req , res) => {
 
 
 module.exports = router;
-
-function checkBoardId(req, res, next){ 
-    const result = common.result;
-    const _id = req.params.id || req.body._id;
-    Board.findOne({_id:_id} , (err , boardData) => {
-      if(err) {
-        result.code = 'DR01';
-        result.message = common.status.DR01;
-        result.data = err.message;
-        return res.json(result); 
-      }
-      next();
-    });
-}
