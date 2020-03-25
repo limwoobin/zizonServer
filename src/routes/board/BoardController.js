@@ -20,7 +20,6 @@ router.post('/test' , (req , res) => {
             result.data = status(500).json({err});
             return res.json(result);
         }
-
         console.log(data);
         result.data = data;
         return res.json(result);

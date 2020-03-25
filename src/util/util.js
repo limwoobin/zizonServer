@@ -1,11 +1,11 @@
 const common = require('../common/common');
 const Board = require('../models/board');
 
-function UitlFunc(){
+function UtilFunc(){
 
 }
 
-UitlFunc.prototype.checkBoardId = function(req , res , next){
+UtilFunc.prototype.checkBoardId = function(req , res , next){
   const result = common.result;
   const _id = req.params.id || req.body._id;
   Board.findOne({_id:_id} , (err , boardData) => {
@@ -19,6 +19,12 @@ UitlFunc.prototype.checkBoardId = function(req , res , next){
   });
 }
 
-const util = new UitlFunc();
+UtilFunc.prototype.isLogged = function(req , res , next){
+
+  next();
+}
+
+const util = new UtilFunc();
+
 
 module.exports = util;
