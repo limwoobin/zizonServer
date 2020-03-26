@@ -105,18 +105,18 @@ router.post('/write' , (req , res) => {
     board.content = req.body.content;
     board.image = req.body.image;
     console.log('board:' , board);
-
-    board.save((err) => {
-        if(err){
-            console.log('err' , err);
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = err;
-            return res.json(result);
-        }
-        console.log('result' , common.result);
-        return res.json(result);
-    })
+    return res.json(result);
+    // board.save((err) => {
+    //     if(err){
+    //         console.log('err' , err);
+    //         result.code = 'DR01';
+    //         result.message = common.status.DR01;
+    //         result.data = err;
+    //         return res.json(result);
+    //     }
+    //     console.log('result' , common.result);
+    //     return res.json(result);
+    // })
 });
 
 router.put('/update' , (req , res) => {

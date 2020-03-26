@@ -6,7 +6,8 @@ autoIncrement.initialize(connection);
 
 const categorySchema = new mongoose.Schema({
     id: {type: Number , required:true , unique:true},
-    name: {type:String},
+    name: {type:String , required:true},
+    type: {type:String , required:true},
     routerName : {type:String},
 });
 
