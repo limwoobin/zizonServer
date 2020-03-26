@@ -70,6 +70,7 @@ router.get('/view/:id' , util.checkBoardId , (req , res) => {
                 return res.json(result);
             }
 
+            setChildComments(comments);  
             function setChildValue(c){
                 return new Promise((resolve , reject) => {
                     ChildComment.find({commentId:c._id} , (err , childComments) => {
@@ -79,7 +80,7 @@ router.get('/view/:id' , util.checkBoardId , (req , res) => {
                         resolve();
                     })
                 })
-            }        
+            }   
 
             async function setChildComments(comments){
                 for(let c in comments){
@@ -88,8 +89,7 @@ router.get('/view/:id' , util.checkBoardId , (req , res) => {
                 boardData.comments = comments; 
                 result.data = boardData;
                 return res.json(result);  
-            }
-            setChildComments(comments);  
+            }     
         })
     })
 })

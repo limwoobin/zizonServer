@@ -2,7 +2,7 @@ const status = {
     DR00: 'SUCCESS',
     DR01: 'FAIL',
     DR02: '잘못된 파라미터 값',
-    DR03: 'Password does not match',
+    DR03: '로그인되지 않는 사용자',
 };
 
 let Result = {
