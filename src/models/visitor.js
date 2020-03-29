@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const visitorSchema = mongoose.Schema({
-    totalCount: {type:Number , default: 1},
-    todayCount: {type:Number , default: 1},
-    reqDate: {type:String , required:true}
+    todayCount: {type:Number , default: 0},
+    reqDate: {type:String , required:true , unique:true}
 })
 
 module.exports = mongoose.model('visitor' , visitorSchema);

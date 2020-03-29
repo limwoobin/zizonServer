@@ -7,7 +7,7 @@ const setting = require('./routes/setting');
 const expressErrorHandler = require('express-error-handler');
 const logger = require('morgan');
 const expressSession = require('express-session');
-// const visitorCount = require('./visitor/VisitorFunc').visitorCount;
+const visitor = require('./visitor/VisitorFunc');
 
 const errorHandler = expressErrorHandler({
     static: {
@@ -17,12 +17,6 @@ const errorHandler = expressErrorHandler({
 
 app.use(db);
 app.use(setting);
-// 방문객 카운터 미들웨어
-// app.get('/' , (req , res , next) => {
-//     console.log('middleware');
-//     visitorCount(req);
-//     next();
-// });
 app.use(expressSession({
     secret: 'drogbaSession',
     resave: false,
@@ -33,10 +27,13 @@ app.use(expressSession({
     }
 }));
 
+// 방문객 카운터 미들웨어
+app.get('/' , visitor.visitorCount);
 app.use(function(req , res , next){
     console.log('request URL:' + req.url);
     next();
 })
+
 app.use('/' , express.static(__dirname + "/../../client/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());

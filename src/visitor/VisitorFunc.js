@@ -1,58 +1,41 @@
-const express = require('express');
-const app = express();
 const Visitor = require('../models/visitor');
 const moment = require('moment');
                require('moment-timezone');
                moment.tz.setDefault("Asia/Seoul");
-const session = require('express-session');
-app.use(session({
-    secret: 'drogbaSession',
-    resave: false,
-    saveUninitialized: true
-}));
     
-const visitorCount = (req , res , next) => {
+function VisitorFunc(){
+
+}
+
+VisitorFunc.prototype.visitorCount = (req , res , next) => {
+    const rs = req.session;
     const getIp = require('../common/config').getIpAddressFromRequest(req);    
-    console.log('sessionIp:' + session.getIp);
-    console.log('ip -> ' + getIp);
-    if(session.getIp){ 
+    if(rs.getIp){ 
+        console.log('already session..');
         return;
     }
-    console.log('session2');
-    session.getIp = getIp;
+    rs.getIp = getIp;
     const reqDate = moment().format('YYYY-MM-DD');
-    // let visitor = new Visitor();
-    Visitor.findOne({reqDate: reqDate} , (err , visitor) => {
+    Visitor.findOne({reqDate: reqDate} , (err , visitorData) => {
         if(err){
-            console.error('error:' + err);
+            console.log('err' , err);
             throw err;
         }
-        if(!visitor){
-            // insert
-            console.log(reqDate);
-            console.log('insert');
+        if(!visitorData){
             let visitor = new Visitor();
+            visitor.todayCount++;
             visitor.reqDate = reqDate;
-            visitor.save((err) => {
-                if(err){
-                    console.error(err);
-                    throw err;
-                }
-            })
+            visitor.save();
         }else{
-            // update
-            console.log('update');
-            Visitor.updateOne({reqDate: reqDate} , { $inc : {todayCount: 1}} , (err , visitor) => {
-                if(err){
-                    console.error(err);
-                    throw err;
-                }
-            });
+            visitorData.todayCount++;
+            visitorData.reqDate = reqDate;
+            visitorData.save();
         }
     })
-    return 'Success';
     next();
 }
 
+const visitor = new VisitorFunc();
 
-module.exports.visitorCount = visitorCount;
+
+module.exports = visitor;

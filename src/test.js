@@ -1,12 +1,9 @@
-function UtilFunc(){
+const a = undefined;
 
+console.log(a);
+
+if(a){
+  console.log('if');
+}else{
+  console.log('else');
 }
-
-UtilFunc.prototype.checkBoard = function(){
-  console.log('asdfsd');
-}
-
-
-const ss = new UtilFunc();
-
-ss.checkBoard();
