@@ -1,9 +1,8 @@
-const a = undefined;
-
-console.log(a);
-
-if(a){
-  console.log('if');
-}else{
-  console.log('else');
+function a(num){
+  if(num === 1){
+    return;
+  }
+  console.log(num);
 }
+
+

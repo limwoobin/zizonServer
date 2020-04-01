@@ -28,7 +28,7 @@ app.use(expressSession({
 }));
 
 app.use(function(req , res , next){
-    // console.log('request URL:' + req.url);
+    console.log('request URL:' + req.url);
     next();
 })
 app.get('/' , visitor.visitorCount);
