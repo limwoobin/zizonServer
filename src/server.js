@@ -27,14 +27,13 @@ app.use(expressSession({
     }
 }));
 
-// 방문객 카운터 미들웨어
-app.get('/' , visitor.visitorCount);
 app.use(function(req , res , next){
-    console.log('request URL:' + req.url);
+    // console.log('request URL:' + req.url);
     next();
 })
-
+app.get('/' , visitor.visitorCount);
 app.use('/' , express.static(__dirname + "/../../client/build"));
+// app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 app.use('/dr' , router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
