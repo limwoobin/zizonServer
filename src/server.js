@@ -32,8 +32,13 @@ app.use(function(req , res , next){
     next();
 })
 app.get('/' , visitor.visitorCount);
+
 app.use('/' , express.static(__dirname + "/../../client/build"));
+// 기존 클래스버전
+
 // app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
+// 훅스버전
+
 app.use('/dr' , router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
