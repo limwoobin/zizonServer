@@ -33,7 +33,7 @@ app.use('/' , express.static(__dirname + "/../../client/build"));
 // app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);
