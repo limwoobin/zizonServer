@@ -1,0 +1,100 @@
+2020-04-09T10:49:24.453Z [winston-test] info: Listening on port {port}
+2020-04-09T10:50:29.383Z [winston-test] info: Listening on port 4000
+2020-04-09T10:51:17.511Z [winston-test] info: Listening on port 4000
+2020-04-09T10:51:29.097Z [winston-test] info: Listening on port 4000
+2020-04-09T10:51:45.364Z [winston-test] info: Listening on port 4000
+2020-04-09T10:52:40.462Z [winston-test] info: Listening on port 4000
+2020-04-09T10:53:05.620Z [winston-test] info: Listening on port 4000
+2020-04-09T10:56:26.919Z [winston-test] info: Listening on port 4000
+2020-04-09T10:56:43.562Z [winston-test] info: Listening on port 4000
+2020-04-09T10:57:33.411Z [winston-test] info: Listening on port 4000
+2020-04-09T10:58:01.157Z [winston-test] info: Listening on port 4000
+2020-04-09T10:58:09.295Z [winston-test] info: Listening on port 4000
+2020-04-09T10:58:41.716Z [winston-test] info: Listening on port 4000
+2020-04-09T10:59:31.394Z [winston-test] error: uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/application.js:210:11)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:36:5)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:00:26.570Z [winston-test] error: uncaughtException: Route.get() requires a callback function but got a [object Object]
+Error: Route.get() requires a callback function but got a [object Object]
+    at Route.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/route.js:202:15)
+    at Function.app.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/application.js:482:19)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:29:5)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:00:43.426Z [winston-test] error: uncaughtException: winston is not a function
+TypeError: winston is not a function
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:29:38)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:00:48.657Z [winston-test] error: uncaughtException: winston is not a function
+TypeError: winston is not a function
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:29:38)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:00:56.788Z [winston-test] error: uncaughtException: Route.get() requires a callback function but got a [object Object]
+Error: Route.get() requires a callback function but got a [object Object]
+    at Route.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/route.js:202:15)
+    at Function.app.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/application.js:482:19)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:29:5)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:01:09.580Z [winston-test] error: uncaughtException: Route.get() requires a callback function but got a [object Object]
+Error: Route.get() requires a callback function but got a [object Object]
+    at Route.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/route.js:202:15)
+    at Function.app.<computed> [as get] (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/application.js:482:19)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:30:5)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:03:44.000Z [winston-test] info: Hello world
+2020-04-09T11:03:44.006Z [winston-test] info: Listening on port 4000
+2020-04-09T11:04:02.307Z [winston-test] info: Hello world
+2020-04-09T11:04:02.312Z [winston-test] info: Listening on port 4000
+2020-04-09T11:04:25.182Z [winston-test] error: uncaughtException: Cannot read property 'info' of undefined
+TypeError: Cannot read property 'info' of undefined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:28:16)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:04:44.126Z [winston-test] error: uncaughtException: logger is not defined
+ReferenceError: logger is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:36:1)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-09T11:05:39.560Z [winston-test] info: hello
+2020-04-09T11:05:39.566Z [winston-test] info: Listening on port 4000
+2020-04-09T11:06:05.857Z [winston-test] info: logger hello
+2020-04-09T11:06:05.863Z [winston-test] info: Listening on port 4000

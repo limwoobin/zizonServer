@@ -5,7 +5,7 @@ const db = require('./routes/dbConnection');
 const router = require('./routes/router');
 const setting = require('./routes/setting');
 const expressErrorHandler = require('express-error-handler');
-const morgan = require('morgan');
+const logger = require('./config/winston');
 const expressSession = require('express-session');
 const visitor = require('./visitor/VisitorFunc');
 const errorHandler = expressErrorHandler({
@@ -33,7 +33,7 @@ app.use('/' , express.static(__dirname + "/../../client/build"));
 // app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 
-app.use(morgan('dev'));
+logger.info('logger hello');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);
@@ -44,5 +44,5 @@ app.use(errorHandler);
 
 const port = process.env.PORT || 4000;
 app.listen(port , () => {
-    console.log(`${port}port Server Start!!`);
+    logger.info(`Listening on port ${port}`);
 });
