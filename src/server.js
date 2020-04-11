@@ -26,6 +26,11 @@ app.use(expressSession({
     }
 }));
 
+app.all('/*' , (req , res , next) => {
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Headers' , 'X-Requested-With');
+    next();
+})
 app.get('/' , visitor.visitorCount);
 app.use('/' , express.static(__dirname + "/../../client/build"));
 // 기존 클래스버전
