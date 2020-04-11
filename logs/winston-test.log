@@ -98,3 +98,65 @@ ReferenceError: logger is not defined
 2020-04-09T11:05:39.566Z [winston-test] info: Listening on port 4000
 2020-04-09T11:06:05.857Z [winston-test] info: logger hello
 2020-04-09T11:06:05.863Z [winston-test] info: Listening on port 4000
+2020-04-11T08:14:10.955Z [winston-test] info: logger hello
+2020-04-11T08:14:10.960Z [winston-test] info: Listening on port 4000
+2020-04-11T08:32:43.990Z [winston-test] info: logger hello
+2020-04-11T08:32:43.996Z [winston-test] info: Listening on port 4000
+2020-04-11T08:33:07.675Z [winston-test] info: logger hello
+2020-04-11T08:33:07.683Z [winston-test] info: Listening on port 4000
+2020-04-11T08:33:22.744Z [winston-test] info: req[object Object]
+2020-04-11T08:34:03.917Z [winston-test] info: logger hello
+2020-04-11T08:34:03.922Z [winston-test] info: Listening on port 4000
+2020-04-11T08:34:05.564Z [winston-test] info: req[object Object]
+2020-04-11T08:34:24.179Z [winston-test] info: logger hello
+2020-04-11T08:34:24.185Z [winston-test] info: Listening on port 4000
+2020-04-11T08:34:25.246Z [winston-test] info: req[object Object]
+2020-04-11T08:34:31.466Z [winston-test] info: req[object Object]
+2020-04-11T08:34:40.677Z [winston-test] info: req[object Object]
+2020-04-11T08:34:49.824Z [winston-test] info: req[object Object]
+2020-04-11T08:35:01.000Z [winston-test] info: logger hello
+2020-04-11T08:35:01.006Z [winston-test] info: Listening on port 4000
+2020-04-11T08:35:03.484Z [winston-test] info: reqaaa
+2020-04-11T08:35:11.826Z [winston-test] info: reqaaa
+2020-04-11T08:35:17.825Z [winston-test] info: reqaaa
+2020-04-11T08:35:27.641Z [winston-test] info: reqaaa
+2020-04-11T08:35:39.263Z [winston-test] info: logger hello
+2020-04-11T08:35:39.269Z [winston-test] info: Listening on port 4000
+2020-04-11T08:35:51.367Z [winston-test] info: logger hello
+2020-04-11T08:35:51.375Z [winston-test] info: Listening on port 4000
+2020-04-11T08:36:02.117Z [winston-test] info: logger hello
+2020-04-11T08:36:02.123Z [winston-test] info: Listening on port 4000
+2020-04-11T08:36:08.732Z [winston-test] info: category...
+2020-04-11T08:36:31.718Z [winston-test] info: logger hello
+2020-04-11T08:36:31.724Z [winston-test] info: Listening on port 4000
+2020-04-11T08:36:32.837Z [winston-test] info: category...
+2020-04-11T08:36:41.334Z [winston-test] info: category...
+2020-04-11T08:36:47.075Z [winston-test] info: logger hello
+2020-04-11T08:36:47.084Z [winston-test] info: Listening on port 4000
+2020-04-11T08:36:47.895Z [winston-test] info: category...
+2020-04-11T08:36:51.577Z [winston-test] info: logger hello
+2020-04-11T08:36:51.584Z [winston-test] info: Listening on port 4000
+2020-04-11T08:58:27.322Z [winston-test] info: category...
+2020-04-11T09:00:18.870Z [winston-test] info: category...
+2020-04-11T09:03:27.891Z [winston-test] error: uncaughtException: Cannot read property 'headersSent' of undefined
+TypeError: Cannot read property 'headersSent' of undefined
+    at headersSent (/Applications/woobeenkun/myBlog/server/node_modules/finalhandler/index.js:256:21)
+    at /Applications/woobeenkun/myBlog/server/node_modules/finalhandler/index.js:92:17
+    at /Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/index.js:635:15
+    at next (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/index.js:210:14)
+    at Function.handle (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/router/index.js:174:3)
+    at Function.handle (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/application.js:174:10)
+    at String.app (/Applications/woobeenkun/myBlog/server/node_modules/express/lib/express.js:39:9)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:29:5)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-11T09:03:42.181Z [winston-test] info: logger hello
+2020-04-11T09:03:42.187Z [winston-test] info: Listening on port 4000
+2020-04-11T09:03:45.124Z [winston-test] info: logger hello
+2020-04-11T09:03:45.130Z [winston-test] info: Listening on port 4000
+2020-04-11T09:03:57.998Z [winston-test] info: category...
+2020-04-11T09:04:17.520Z [winston-test] info: category...
