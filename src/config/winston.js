@@ -9,7 +9,7 @@ const myFormat = printf(({level , message , label , timestamp}) => {
 });
 
 
-console.log('process' , process.env.NODE_ENV);
+// console.log('process' , process.env.NODE_ENV);
 
 const options = {
     // log파일

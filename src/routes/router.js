@@ -9,6 +9,7 @@ const customerRouter = require('./customer/CustomerController');
 const categoryRouter = require('./category/CategoryController');
 const boardRouter = require('./board/BoardController');
 const commentRouter = require('./comment/CommentController');
+const visitorRouter = require('./visitor/VisitorController');
 
 const common = require('../common/common');
 
@@ -30,5 +31,6 @@ router.use('/customer' , customerRouter);
 router.use('/category' , categoryRouter);
 router.use('/board' , boardRouter);
 router.use('/comment' , commentRouter);
+router.use('/visitor' , visitorRouter);
 
 module.exports = router;
