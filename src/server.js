@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
 const db = require('./routes/dbConnection');
 const router = require('./routes/router');
@@ -16,6 +17,7 @@ const errorHandler = expressErrorHandler({
 
 app.use(db);
 app.use(setting);
+app.use(history());
 app.use(expressSession({
     secret: 'drogbaSession',
     resave: false,
@@ -31,12 +33,17 @@ app.all('/*' , (req , res , next) => {
     res.header('Access-Control-Allow-Headers' , 'X-Requested-With');
     next();
 })
+
 app.get('/' , visitor.visitorCount);
-app.use('/' , express.static(__dirname + "/../../client/build"));
+// app.use('/' , express.static(__dirname + "/../../client/build"));
 // 기존 클래스버전
 
-// app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
+app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
+
+// app.get('*' , (req , res) => {
+//     res.sendFile(path.resolve(__dirname , '/../../../appHooks/build' , 'index.html'));
+// })
 
 logger.info('logger hello');
 app.use(bodyParser.json());
