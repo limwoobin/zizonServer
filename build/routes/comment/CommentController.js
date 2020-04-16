@@ -3,9 +3,10 @@
 var express = require('express');
 var router = express.Router();
 var Board = require('../../models/board');
+var Comment = require('../../models/comment');
+var ChildComment = require('../../models/childComment');
 var common = require('../../common/common');
-
-var result = common.result;
+var util = require('../../util/util');
 
 router.get('/test', function (req, res) {
     result.code = 'DR00';
@@ -15,6 +16,7 @@ router.get('/test', function (req, res) {
 });
 
 router.get('/comments/:boardType/:userEmail', function (req, res) {
+    var result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     console.log(req.params.id);
@@ -41,15 +43,48 @@ router.get('/comments/:boardType/:userEmail', function (req, res) {
     });
 });
 
-router.post('/add', function (req, res) {
+router.post('/write', util.checkBoardId, function (req, res) {
+    var result = common.result;
     result.code = 'DR00';
     result.status = common.status.DR00;
-    var board = new Board();
-    board = req.body.id;
-    board.save({ id: board.id, comment: req.body.comment }, function (req, res) {});
+    console.log('reqBody', req.body);
+    if (req.body.commentId) {
+        var childCommnet = new ChildComment();
+        childCommnet.userEmail = req.body.userEmail;
+        childCommnet.content = req.body.content;
+        childCommnet.board = req.body._id;
+        childCommnet.boardType = req.body.boardType;
+        childCommnet.commentId = req.body.commentId;
+        childCommnet.save(function (err) {
+            if (err) {
+                result.code = 'DR01';
+                result.message = common.status.DR01;
+                result.data = err;
+                return res.json(result);
+            }
+            return res.json(result);
+        });
+    } else {
+        var _comment = new Comment();
+        _comment.userEmail = req.body.userEmail;
+        _comment.content = req.body.content;
+        _comment.board = req.body._id;
+        _comment.boardType = req.body.boardType;
+        console.log('comment', _comment);
+        _comment.save(function (err) {
+            if (err) {
+                result.code = 'DR01';
+                result.message = common.status.DR01;
+                result.data = err;
+                return res.json(result);
+            }
+            return res.json(result);
+        });
+    }
 });
 
 router.post('/update', function (req, res) {
+    var result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     var board = new Board();

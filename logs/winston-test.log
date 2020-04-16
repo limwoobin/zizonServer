@@ -160,3 +160,10 @@ TypeError: Cannot read property 'headersSent' of undefined
 2020-04-11T09:03:45.130Z [winston-test] info: Listening on port 4000
 2020-04-11T09:03:57.998Z [winston-test] info: category...
 2020-04-11T09:04:17.520Z [winston-test] info: category...
+2020-04-16T10:19:14.465Z [winston-test] info: logger hello
+2020-04-16T10:19:14.472Z [winston-test] info: Listening on port 4000
+2020-04-16T10:19:28.525Z [winston-test] info: logger hello
+2020-04-16T10:19:28.531Z [winston-test] info: Listening on port 4000
+2020-04-16T10:19:35.393Z [winston-test] info: category...
+2020-04-16T10:19:39.480Z [winston-test] info: logger hello
+2020-04-16T10:19:39.488Z [winston-test] info: Listening on port 4000

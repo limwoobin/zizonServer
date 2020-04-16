@@ -1,58 +1,39 @@
 'use strict';
 
-var express = require('express');
-var app = express();
 var Visitor = require('../models/visitor');
 var moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
-var session = require('express-session');
-app.use(session({
-    secret: 'drogbaSession',
-    resave: false,
-    saveUninitialized: true
-}));
 
-var visitorCount = function visitorCount(req) {
+function VisitorFunc() {}
+
+VisitorFunc.prototype.visitorCount = function (req, res, next) {
+    var rs = req.session;
     var getIp = require('../common/config').getIpAddressFromRequest(req);
-    console.log('sessionIp:' + session.getIp);
-    console.log('ip -> ' + getIp);
-    if (session.getIp) {
-        return;
+    console.log('rs.getIp', rs.getIp);
+    if (!rs.getIp) {
+        rs.getIp = getIp;
+        var reqDate = moment().format('YYYY-MM-DD');
+        Visitor.findOne({ reqDate: reqDate }, function (err, visitorData) {
+            if (err) {
+                console.log('err', err);
+                throw err;
+            }
+            if (!visitorData) {
+                var _visitor = new Visitor();
+                _visitor.todayCount++;
+                _visitor.reqDate = reqDate;
+                _visitor.save();
+            } else {
+                visitorData.todayCount++;
+                visitorData.reqDate = reqDate;
+                visitorData.save();
+            }
+        });
     }
-    console.log('session2');
-    session.getIp = getIp;
-    var reqDate = moment().format('YYYY-MM-DD');
-    // let visitor = new Visitor();
-    Visitor.findOne({ reqDate: reqDate }, function (err, visitor) {
-        if (err) {
-            console.error('error:' + err);
-            throw err;
-        }
-        if (!visitor) {
-            // insert
-            console.log(reqDate);
-            console.log('insert');
-            var _visitor = new Visitor();
-            _visitor.reqDate = reqDate;
-            _visitor.save(function (err) {
-                if (err) {
-                    console.error(err);
-                    throw err;
-                }
-            });
-        } else {
-            // update
-            console.log('update');
-            Visitor.updateOne({ reqDate: reqDate }, { $inc: { todayCount: 1 } }, function (err, visitor) {
-                if (err) {
-                    console.error(err);
-                    throw err;
-                }
-            });
-        }
-    });
-    return 'Success';
+    next();
 };
 
-module.exports.visitorCount = visitorCount;
+var visitor = new VisitorFunc();
+
+module.exports = visitor;

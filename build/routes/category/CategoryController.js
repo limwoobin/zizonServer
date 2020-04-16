@@ -4,8 +4,10 @@ var express = require('express');
 var router = express.Router();
 var Category = require('../../models/category');
 var common = require('../../common/common');
+var logger = require('../../config/winston');
 
 router.get('/list', function (req, res) {
+    logger.info('category...');
     Category.find(function (err, categories) {
         if (err) {
             common.result.code = 'DR01';

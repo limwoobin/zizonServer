@@ -3,7 +3,10 @@
 var express = require('express');
 var router = express.Router();
 var Board = require('../../models/board');
+var Comment = require('../../models/comment');
+var ChildComment = require('../../models/childComment');
 var common = require('../../common/common');
+var util = require('../../util/util');
 
 router.post('/test', function (req, res) {
     var result = common.result;
@@ -19,7 +22,6 @@ router.post('/test', function (req, res) {
             result.data = status(500).json({ err: err });
             return res.json(result);
         }
-
         console.log(data);
         result.data = data;
         return res.json(result);
@@ -32,7 +34,6 @@ router.get('/list', function (req, res) {
     var resJson = common.resJson;
     result.code = 'DR00';
     result.message = common.status.DR00;
-
     Board.find(function (err, boards) {
         if (err) {
             result.code = 'DR01';
@@ -43,23 +44,53 @@ router.get('/list', function (req, res) {
         }
         result.data = boards;
         resJson.result(result);
+        return res.json(resJson);
     });
-    return res.json(resJson);
 });
 
-router.get('/view/:id', function (req, res) {
+router.get('/view/:id', util.checkBoardId, function (req, res) {
     var result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-    Board.findOne({ id: req.params.id }, function (err, boardData) {
+    var _id = req.params.id;
+    Board.findOne({ _id: _id }, function (err, boardData) {
         if (err) {
             result.code = 'DR01';
             result.message = common.status.DR01;
             result.data = err;
             return res.json(result);
         }
-        result.data = boardData;
-        return res.json(result);
+        boardData.views++;
+        boardData.save();
+        Comment.find({ board: _id }, function (err, comments) {
+            if (err) {
+                result.code = 'DR01';
+                result.message = common.status.DR01;
+                result.data = err;
+                return res.json(result);
+            }
+
+            setChildComments(comments);
+            function setChildValue(c) {
+                return new Promise(function (resolve, reject) {
+                    ChildComment.find({ commentId: c._id }, function (err, childComments) {
+                        if (childComments.length !== 0) {
+                            c.childComments = childComments;
+                        }
+                        resolve();
+                    });
+                });
+            }
+
+            async function setChildComments(comments) {
+                for (var c in comments) {
+                    await setChildValue(comments[c]);
+                }
+                boardData.comments = comments;
+                result.data = boardData;
+                return res.json(result);
+            }
+        });
     });
 });
 
@@ -68,16 +99,18 @@ router.post('/write', function (req, res) {
     result.code = 'DR00';
     result.message = common.status.DR00;
     var board = new Board();
-    board = req.body;
-    if (board.id) delete board.id;
+    board.boardType = req.body.boardType;
+    board.userEmail = req.body.userEmail;
+    board.title = req.body.title;
+    board.content = req.body.content;
+    board.image = req.body.image;
     console.log('board:', board);
-
     board.save(function (err) {
         if (err) {
             console.log('err', err);
             result.code = 'DR01';
             result.message = common.status.DR01;
-            result.data = status(500).json({ err: err });
+            result.data = err;
             return res.json(result);
         }
         console.log('result', common.result);
@@ -126,53 +159,6 @@ router.delete('/delete', function (req, res) {
             return res.json(result);
         }
         console.log(data);
-        return res.json(result);
-    });
-});
-
-router.post('/comment/add', function (req, res) {
-    var result = common.result;
-    result.code = 'DR00';
-    result.status = common.status.DR00;
-    var comment = Comment();
-    comment = req.body;
-    comment.save(function (err) {
-        if (err) {
-            result.code = 'DR01';
-            result.status = common.status.DR01;
-            result.data = err;
-            return res.json(result);
-        }
-
-        result.data = comment;
-        return res.json(result);
-    });
-});
-
-router.post('/comment/update', function (req, res) {
-    var result = common.result;
-    result.code = 'DR00';
-    result.message = common.status.DR00;
-    var comment = Comment();
-    comment = req.body;
-    Comment.findOneAndUpdate({
-        parentId: comment.parentId,
-        parentType: comment.parentType,
-        userEmail: comment.userEmail,
-        id: comment.id
-    }, {
-        content: comment.content,
-        image: comment.image,
-        modiDate: comment.modiDate
-    }, { new: true }, function (err, comment) {
-        if (err) {
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = err;
-            return res.json(result);
-        }
-
-        result.data = comment;
         return res.json(result);
     });
 });

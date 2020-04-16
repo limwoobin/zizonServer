@@ -11,6 +11,7 @@ var customerRouter = require('./customer/CustomerController');
 var categoryRouter = require('./category/CategoryController');
 var boardRouter = require('./board/BoardController');
 var commentRouter = require('./comment/CommentController');
+var visitorRouter = require('./visitor/VisitorController');
 
 var common = require('../common/common');
 
@@ -32,5 +33,6 @@ router.use('/customer', customerRouter);
 router.use('/category', categoryRouter);
 router.use('/board', boardRouter);
 router.use('/comment', commentRouter);
+router.use('/visitor', visitorRouter);
 
 module.exports = router;
