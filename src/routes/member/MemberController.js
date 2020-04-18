@@ -118,7 +118,7 @@ router.post('/login' , (req , res) => {
 router.get('/logout' , (req , res) => {
     common.result = {};
     const rs = req.session;
-    console.log(rs.user);
+    console.log('user: ' + rs.user);
     if(rs.user){
         rs.destroy((err) => {
             if(err) {throw err;}

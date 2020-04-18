@@ -28,6 +28,8 @@ app.use(expressSession({
     }
 }));
 
+
+
 app.all('/*' , (req , res , next) => {
     res.header('Access-Control-Allow-Origin','*');
     res.header('Access-Control-Allow-Headers' , 'X-Requested-With');
@@ -40,10 +42,6 @@ app.get('/' , visitor.visitorCount);
 
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
-
-// app.get('*' , (req , res) => {
-//     res.sendFile(path.resolve(__dirname , '/../../../appHooks/build' , 'index.html'));
-// })
 
 logger.info('logger hello');
 app.use(bodyParser.json());
