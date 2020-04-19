@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tutorial');
+const crypto = require('crypto');
+
 
 autoIncrement.initialize(connection);
 
@@ -34,6 +36,16 @@ memberSchema.statics.findByUserEmail = function(userEmail){
 
 memberSchema.statics.findByUserEmailOrUserNm = function(userEmail){
     return this.findOne({userEmail}).exec();
+}
+
+memberSchema.methods.comparePassword = (inputPassword , cb) => {
+    crypto.pbkdf2(inputPassword , this.salt , 102391 , 64 , 'sha512' , (err , key) => {
+        if(key.toString('base64') === this.userPwd){
+            cb(null , true);
+        }else{
+            cb('error');
+        }
+    })
 }
 
 module.exports = mongoose.model('member' , memberSchema);

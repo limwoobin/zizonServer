@@ -27,14 +27,12 @@ router.get('/search/:keyword' , (req , res) => {
 
 router.get('/testapi' , (req , res) => {
     client.set('name' , 'drogba');
-    client.get('name' , (err , reply) => {
+    client.get('aaa' , (err , reply) => {
         return res.json(reply);    
     });
 })
 
 router.use(upload.array());
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({extended: true}));
 router.use('/member' , memberRouter);
 router.use('/customer' , customerRouter);
 router.use('/category' , categoryRouter);

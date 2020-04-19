@@ -20,16 +20,7 @@ const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
 const client = redis.createClient();
 const passport = require('passport');
-
-// app.use(session({
-//     secret: 'drogbaSession',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         httpOnly : true,
-//         secure : false,
-//     }
-// }));
+const passportConfig = require('./routes/member/passport');
 
 app.use(session({
     store: new RedisStore({
@@ -48,6 +39,7 @@ app.use(session({
 
 
 
+// cors 허용
 app.all('/*' , (req , res , next) => {
     res.header('Access-Control-Allow-Origin','*');
     res.header('Access-Control-Allow-Headers' , 'X-Requested-With');
@@ -57,19 +49,15 @@ app.all('/*' , (req , res , next) => {
 // app.get('/' , visitor.visitorCount);
 // 방문자 카운트 미들웨어
 
-// app.use('/' , express.static(__dirname + "/../../client/build"));
-// 기존 클래스버전
-
+app.use(db);
+app.use(setting);
+app.use(history());
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 
-app.use(db);
-app.use(setting);
-// app.use(history());
 app.use(passport.initialize());
 app.use(passport.session());
-
-logger.info('logger hello');
+passportConfig();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);

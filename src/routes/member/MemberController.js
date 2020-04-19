@@ -4,16 +4,6 @@ const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
 
-// app.get('redis-store-counter' , (req , res) => {
-//     const session = req.session;
-//     if(session && session.count){
-//         session.count++;
-//     }else{
-//         session.count = 1;
-//     }
-//     res.send('count is' + session.count);
-// });
-
 router.get('/members' , (req , res) => {
     console.log('findAll...');
     Member.find(function(err , members){
@@ -91,8 +81,6 @@ router.post('/login' , (req , res) => {
             res.json(common.result);
             return;
         }else{
-            console.log(member);
-            console.log('salt:' + member.salt);
             crypto.pbkdf2(req.body.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
                 if(key.toString('base64') === member.userPwd){
                     // Login Success
@@ -101,13 +89,13 @@ router.post('/login' , (req , res) => {
                     console.log(rs);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
-                    res.send(common.result);
+                    return res.send(common.result);
                 }else{
                     // Login Fail
                     console.log('Fail');
                     common.result.code = 'DR03';
                     common.result.message = common.status.DR03;
-                    res.send(common.result);
+                    return res.send(common.result);
                 }
             });
         }        
@@ -131,7 +119,7 @@ router.get('/logout' , (req , res) => {
         common.result.code = 'DR01';
         common.result.message = common.status.DR01;        
     }
-    res.send(common.result);
+    return res.send(common.result);
 });
 
 
