@@ -751,3 +751,154 @@ Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.
 2020-04-19T11:14:10.578Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
 Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:27:40.761Z [winston-test] info: Listening on port 4000
+2020-04-19T11:27:40.767Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:27:40.767Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:27:46.004Z [winston-test] info: Listening on port 4000
+2020-04-19T11:27:46.010Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:27:46.011Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:32:12.375Z [winston-test] info: Listening on port 4000
+2020-04-19T11:32:21.324Z [winston-test] info: Listening on port 4000
+2020-04-19T11:32:29.734Z [winston-test] info: category...
+2020-04-19T11:32:43.507Z [winston-test] info: Listening on port 4000
+2020-04-19T11:32:53.883Z [winston-test] info: Listening on port 4000
+2020-04-19T11:33:07.101Z [winston-test] info: Listening on port 4000
+2020-04-19T11:33:14.269Z [winston-test] info: Listening on port 4000
+2020-04-19T11:33:45.035Z [winston-test] info: Listening on port 4000
+2020-04-19T11:34:08.278Z [winston-test] info: Listening on port 4000
+2020-04-19T11:34:11.368Z [winston-test] info: Listening on port 4000
+2020-04-19T11:35:18.364Z [winston-test] info: Listening on port 4000
+2020-04-19T11:35:33.167Z [winston-test] info: Listening on port 4000
+2020-04-19T11:36:20.092Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:36:20.093Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:37:38.313Z [winston-test] info: Listening on port 4000
+2020-04-19T11:37:38.320Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:37:38.321Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:38:18.714Z [winston-test] info: Listening on port 4000
+2020-04-19T11:38:18.719Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:38:18.720Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:39:04.428Z [winston-test] info: Listening on port 4000
+2020-04-19T11:39:04.435Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:39:04.436Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:39:40.550Z [winston-test] info: Listening on port 4000
+2020-04-19T11:39:40.556Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:39:47.865Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:39:47.873Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:39:57.765Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:39:57.773Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:40:00.164Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:40:00.175Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:40:06.343Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:40:36.332Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:40:36.341Z [winston-test] error: uncaughtException: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+Error: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:40:44.114Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:40:44.128Z [winston-test] error: uncaughtException: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+Error: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:40:47.308Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:40:47.319Z [winston-test] error: uncaughtException: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+Error: Redis connection to localhost:6300 failed - connect ECONNREFUSED 127.0.0.1:6300
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-04-19T11:40:57.007Z [winston-test] error: uncaughtException: passport is not defined
+ReferenceError: passport is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:51:9)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:1025:10)
+    at internal/main/run_main_module.js:17:11
+2020-04-19T11:41:22.709Z [winston-test] info: Listening on port 4000
+2020-04-19T11:41:22.716Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)

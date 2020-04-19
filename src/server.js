@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 const db = require('./routes/dbConnection');
 const router = require('./routes/router');
 const setting = require('./routes/setting');
-const expressErrorHandler = require('express-error-handler');
 const logger = require('./config/winston');
 const config = require('./config/config.json');
 const session = require('express-session');
 // const visitor = require('./visitor/VisitorFunc');
 const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
-const client = redis.createClient();
+const client = redis.createClient(6379 , 'localhost');
 const passport = require('passport');
 const passportConfig = require('./routes/member/passport');
 
@@ -45,7 +44,7 @@ app.all('/*' , (req , res , next) => {
 
 app.use(db);
 app.use(setting);
-app.use(history());
+// app.use(history());
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 
@@ -55,6 +54,10 @@ passportConfig();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);
+app.use((err , req , res , next) => {
+    logger.info(err);
+    return res.status(500);
+})
 
 const port = process.env.PORT || 4000;
 app.listen(port , () => {
