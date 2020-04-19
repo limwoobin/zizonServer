@@ -1,0 +1,41 @@
+{
+    "mongodb":{
+        "host": "127.0.0.1",
+        "port": "27017",
+        "dbs": "mongodb_tutorial"
+    },
+    "redis": {
+        "host": "127.0.0.1",
+        "port": "6379"
+    },
+    "session": {
+        "key": "passport_session",
+        "secret": "drogbaSession"
+    },
+    "oauth": {
+        "facebook": {
+          "id": "ID",
+          "secret": "SECRET",
+          "callbackurl": "/login/oauth/facebook/callback"
+        },
+        "twitter": {
+          "consumerkey": "CONSUMER_KEY",
+          "consumersecret": "CONSUMER_SECRET",
+          "callbackurl": "/login/oauth/twitter/callback"
+        },
+        "google": {
+          "clientid": "CLIENT_ID",
+          "clientsecret": "CLIENT_SECRET",
+          "callbackurl": "/login/oauth/google/callback"
+        },
+        "kakao": {
+          "restapikey": "REST_API_KEY",
+          "callbackurl": "/login/oauth/kakao/callback"
+        },
+        "naver": {
+          "clientid": "CLIENT_ID",
+          "clientsecret": "CLIENT_SECRET",
+          "callbackurl": "/login/oauth/naver/callback"
+        }
+      }
+}

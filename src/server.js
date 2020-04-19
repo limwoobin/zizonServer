@@ -7,25 +7,43 @@ const router = require('./routes/router');
 const setting = require('./routes/setting');
 const expressErrorHandler = require('express-error-handler');
 const logger = require('./config/winston');
-const expressSession = require('express-session');
-const visitor = require('./visitor/VisitorFunc');
+const config = require('./config/config.json');
+const session = require('express-session');
+// const visitor = require('./visitor/VisitorFunc');
 const errorHandler = expressErrorHandler({
     static: {
         '404':'./public/404.html'
     }
 });
 
-app.use(db);
-app.use(setting);
-app.use(history());
-app.use(expressSession({
-    secret: 'drogbaSession',
-    resave: false,
-    saveUninitialized: true,
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
+const client = redis.createClient();
+const passport = require('passport');
+
+// app.use(session({
+//     secret: 'drogbaSession',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         httpOnly : true,
+//         secure : false,
+//     }
+// }));
+
+app.use(session({
+    store: new RedisStore({
+        host: config.redis.host,
+        port: config.redis.port,
+        client: client
+    }),
+    key: config.session.key,
+    secret: config.session.secret,
     cookie: {
-        httpOnly : true,
-        secure : false,
-    }
+        maxAge: 1000 * 60 * 60
+    },
+    saveUninitialized: false,
+    resave: false
 }));
 
 
@@ -36,12 +54,20 @@ app.all('/*' , (req , res , next) => {
     next();
 })
 
-app.get('/' , visitor.visitorCount);
+// app.get('/' , visitor.visitorCount);
+// 방문자 카운트 미들웨어
+
 // app.use('/' , express.static(__dirname + "/../../client/build"));
 // 기존 클래스버전
 
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
+
+app.use(db);
+app.use(setting);
+// app.use(history());
+app.use(passport.initialize());
+app.use(passport.session());
 
 logger.info('logger hello');
 app.use(bodyParser.json());

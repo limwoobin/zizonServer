@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const config = require('../config/config.json');
 const db = mongoose.connection;
 db.on('error' , console.error);
 db.once('open' , () => {
     console.log('Connected to mongod server');    
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
+const connectUrl = `mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.dbs}`;
+
+mongoose.connect(connectUrl);
 
 module.exports = router;
