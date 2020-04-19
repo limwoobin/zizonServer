@@ -10,12 +10,6 @@ const logger = require('./config/winston');
 const config = require('./config/config.json');
 const session = require('express-session');
 // const visitor = require('./visitor/VisitorFunc');
-const errorHandler = expressErrorHandler({
-    static: {
-        '404':'./public/404.html'
-    }
-});
-
 const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
 const client = redis.createClient();
@@ -61,10 +55,6 @@ passportConfig();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);
-app.use(expressErrorHandler.httpError(404));
-app.use(errorHandler);
-
-
 
 const port = process.env.PORT || 4000;
 app.listen(port , () => {

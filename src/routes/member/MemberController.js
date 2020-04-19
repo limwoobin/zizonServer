@@ -3,6 +3,8 @@ const router = express.Router();
 const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
+const passport = require('passport');
+
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
@@ -102,6 +104,15 @@ router.post('/login' , (req , res) => {
     });
 });
 
+
+router.post('/passportTest' , passport.authenticate('local' , {
+    failureRedirect : '/'
+}) , (req , res) => {
+    common.result = {};
+    common.result.code = 'DR00';
+    common.result.message = common.status.DR00;
+    return res.send(common.result);
+});
 
 router.get('/logout' , (req , res) => {
     common.result = {};

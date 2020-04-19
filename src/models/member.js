@@ -34,9 +34,6 @@ memberSchema.statics.findByUserEmail = function(userEmail){
     return this.findOne({userEmail}).exec();
 }
 
-memberSchema.statics.findByUserEmailOrUserNm = function(userEmail){
-    return this.findOne({userEmail}).exec();
-}
 
 memberSchema.methods.comparePassword = (inputPassword , cb) => {
     crypto.pbkdf2(inputPassword , this.salt , 102391 , 64 , 'sha512' , (err , key) => {
