@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
 const memberRouter = require('./member/MemberController');
@@ -9,8 +8,8 @@ const categoryRouter = require('./category/CategoryController');
 const boardRouter = require('./board/BoardController');
 const commentRouter = require('./comment/CommentController');
 const visitorRouter = require('./visitor/VisitorController');
-
 const common = require('../common/common');
+
 
 router.get('/search/:keyword' , (req , res) => {
     const result = common.result;
@@ -23,8 +22,11 @@ router.get('/search/:keyword' , (req , res) => {
 })
 
 router.get('/testapi' , (req , res) => {
-    req.session.test = 'dddd';
-    return res.send(req.session.test);
+    
+    // req.session.test = 'test??';
+    console.log(req.session);
+    delete req.session.test;
+    return res.send('delete');
 })
 
 router.use(upload.array());

@@ -4,7 +4,7 @@ const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');
-
+const util = require('../../util/util');
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
@@ -15,7 +15,6 @@ router.get('/members' , (req , res) => {
 });
 
 router.get('/overlap/check/:userEmail' , (req , res) => {
-    console.log('param:' + req.params.userEmail);
     common.res = {};
     Member.findOne({userEmail:req.params.userEmail} , (err , member) => {
         console.log('mem:' + member);
@@ -88,7 +87,6 @@ router.post('/login' , (req , res) => {
                     // Login Success
                     console.log('Login Success');
                     rs.user = req.body.userEmail;
-                    console.log(rs);
                     common.result.code = 'DR00';
                     common.result.message = common.status.DR00;
                     return res.send(common.result);
@@ -117,11 +115,8 @@ router.post('/passportTest' , passport.authenticate('local' , {
 router.get('/logout' , (req , res) => {
     common.result = {};
     const rs = req.session;
-    console.log('user: ' + rs.user);
     if(rs.user){
-        rs.destroy((err) => {
-            if(err) {throw err;}
-        });
+        delete rs.user;
         console.log('Logout Success');
         common.result.code = 'DR00';
         common.result.message = common.status.DR00;

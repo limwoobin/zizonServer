@@ -23,7 +23,7 @@ UtilFunc.prototype.isLogged = function(req , res , next){
   const result = common.result;
   const rs = req.session;
   const userEmail = req.body.userEmail || req.params.userEmail;
-  if(!rs.userEmail){
+  if(rs.user !== userEmail || !rs.user){
       result.code = 'DR03';
       result.message = common.status.DR03;
       return res.json(result); 
