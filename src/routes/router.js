@@ -10,9 +10,6 @@ const boardRouter = require('./board/BoardController');
 const commentRouter = require('./comment/CommentController');
 const visitorRouter = require('./visitor/VisitorController');
 
-const redis = require('redis');
-const client = redis.createClient(6379 , 'localhost');
-
 const common = require('../common/common');
 
 router.get('/search/:keyword' , (req , res) => {
@@ -26,10 +23,8 @@ router.get('/search/:keyword' , (req , res) => {
 })
 
 router.get('/testapi' , (req , res) => {
-    client.set('name' , 'drogba');
-    client.get('name' , (err , reply) => {
-        return res.json(reply);    
-    });
+    req.session.test = 'dddd';
+    return res.send(req.session.test);
 })
 
 router.use(upload.array());

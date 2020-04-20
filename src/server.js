@@ -10,16 +10,17 @@ const config = require('./config/config.json');
 const session = require('express-session');
 // const visitor = require('./visitor/VisitorFunc');
 const redis = require('redis');
-const RedisStore = require('connect-redis')(session);
-const client = redis.createClient(6379 , 'localhost');
+const redisStore = require('connect-redis')(session);
+const client = redis.createClient();
 const passport = require('passport');
 const passportConfig = require('./routes/member/passport');
 
 app.use(session({
-    store: new RedisStore({
+    store: new redisStore({
         host: config.redis.host,
         port: config.redis.port,
-        client: client
+        client: client,
+        ttl:200
     }),
     key: config.session.key,
     secret: config.session.secret,
