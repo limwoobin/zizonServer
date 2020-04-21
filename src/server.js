@@ -46,12 +46,12 @@ app.all('/*' , (req , res , next) => {
 app.use(db);
 app.use(setting);
 // app.use(history());
-app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
-// 훅스버전
-
 app.use(passport.initialize());
 app.use(passport.session());
 passportConfig();
+app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
+// 훅스버전
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/dr' , router);

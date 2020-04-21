@@ -4,7 +4,8 @@ const Member = require('../../models/member');
 const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');
-const util = require('../../util/util');
+const LocalStrategy = require('passport-local').Strategy;
+
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
@@ -67,40 +68,50 @@ router.post('/insert' , (req , res) => {
     });
 });
 
-router.post('/login' , (req , res) => {
-    const rs = req.session;
-    console.log('userEmail:' + req.body.userEmail);
-    console.log('userPwd:' + req.body.userPwd);
-    Member.findOne({userEmail:req.body.userEmail} , (err , member) => {
-        if(err) {
-            console.log('err:' + err);
-            throw err;
-        }
-        if(!member) {
-            common.result.code = 'DR02';
-            common.result.message = common.status.DR02;
-            res.json(common.result);
-            return;
-        }else{
-            crypto.pbkdf2(req.body.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
-                if(key.toString('base64') === member.userPwd){
-                    // Login Success
-                    console.log('Login Success');
-                    rs.user = req.body.userEmail;
-                    common.result.code = 'DR00';
-                    common.result.message = common.status.DR00;
-                    return res.send(common.result);
-                }else{
-                    // Login Fail
-                    console.log('Fail');
-                    common.result.code = 'DR03';
-                    common.result.message = common.status.DR03;
-                    return res.send(common.result);
-                }
-            });
-        }        
-    });
-});
+router.post('/login', passport.authenticate('local', 
+{
+    failureRedirect: '/login', 
+    failureFlash: true
+}), 
+    (req, res) => {
+        console.log(req.body);
+    return res.send('success~~');
+  });
+
+// router.post('/login' , (req , res) => {
+//     const rs = req.session;
+//     console.log('userEmail:' + req.body.userEmail);
+//     console.log('userPwd:' + req.body.userPwd);
+//     Member.findOne({userEmail:req.body.userEmail} , (err , member) => {
+//         if(err) {
+//             console.log('err:' + err);
+//             throw err;
+//         }
+//         if(!member) {
+//             common.result.code = 'DR02';
+//             common.result.message = common.status.DR02;
+//             res.json(common.result);
+//             return;
+//         }else{
+//             crypto.pbkdf2(req.body.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
+//                 if(key.toString('base64') === member.userPwd){
+//                     // Login Success
+//                     console.log('Login Success');
+//                     rs.user = req.body.userEmail;
+//                     common.result.code = 'DR00';
+//                     common.result.message = common.status.DR00;
+//                     return res.send(common.result);
+//                 }else{
+//                     // Login Fail
+//                     console.log('Fail');
+//                     common.result.code = 'DR03';
+//                     common.result.message = common.status.DR03;
+//                     return res.send(common.result);
+//                 }
+//             });
+//         }        
+//     });
+// });
 
 
 router.post('/passportTest' , passport.authenticate('local' , {

@@ -34,15 +34,4 @@ memberSchema.statics.findByUserEmail = function(userEmail){
     return this.findOne({userEmail}).exec();
 }
 
-
-memberSchema.methods.comparePassword = (inputPassword , cb) => {
-    crypto.pbkdf2(inputPassword , this.salt , 102391 , 64 , 'sha512' , (err , key) => {
-        if(key.toString('base64') === this.userPwd){
-            cb(null , true);
-        }else{
-            cb('error');
-        }
-    })
-}
-
 module.exports = mongoose.model('member' , memberSchema);

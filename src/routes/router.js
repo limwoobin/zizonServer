@@ -23,10 +23,10 @@ router.get('/search/:keyword' , (req , res) => {
 
 router.get('/testapi' , (req , res) => {
     
-    // req.session.test = 'test??';
+    req.session.test = 'test??';
     console.log(req.session);
-    delete req.session.test;
-    return res.send('delete');
+    // delete req.session.test;
+    return res.send(req.session.test);
 })
 
 router.use(upload.array());
