@@ -12,8 +12,7 @@ const session = require('express-session');
 const redis = require('redis');
 const redisStore = require('connect-redis')(session);
 const client = redis.createClient();
-const passport = require('passport');
-const passportConfig = require('./routes/member/passport');
+const passport = require('passport')
 
 app.use(session({
     store: new redisStore({
@@ -30,8 +29,8 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
-
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 // cors 허용
 app.all('/*' , (req , res , next) => {
@@ -46,9 +45,6 @@ app.all('/*' , (req , res , next) => {
 app.use(db);
 app.use(setting);
 // app.use(history());
-app.use(passport.initialize());
-app.use(passport.session());
-passportConfig();
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 

@@ -5,7 +5,64 @@ const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const util = require('../../util/util');
 
+passport.serializeUser((member, done) => {
+    done(null, member.userEmail);
+});
+
+passport.deserializeUser((userEmail, done) => {
+    done(null, userEmail);
+});
+
+passport.use('local' , new LocalStrategy({
+    usernameField: 'userEmail',
+    passwordField: 'userPwd',
+    session: true,
+}, function(userEmail , userPwd , done) {
+    Member.findOne({userEmail: userEmail} , (err , member) => {
+        if(err) return done(err);
+        if(!member) return done(null , false , {message:'존재하지 않는 아이디입니다.'});
+        crypto.pbkdf2(userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
+            if(key.toString('base64') === member.userPwd){
+                return done(null , member); 
+            }else{
+                return done(null , false , {message:'비밀번호가 틀렸습니다.'});
+            }
+        });
+    });
+}));
+
+router.post('/login' , (req , res , next) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    passport.authenticate('local' , (err , member , info) => {
+        if(err) {
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = err;
+            return res.json(result);
+        }
+        if(!member) {
+            return res.status(401).json(info.message);
+        }
+        req.logIn(member , (err) => {
+            if(err) {
+                result.code = 'DR01';
+                result.message = common.status.DR01;
+                result.data = err;
+                return next(result);
+            }
+            result.data = member.userEmail;
+            return res.json(result);
+        });
+    })(req , res , next);
+});
+
+router.get('/loginCheck' , (req ,res) => {
+    console.log(req.user);
+});
 
 router.get('/members' , (req , res) => {
     console.log('findAll...');
@@ -68,77 +125,13 @@ router.post('/insert' , (req , res) => {
     });
 });
 
-router.post('/login', passport.authenticate('local', 
-{
-    failureRedirect: '/login', 
-    failureFlash: true
-}), 
-    (req, res) => {
-        console.log(req.body);
-    return res.send('success~~');
-  });
-
-// router.post('/login' , (req , res) => {
-//     const rs = req.session;
-//     console.log('userEmail:' + req.body.userEmail);
-//     console.log('userPwd:' + req.body.userPwd);
-//     Member.findOne({userEmail:req.body.userEmail} , (err , member) => {
-//         if(err) {
-//             console.log('err:' + err);
-//             throw err;
-//         }
-//         if(!member) {
-//             common.result.code = 'DR02';
-//             common.result.message = common.status.DR02;
-//             res.json(common.result);
-//             return;
-//         }else{
-//             crypto.pbkdf2(req.body.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
-//                 if(key.toString('base64') === member.userPwd){
-//                     // Login Success
-//                     console.log('Login Success');
-//                     rs.user = req.body.userEmail;
-//                     common.result.code = 'DR00';
-//                     common.result.message = common.status.DR00;
-//                     return res.send(common.result);
-//                 }else{
-//                     // Login Fail
-//                     console.log('Fail');
-//                     common.result.code = 'DR03';
-//                     common.result.message = common.status.DR03;
-//                     return res.send(common.result);
-//                 }
-//             });
-//         }        
-//     });
-// });
-
-
-router.post('/passportTest' , passport.authenticate('local' , {
-    failureRedirect : '/'
-}) , (req , res) => {
+router.get('/logout' , (req , res) => {
     common.result = {};
     common.result.code = 'DR00';
     common.result.message = common.status.DR00;
+
+    req.logout();
     return res.send(common.result);
 });
-
-router.get('/logout' , (req , res) => {
-    common.result = {};
-    const rs = req.session;
-    if(rs.user){
-        delete rs.user;
-        console.log('Logout Success');
-        common.result.code = 'DR00';
-        common.result.message = common.status.DR00;
-    }else{
-        console.log('Logout Fail');
-        common.result.code = 'DR01';
-        common.result.message = common.status.DR01;        
-    }
-    return res.send(common.result);
-});
-
-
 
 module.exports = router;
