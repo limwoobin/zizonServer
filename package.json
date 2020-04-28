@@ -15,8 +15,8 @@
     "url": "https://github.com/limwoobin/zizonServer"
   },
   "scripts": {
-    "build": "babel src -d build --presets=es2015",
     "start": "node ./src/server.js",
+    "build": "babel src -d build --presets=es2015",
     "development": "node ./scripts/development.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
