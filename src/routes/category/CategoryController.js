@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../../models/category');
+const CategoryService = require('./CategoryService');
 const common = require('../../common/common');
 const logger = require('../../config/winston');
 
 
-router.get('/list' , (req , res) => {
+router.get('/list' , async (req , res) => {
     logger.info('category...');
-    Category.find((err , categories) => {
-        if(err){
-            common.result.code = 'DR01';
-            common.result.message = common.status.DR00;
-            return res.json(common.result);
-        } 
-        
-        common.result.code = 'DR00';
-        common.result.message = common.status.DR00;
-        common.result.data = categories;
-        return res.json(common.result);
-    })
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    try {
+        const categories = await CategoryService.Categories();    
+        result.data = categories;
+    } catch (error) {
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = error;
+        return res.json(result);    
+    }
+    return res.json(result); 
 });
 
 module.exports = router;
