@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const BoardService = require('./BoardService');
 const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const ChildComment = require('../../models/childComment');
 const common = require('../../common/common');
 const util = require('../../util/util');
+
 
 router.post('/test' , (req , res) => {
     const result = common.result;
@@ -27,12 +29,14 @@ router.post('/test' , (req , res) => {
 })
 
 
-router.get('/list' , (req , res) => {
+router.get('/list' , async (req , res) => {
     // 예시코드  
     const result = {};
     const resJson = common.resJson;
     result.code = 'DR00';
     result.message = common.status.DR00;
+    const sum = await BoardService.test(5 , 6);
+    console.log(sum);
     Board.find((err , boards) => {
         if(err){
             result.code = 'DR01';
