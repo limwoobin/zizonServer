@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const CommentService = require('./CommentService');
 const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const ChildComment = require('../../models/childComment');

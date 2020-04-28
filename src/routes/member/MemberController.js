@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Member = require('../../models/member');
+const MemberService = require('./MemberService');
 const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');

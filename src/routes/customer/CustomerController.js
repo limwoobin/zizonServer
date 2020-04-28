@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Customer = require('../../models/customer');
+const CustomerService = require('./CustomerService');
 
 router.get('/customers' , (req , res) => {
     Customer.find(function(err , customers){
