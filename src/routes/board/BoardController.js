@@ -37,9 +37,10 @@ router.get('/list' , async (req , res) => {
     try{
         const boards = await BoardService.getBoardList();
         result.data = boards;
-    }catch{
+    }catch(err){
         result.code = 'DR00';
         result.message = common.status.DR00;
+        result.data = err;
         return res.json(result);
     }
     return res.json(result);
@@ -102,18 +103,17 @@ router.post('/write' , async (req , res) => {
     board.content = req.body.content;
     board.image = req.body.image;
 
-    const writeBoard = null;
     try{
-        writeBoard = await BoardService.writeBoard(board);
+        const writeBoard = await BoardService.writeBoard(board);
         if(writeBoard !== 'DR00'){
             result.code = 'DR01';
             result.message = common.status.DR01;
             return res.json(result);
         }
-    }catch{
+    }catch(err){
         result.code = 'DR01';
         result.message = common.status.DR01;
-        result.data = writeBoard;
+        result.data = err;
         return res.json(result);
     }
     return res.json(result);
@@ -125,35 +125,35 @@ router.post('/update' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-
     try{
         const updateBoard = await BoardService.updateBoard(board);
         result.data = updateBoard;
-    }catch{
+    }catch(err) {
         result.code = 'DR01';
         result.message = common.status.DR01;
+        result.data = err;
         return res.json(result);
     }
     return res.json(result);
 });
 
-router.delete('/delete' , (req , res) => {
+router.delete('/delete' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-
     let board = new Board();
     board = req.body;
-    Board.findOneAndDelete({id:board.id , userEmail:board.userEmail} , {new: true} , (err , data) => {
-        if(err){
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = status(500).json({err});
-            return res.json(result);
-        }
-        console.log(data);
+    try{
+        const deleteBoard = await BoardService.deleteBoard(board);
+        result.data = deleteBoard;
+    }catch(err) {
+        console.log('err' , err);
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err;
         return res.json(result);
-    })
+    }
+    return res.json(result);
 });
 
 

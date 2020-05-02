@@ -43,3 +43,14 @@ exports.updateBoard = function(board){
         });
     });
 }
+
+exports.deleteBoard = function(board){
+    return new Promise(function(resolve , reject){
+        Board.deleteOne({boardId:board.id , userEmail:board.userEmail} , {new: true} , (err , data) => {
+            if(err){
+                reject(err.message);
+            }
+            resolve(data);
+        })
+    });
+}

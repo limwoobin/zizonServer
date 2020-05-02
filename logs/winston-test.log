@@ -2153,3 +2153,43 @@ ReferenceError: result is not defined
 2020-05-02T06:05:12.486Z [winston-test] info: Listening on port 4000
 2020-05-02T06:05:52.042Z [winston-test] info: Listening on port 4000
 2020-05-02T06:06:23.119Z [winston-test] info: Listening on port 4000
+2020-05-02T06:21:35.497Z [winston-test] info: Listening on port 4000
+2020-05-02T06:25:31.924Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:02.193Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:13.195Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:16.704Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:30.081Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:52.020Z [winston-test] info: Listening on port 4000
+2020-05-02T06:26:57.368Z [winston-test] info: Listening on port 4000
+2020-05-02T06:27:53.254Z [winston-test] info: Listening on port 4000
+2020-05-02T06:28:05.732Z [winston-test] info: Listening on port 4000
+2020-05-02T06:28:18.367Z [winston-test] info: Listening on port 4000
+2020-05-02T06:28:27.533Z [winston-test] info: Listening on port 4000
+2020-05-02T06:29:19.934Z [winston-test] info: Listening on port 4000
+2020-05-02T06:29:39.984Z [winston-test] info: Listening on port 4000
+2020-05-02T06:29:55.360Z [winston-test] info: Listening on port 4000
+2020-05-02T06:30:08.783Z [winston-test] info: Listening on port 4000
+2020-05-02T06:33:23.192Z [winston-test] info: Listening on port 4000
+2020-05-02T06:33:26.850Z [winston-test] error: uncaughtException: status is not defined
+ReferenceError: status is not defined
+    at /Applications/woobeenkun/myBlog/server/src/routes/board/BoardController.js:161:13
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/model.js:4766:16
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:3234:14
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:4393:14
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/operations/execute_operation.js:76:14
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/operations/execute_operation.js:63:27
+    at ClientSession.endSession (/Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/core/sessions.js:135:41)
+    at executeCallback (/Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/operations/execute_operation.js:59:17)
+    at handleCallback (/Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/utils.js:129:55)
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/operations/find_and_modify.js:91:23
+    at handleCallback (/Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/utils.js:129:55)
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/operations/db_ops.js:414:21
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongodb/lib/core/connection/pool.js:414:18
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+2020-05-02T06:33:56.346Z [winston-test] info: Listening on port 4000
+2020-05-02T06:34:07.329Z [winston-test] info: Listening on port 4000
+2020-05-02T06:34:12.797Z [winston-test] info: Listening on port 4000
+2020-05-02T06:34:24.866Z [winston-test] info: Listening on port 4000
+2020-05-02T06:35:15.813Z [winston-test] info: Listening on port 4000
+2020-05-02T06:35:22.697Z [winston-test] info: Listening on port 4000
+2020-05-02T06:35:41.377Z [winston-test] info: Listening on port 4000
