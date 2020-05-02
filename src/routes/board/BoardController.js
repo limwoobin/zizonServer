@@ -46,50 +46,21 @@ router.get('/list' , async (req , res) => {
     return res.json(result);
 });
 
-router.get('/view/:id' , util.checkBoardId , (req , res) => {
+router.get('/view/:id' , util.checkBoardId ,  async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
     const _id = req.params.id;
-    Board.findOne({_id:_id} , (err , boardData) => {
-        if(err){
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = err;
-            return res.json(result);
-        }
-        boardData.views++;
-        boardData.save();
-        Comment.find({board:_id} , (err , comments) => {
-            if(err){
-                result.code = 'DR01';
-                result.message = common.status.DR01;
-                result.data = err;
-                return res.json(result);
-            }
-
-            setChildComments(comments);  
-            function setChildValue(c){
-                return new Promise((resolve , reject) => {
-                    ChildComment.find({commentId:c._id} , (err , childComments) => {
-                        if(childComments.length !== 0){
-                            c.childComments = childComments;
-                        }
-                        resolve();
-                    })
-                })
-            }   
-
-            async function setChildComments(comments){
-                for(let c in comments){
-                    await setChildValue(comments[c]);
-                }
-                boardData.comments = comments; 
-                result.data = boardData;
-                return res.json(result);  
-            }     
-        })
-    })
+    try{
+        const board = await BoardService.getBoard(_id);
+        result.data = board;
+    }catch(err){
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err;
+        return res.json(result);
+    }
+    return res.json(result);
 })
 
 router.post('/write' , async (req , res) => {
@@ -102,7 +73,6 @@ router.post('/write' , async (req , res) => {
     board.title = req.body.title;
     board.content = req.body.content;
     board.image = req.body.image;
-
     try{
         const writeBoard = await BoardService.writeBoard(board);
         if(writeBoard !== 'DR00'){
