@@ -37,7 +37,6 @@ exports.getBoard = function(_id){
                     resolve(boardData);
                 }
 
-                setChildComments(comments);  
                 function setChildValue(c){
                     return new Promise((resolve , reject) => {
                         ChildComment.find({commentId:c._id} , (err , childComments) => {
@@ -45,10 +44,11 @@ exports.getBoard = function(_id){
                             if(childComments.length !== 0){
                                 c.childComments = childComments;
                             }
-                        resolve();
+                            resolve();
                         })
                     })
-                } 
+                }
+                setChildComments(comments);  
             })
         });
     });

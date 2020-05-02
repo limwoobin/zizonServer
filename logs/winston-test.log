@@ -2230,3 +2230,101 @@ ReferenceError: status is not defined
 2020-05-02T07:16:44.992Z [winston-test] info: Listening on port 4000
 2020-05-02T07:17:18.981Z [winston-test] info: Listening on port 4000
 2020-05-02T07:17:36.549Z [winston-test] info: Listening on port 4000
+2020-05-02T07:19:06.161Z [winston-test] info: Listening on port 4000
+2020-05-02T07:19:09.653Z [winston-test] info: Listening on port 4000
+2020-05-02T07:19:11.573Z [winston-test] info: category...
+2020-05-02T07:19:12.307Z [winston-test] info: category...
+2020-05-02T07:20:36.690Z [winston-test] info: Listening on port 4000
+2020-05-02T07:21:15.565Z [winston-test] info: Listening on port 4000
+2020-05-02T07:21:41.600Z [winston-test] info: Listening on port 4000
+2020-05-02T07:21:48.403Z [winston-test] info: category...
+2020-05-02T07:23:58.695Z [winston-test] info: Listening on port 4000
+2020-05-02T07:24:07.762Z [winston-test] error: uncaughtException: Identifier 'comments' has already been declared
+/Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:31
+            const comments = comments;
+                  ^
+
+SyntaxError: Identifier 'comments' has already been declared
+    at Module._compile (internal/modules/cjs/loader.js:892:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/board/BoardController.js:3:22)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/router.js:8:21)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+2020-05-02T07:24:18.378Z [winston-test] info: Listening on port 4000
+2020-05-02T07:25:12.467Z [winston-test] info: Listening on port 4000
+2020-05-02T07:26:25.550Z [winston-test] error: uncaughtException: Function statements require a function name
+/Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:31
+            async function(){
+                  ^^^^^^^^
+
+SyntaxError: Function statements require a function name
+    at Module._compile (internal/modules/cjs/loader.js:892:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/board/BoardController.js:3:22)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/router.js:8:21)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+2020-05-02T07:26:46.539Z [winston-test] error: uncaughtException: Function statements require a function name
+/Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:31
+            async function(){
+                  ^^^^^^^^
+
+SyntaxError: Function statements require a function name
+    at Module._compile (internal/modules/cjs/loader.js:892:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/board/BoardController.js:3:22)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/router.js:8:21)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+2020-05-02T07:27:05.222Z [winston-test] info: Listening on port 4000
+2020-05-02T07:28:09.978Z [winston-test] info: Listening on port 4000
+2020-05-02T07:28:11.031Z [winston-test] info: Listening on port 4000
+2020-05-02T07:28:14.837Z [winston-test] info: Listening on port 4000
+2020-05-02T07:28:42.725Z [winston-test] info: Listening on port 4000
+2020-05-02T07:28:49.201Z [winston-test] info: Listening on port 4000
+2020-05-02T07:30:28.404Z [winston-test] info: Listening on port 4000
+2020-05-02T07:30:33.774Z [winston-test] info: Listening on port 4000
+2020-05-02T07:30:57.077Z [winston-test] info: Listening on port 4000
+2020-05-02T07:31:53.717Z [winston-test] info: Listening on port 4000
+2020-05-02T07:32:10.774Z [winston-test] info: Listening on port 4000
+2020-05-02T07:32:16.138Z [winston-test] info: Listening on port 4000
+2020-05-02T07:32:34.367Z [winston-test] info: Listening on port 4000
+2020-05-02T07:33:02.332Z [winston-test] info: Listening on port 4000
+2020-05-02T07:33:33.680Z [winston-test] info: Listening on port 4000
+2020-05-02T07:34:04.435Z [winston-test] info: Listening on port 4000
+2020-05-02T07:34:10.530Z [winston-test] info: Listening on port 4000
+2020-05-02T07:34:24.566Z [winston-test] info: Listening on port 4000
+2020-05-02T07:35:03.649Z [winston-test] info: Listening on port 4000
+2020-05-02T07:35:14.329Z [winston-test] info: Listening on port 4000
+2020-05-02T07:35:18.761Z [winston-test] info: Listening on port 4000
