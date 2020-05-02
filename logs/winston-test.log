@@ -2018,3 +2018,138 @@ Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.
 2020-04-28T11:10:36.285Z [winston-test] info: category...
 2020-04-28T11:10:41.777Z [winston-test] info: Listening on port 4000
 2020-04-28T11:10:45.811Z [winston-test] info: Listening on port 4000
+2020-05-02T05:12:55.673Z [winston-test] info: Listening on port 4000
+2020-05-02T05:13:09.425Z [winston-test] info: category...
+2020-05-02T05:13:17.308Z [winston-test] info: category...
+2020-05-02T05:13:18.371Z [winston-test] info: category...
+2020-05-02T05:13:18.860Z [winston-test] info: category...
+2020-05-02T05:13:19.217Z [winston-test] info: category...
+2020-05-02T05:13:19.602Z [winston-test] info: category...
+2020-05-02T05:13:20.069Z [winston-test] info: category...
+2020-05-02T05:15:41.252Z [winston-test] info: Listening on port 4000
+2020-05-02T05:16:04.669Z [winston-test] info: Listening on port 4000
+2020-05-02T05:16:47.987Z [winston-test] info: Listening on port 4000
+2020-05-02T05:17:43.393Z [winston-test] info: Listening on port 4000
+2020-05-02T05:17:54.444Z [winston-test] info: Listening on port 4000
+2020-05-02T05:18:11.790Z [winston-test] info: Listening on port 4000
+2020-05-02T05:19:13.593Z [winston-test] info: Listening on port 4000
+2020-05-02T05:19:19.252Z [winston-test] info: Listening on port 4000
+2020-05-02T05:19:29.919Z [winston-test] info: Listening on port 4000
+2020-05-02T05:19:32.559Z [winston-test] info: Listening on port 4000
+2020-05-02T05:19:45.270Z [winston-test] info: Listening on port 4000
+2020-05-02T05:20:12.824Z [winston-test] info: Listening on port 4000
+2020-05-02T05:20:13.738Z [winston-test] info: category...
+2020-05-02T05:20:26.086Z [winston-test] info: Listening on port 4000
+2020-05-02T05:20:31.736Z [winston-test] info: Listening on port 4000
+2020-05-02T05:20:34.325Z [winston-test] info: Listening on port 4000
+2020-05-02T05:20:54.670Z [winston-test] info: Listening on port 4000
+2020-05-02T05:25:07.495Z [winston-test] info: Listening on port 4000
+2020-05-02T05:26:05.691Z [winston-test] info: Listening on port 4000
+2020-05-02T05:26:24.617Z [winston-test] info: Listening on port 4000
+2020-05-02T05:27:16.627Z [winston-test] info: Listening on port 4000
+2020-05-02T05:28:48.239Z [winston-test] info: Listening on port 4000
+2020-05-02T05:29:13.647Z [winston-test] info: Listening on port 4000
+2020-05-02T05:31:04.566Z [winston-test] info: Listening on port 4000
+2020-05-02T05:31:18.314Z [winston-test] info: category...
+2020-05-02T05:33:22.158Z [winston-test] info: category...
+2020-05-02T05:34:42.461Z [winston-test] info: Listening on port 4000
+2020-05-02T05:34:49.705Z [winston-test] info: Listening on port 4000
+2020-05-02T05:35:28.593Z [winston-test] info: Listening on port 4000
+2020-05-02T05:36:14.743Z [winston-test] info: Listening on port 4000
+2020-05-02T05:37:04.908Z [winston-test] info: Listening on port 4000
+2020-05-02T05:37:25.193Z [winston-test] info: Listening on port 4000
+2020-05-02T05:37:49.593Z [winston-test] info: Listening on port 4000
+2020-05-02T05:38:03.538Z [winston-test] info: Listening on port 4000
+2020-05-02T05:38:35.929Z [winston-test] info: Listening on port 4000
+2020-05-02T05:38:48.777Z [winston-test] info: Listening on port 4000
+2020-05-02T05:39:41.816Z [winston-test] info: Listening on port 4000
+2020-05-02T05:39:56.605Z [winston-test] error: uncaughtException: Missing initializer in const declaration
+/Applications/woobeenkun/myBlog/server/src/routes/board/BoardController.js:127
+    const updateBoard;
+          ^^^^^^^^^^^
+
+SyntaxError: Missing initializer in const declaration
+    at Module._compile (internal/modules/cjs/loader.js:892:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/router.js:8:21)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/server.js:6:16)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:973:10)
+2020-05-02T05:40:02.064Z [winston-test] info: Listening on port 4000
+2020-05-02T05:40:36.220Z [winston-test] info: Listening on port 4000
+2020-05-02T05:42:19.661Z [winston-test] info: Listening on port 4000
+2020-05-02T05:43:04.723Z [winston-test] info: Listening on port 4000
+2020-05-02T05:43:57.521Z [winston-test] info: Listening on port 4000
+2020-05-02T05:44:24.882Z [winston-test] info: Listening on port 4000
+2020-05-02T05:44:40.851Z [winston-test] info: Listening on port 4000
+2020-05-02T05:44:54.322Z [winston-test] info: Listening on port 4000
+2020-05-02T05:45:18.768Z [winston-test] info: Listening on port 4000
+2020-05-02T05:45:39.829Z [winston-test] info: Listening on port 4000
+2020-05-02T05:46:47.299Z [winston-test] info: Listening on port 4000
+2020-05-02T05:46:48.293Z [winston-test] info: Listening on port 4000
+2020-05-02T05:46:54.679Z [winston-test] info: Listening on port 4000
+2020-05-02T05:49:06.573Z [winston-test] info: Listening on port 4000
+2020-05-02T05:49:14.815Z [winston-test] info: Listening on port 4000
+2020-05-02T05:50:08.790Z [winston-test] info: Listening on port 4000
+2020-05-02T05:50:38.980Z [winston-test] info: Listening on port 4000
+2020-05-02T05:50:40.762Z [winston-test] info: Listening on port 4000
+2020-05-02T05:50:42.334Z [winston-test] info: Listening on port 4000
+2020-05-02T05:50:53.051Z [winston-test] info: Listening on port 4000
+2020-05-02T05:51:10.588Z [winston-test] info: Listening on port 4000
+2020-05-02T05:51:29.339Z [winston-test] info: Listening on port 4000
+2020-05-02T05:51:48.524Z [winston-test] info: Listening on port 4000
+2020-05-02T05:52:04.228Z [winston-test] info: Listening on port 4000
+2020-05-02T05:53:00.676Z [winston-test] info: Listening on port 4000
+2020-05-02T05:53:27.903Z [winston-test] info: Listening on port 4000
+2020-05-02T05:53:46.394Z [winston-test] info: Listening on port 4000
+2020-05-02T05:54:20.099Z [winston-test] info: Listening on port 4000
+2020-05-02T05:55:04.034Z [winston-test] info: Listening on port 4000
+2020-05-02T05:55:56.859Z [winston-test] info: Listening on port 4000
+2020-05-02T05:56:41.014Z [winston-test] info: Listening on port 4000
+2020-05-02T05:56:53.395Z [winston-test] info: Listening on port 4000
+2020-05-02T05:57:00.816Z [winston-test] info: Listening on port 4000
+2020-05-02T05:57:14.070Z [winston-test] info: Listening on port 4000
+2020-05-02T05:57:52.830Z [winston-test] info: Listening on port 4000
+2020-05-02T05:58:07.352Z [winston-test] info: Listening on port 4000
+2020-05-02T05:59:06.117Z [winston-test] info: Listening on port 4000
+2020-05-02T05:59:28.318Z [winston-test] info: Listening on port 4000
+2020-05-02T05:59:59.121Z [winston-test] info: Listening on port 4000
+2020-05-02T06:00:33.999Z [winston-test] info: Listening on port 4000
+2020-05-02T06:01:10.276Z [winston-test] info: Listening on port 4000
+2020-05-02T06:01:43.156Z [winston-test] info: Listening on port 4000
+2020-05-02T06:01:50.447Z [winston-test] info: Listening on port 4000
+2020-05-02T06:01:56.850Z [winston-test] error: uncaughtException: result is not defined
+ReferenceError: result is not defined
+    at /Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:41:24
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/model.js:4766:16
+    at model.Query.Query._findAndModify (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:3456:12)
+    at model.Query.<anonymous> (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:3036:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /Applications/woobeenkun/myBlog/server/node_modules/kareem/index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+2020-05-02T06:02:01.813Z [winston-test] info: Listening on port 4000
+2020-05-02T06:02:05.646Z [winston-test] error: uncaughtException: result is not defined
+ReferenceError: result is not defined
+    at /Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:41:24
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/model.js:4766:16
+    at model.Query.Query._findAndModify (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:3456:12)
+    at model.Query.<anonymous> (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:3036:8)
+    at model.Query._wrappedThunk [as _findOneAndUpdate] (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)
+    at /Applications/woobeenkun/myBlog/server/node_modules/kareem/index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+2020-05-02T06:02:27.207Z [winston-test] info: Listening on port 4000
+2020-05-02T06:03:30.378Z [winston-test] info: Listening on port 4000
+2020-05-02T06:04:04.847Z [winston-test] info: Listening on port 4000
+2020-05-02T06:05:12.486Z [winston-test] info: Listening on port 4000
+2020-05-02T06:05:52.042Z [winston-test] info: Listening on port 4000
+2020-05-02T06:06:23.119Z [winston-test] info: Listening on port 4000

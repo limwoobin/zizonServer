@@ -1,6 +1,6 @@
 const Category = require('../../models/category');
 
-exports.Categories = function() {
+exports.getCategories = function() {
     return new Promise(function(resolve , reject){
         Category.find((err , categories) => {
             if(err){

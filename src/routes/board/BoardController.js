@@ -31,25 +31,19 @@ router.post('/test' , (req , res) => {
 
 router.get('/list' , async (req , res) => {
     // 예시코드  
-    const result = {};
-    const resJson = common.resJson;
+    const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
-    const sum = await BoardService.test(5 , 6);
-    console.log(sum);
-    Board.find((err , boards) => {
-        if(err){
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = err;
-            resJson.result(result);
-            return res.json(resJson);
-        } 
+    try{
+        const boards = await BoardService.getBoardList();
         result.data = boards;
-        resJson.result(result);
-        return res.json(resJson);
-    })
-})
+    }catch{
+        result.code = 'DR00';
+        result.message = common.status.DR00;
+        return res.json(result);
+    }
+    return res.json(result);
+});
 
 router.get('/view/:id' , util.checkBoardId , (req , res) => {
     const result = common.result;
@@ -97,7 +91,7 @@ router.get('/view/:id' , util.checkBoardId , (req , res) => {
     })
 })
 
-router.post('/write' , (req , res) => {
+router.post('/write' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
@@ -107,45 +101,40 @@ router.post('/write' , (req , res) => {
     board.title = req.body.title;
     board.content = req.body.content;
     board.image = req.body.image;
-    console.log('board:' , board);
-    board.save((err) => {
-        if(err){
-            console.log('err' , err);
+
+    const writeBoard = null;
+    try{
+        writeBoard = await BoardService.writeBoard(board);
+        if(writeBoard !== 'DR00'){
             result.code = 'DR01';
             result.message = common.status.DR01;
-            result.data = err;
             return res.json(result);
         }
-        console.log('result' , common.result);
+    }catch{
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = writeBoard;
         return res.json(result);
-    })
+    }
+    return res.json(result);
 });
 
-router.put('/update' , (req , res) => {
+router.post('/update' , async (req , res) => {
+    let board = new Board();
+    board = req.body;
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
 
-    let board = new Board();
-    board = req.body;
-
-    Board.findOneAndUpdate({id:board.id , userEmail:board.userEmail}, (
-        {
-            title:board.title , 
-            content:board.content,
-            image:board.image,
-            modiDate:board.modiDate
-        }) , {new:true} , (err , data) => {
-        if(err){
-            result.code = 'DR01';
-            result.message = common.status.DR01;
-            result.data = status(500).json({err});
-            return res.json(result);
-        }
-        console.log(data);
-        result.data = data;
+    try{
+        const updateBoard = await BoardService.updateBoard(board);
+        result.data = updateBoard;
+    }catch{
+        result.code = 'DR01';
+        result.message = common.status.DR01;
         return res.json(result);
-    });
+    }
+    return res.json(result);
 });
 
 router.delete('/delete' , (req , res) => {
