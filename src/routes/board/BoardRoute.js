@@ -5,7 +5,6 @@ const Board = require('../../models/board');
 const common = require('../../common/common');
 const util = require('../../util/util');
 
-
 router.post('/test' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
@@ -34,6 +33,7 @@ router.get('/list' , async (req , res) => {
     result.message = common.status.DR00;
     try{
         const boards = await BoardService.getBoardList();
+        // const boards = await BoardService.getList();
         result.data = boards;
     }catch(err){
         result.code = 'DR00';

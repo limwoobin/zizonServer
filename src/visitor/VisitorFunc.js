@@ -9,7 +9,7 @@ function VisitorFunc(){
 
 VisitorFunc.prototype.visitorCount = (req , res , next) => {
     const rs = req.session;
-    const getIp = require('../common/config').getIpAddressFromRequest(req);  
+    const getIp = require('../config/config').getIpAddressFromRequest(req);  
     console.log('rs.getIp' , rs.getIp);
     if(!rs.getIp){ 
         rs.getIp = getIp;

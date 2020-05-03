@@ -2,6 +2,22 @@ const Board = require('../../models/board');
 const Comment = require('../../models/comment');
 const ChildComment = require('../../models/childComment');
 
+module.exports = () => {
+    return {
+        getList : () => {
+            console.log('aaasdasdadasdada');
+            return new Promise(function(resolve , reject){
+                Board.find((err , categories) => {
+                    if(err){
+                        reject(err);
+                    } 
+                    resolve(categories);
+                });
+            });    
+        }
+    }
+}
+
 exports.getBoardList = function(){
     return new Promise(function(resolve , reject){
         Board.find((err , categories) => {
