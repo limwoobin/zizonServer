@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const BoardService = require('./BoardService');
 const Board = require('../../models/board');
-const Comment = require('../../models/comment');
-const ChildComment = require('../../models/childComment');
 const common = require('../../common/common');
 const util = require('../../util/util');
 

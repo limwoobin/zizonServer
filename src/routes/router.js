@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const upload = multer();
-const memberRouter = require('./member/MemberController');
-const customerRouter = require('./customer/CustomerController');
-const categoryRouter = require('./category/CategoryController');
-const boardRouter = require('./board/BoardController');
-const commentRouter = require('./comment/CommentController');
+const memberRouter = require('./member/MemberRoute');
+const customerRouter = require('./customer/CustomerRoute');
+const categoryRouter = require('./category/CategoryRoute');
+const boardRouter = require('./board/BoardRoute');
+const commentRouter = require('./comment/CommentRoute');
 const visitorRouter = require('./visitor/VisitorController');
 const common = require('../common/common');
 
