@@ -13,6 +13,8 @@ const redis = require('redis');
 const redisStore = require('connect-redis')(session);
 const client = redis.createClient();
 const passport = require('passport')
+const compression = require('compression');
+
 
 app.use(session({
     store: new redisStore({
@@ -31,6 +33,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(compression());
 
 // cors 허용
 app.all('/*' , (req , res , next) => {
