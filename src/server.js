@@ -1,4 +1,5 @@
 const express = require('express');
+// import express from 'express';
 const app = express();
 const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
@@ -48,7 +49,7 @@ app.all('/*' , (req , res , next) => {
 
 app.use(db);
 app.use(setting);
-// app.use(history());
+app.use(history());
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 
