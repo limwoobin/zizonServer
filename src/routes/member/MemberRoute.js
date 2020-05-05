@@ -65,65 +65,60 @@ router.get('/loginCheck' , (req ,res) => {
     console.log(req.user);
 });
 
-router.get('/members' , (req , res) => {
-    console.log('findAll...');
-    Member.find(function(err , members){
-        if(err) return res.status(500).send({error:'database fail'});
-        res.json(members);
-    })
+router.get('/members' , async (req , res) => {
+    try{
+        const getMembers = await MemberService.getMembers();
+        return res.json(getMembers);
+    }catch(err){
+        return res.json(err);
+    }
 });
 
-router.get('/overlap/check/:userEmail' , (req , res) => {
-    common.res = {};
-    Member.findOne({userEmail:req.params.userEmail} , (err , member) => {
+router.get('/overlap/check/:userEmail' , async (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    result.data = null;
+
+    try{
+        console.log(req.params.userEmail);
+        const member = await MemberService.findMember(req.params.userEmail);
         console.log('mem:' + member);
-        if(err) {
-            console.log('err:' + err);
-            throw err;
+        if(member){
+            result.code = 'DR01';
+            result.message = common.status.DR01;
+            result.data = member;
         }
-        if(!member) {
-            common.result.code = 'DR00';
-            common.result.message = common.status.DR00;
-            res.json(common.result);
-            return;
-        }else{
-            common.result.code = 'DR01';
-            common.result.message = common.status.DR01;
-            common.result.data = member;
-            return res.json(common.result);
-        }
-    })
+    }catch(err){
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err;
+    }
+    return res.json(common.result);
 });
 
 
-router.post('/insert' , (req , res) => {
-    console.log(req.body);
-    crypto.randomBytes(64, (err, buf) => {
-        crypto.pbkdf2(req.body.userPwd , buf.toString('base64'), 102391, 64, 'sha512', (err, key) => {
-            let member = new Member();
-            console.log(req.body);
-            member.userEmail = req.body.userEmail;
-            member.userPwd = key.toString('base64');
-            member.salt = buf.toString('base64');
-            member.birthday = req.body.birthday;
-            member.userNm = req.body.userNm;
-            member.userPhone = req.body.userPhone;
+router.post('/insert' , async (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    result.data = null;
+    
+    let memberVO = new Member(req.body);
 
-            member.save((err) => {
-                if(err){
-                    console.error(err);
-                    common.result.code = 'DR01';
-                    common.result.message = common.status.DR01;
-                    res.json(common.result);
-                    return;
-                }
-                common.result.code = 'DR00';
-                common.result.message = common.status.DR00;
-                console.log(common.result);
-                return res.json(common.result);
-            });
-        });
-    });
+    try{
+        const insertMember = await MemberService.insertMember(memberVO);
+        console.log('insertMember' , insertMember);
+        result.code = 'DR00';
+        result.message = common.status.DR00;
+    }catch(err){
+        console.log('err' , err);
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err;
+    }
+
+    return res.json(result);
 });
 
 router.get('/logout' , (req , res) => {

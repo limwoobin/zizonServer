@@ -1,12 +1,13 @@
-const Category = require('../../models/category');
+// const Category = require('../../models/category');
+import Category from '../../models/category';
 
-// class CategoryService {
+// export default class CategoryService {
 //     constructor(Category){
 //         this.Category = Category;
 //     }
-    
+
+
 //     getCategories() {
-//         console.log('Tlqkf');
 //         return new Promise(function(resolve , reject){
 //             Category.find((err , categories) => {
 //                 if(err){
