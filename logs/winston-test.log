@@ -3071,3 +3071,84 @@ Require stack:
 2020-05-05T08:35:38.160Z [winston-test] info: Listening on port 4000
 2020-05-05T08:35:54.184Z [winston-test] info: Listening on port 4000
 2020-05-05T08:36:28.950Z [winston-test] info: Listening on port 4000
+2020-05-05T08:58:36.622Z [winston-test] info: Listening on port 4000
+2020-05-05T08:59:08.875Z [winston-test] info: Listening on port 4000
+2020-05-05T08:59:19.529Z [winston-test] info: Listening on port 4000
+2020-05-05T08:59:31.103Z [winston-test] info: Listening on port 4000
+2020-05-05T09:00:59.450Z [winston-test] info: Listening on port 4000
+2020-05-05T09:02:08.661Z [winston-test] info: Listening on port 4000
+2020-05-05T09:04:27.240Z [winston-test] info: Listening on port 4000
+2020-05-05T09:04:32.410Z [winston-test] info: category...
+2020-05-05T09:05:34.783Z [winston-test] info: Listening on port 4000
+2020-05-05T09:05:51.828Z [winston-test] info: Listening on port 4000
+2020-05-05T09:06:44.105Z [winston-test] info: Listening on port 4000
+2020-05-05T09:07:07.498Z [winston-test] info: Listening on port 4000
+2020-05-05T09:07:18.893Z [winston-test] info: Listening on port 4000
+2020-05-05T09:07:26.240Z [winston-test] info: Listening on port 4000
+2020-05-05T09:08:16.033Z [winston-test] info: Listening on port 4000
+2020-05-05T09:08:17.939Z [winston-test] info: Listening on port 4000
+2020-05-05T09:08:36.214Z [winston-test] info: Listening on port 4000
+2020-05-05T09:08:39.040Z [winston-test] info: category...
+2020-05-05T09:09:17.573Z [winston-test] info: category...
+2020-05-05T09:12:30.984Z [winston-test] info: Listening on port 4000
+2020-05-05T09:13:00.440Z [winston-test] info: Listening on port 4000
+2020-05-05T09:13:27.616Z [winston-test] info: Listening on port 4000
+2020-05-05T09:13:55.720Z [winston-test] info: Listening on port 4000
+2020-05-05T09:14:12.189Z [winston-test] info: Listening on port 4000
+2020-05-05T09:14:55.968Z [winston-test] info: Listening on port 4000
+2020-05-05T09:15:50.887Z [winston-test] info: Listening on port 4000
+2020-05-05T09:15:52.902Z [winston-test] info: Listening on port 4000
+2020-05-05T09:16:01.994Z [winston-test] info: Listening on port 4000
+2020-05-05T09:19:41.197Z [winston-test] info: Listening on port 4000
+2020-05-05T09:20:41.804Z [winston-test] info: Listening on port 4000
+2020-05-05T09:21:14.222Z [winston-test] info: Listening on port 4000
+2020-05-05T09:21:56.753Z [winston-test] info: Listening on port 4000
+2020-05-05T09:28:13.832Z [winston-test] info: Listening on port 4000
+2020-05-05T09:29:46.432Z [winston-test] info: Listening on port 4000
+2020-05-05T09:30:48.657Z [winston-test] info: Listening on port 4000
+2020-05-05T09:31:09.428Z [winston-test] info: category...
+2020-05-05T09:31:33.372Z [winston-test] info: Listening on port 4000
+2020-05-05T09:31:38.191Z [winston-test] info: Listening on port 4000
+2020-05-05T09:31:41.005Z [winston-test] info: category...
+2020-05-05T09:32:04.217Z [winston-test] info: category...
+2020-05-05T09:32:05.397Z [winston-test] info: category...
+2020-05-05T09:35:04.568Z [winston-test] info: Listening on port 4000
+2020-05-05T09:35:14.888Z [winston-test] info: Listening on port 4000
+2020-05-05T09:38:10.421Z [winston-test] info: Listening on port 4000
+2020-05-05T09:38:16.456Z [winston-test] info: category...
+2020-05-05T09:39:51.482Z [winston-test] info: category...
+2020-05-05T09:41:10.563Z [winston-test] info: Listening on port 4000
+2020-05-05T09:42:41.227Z [winston-test] info: Listening on port 4000
+2020-05-05T09:43:08.213Z [winston-test] info: Listening on port 4000
+2020-05-05T09:45:33.452Z [winston-test] info: Listening on port 4000
+2020-05-05T09:46:13.421Z [winston-test] info: Listening on port 4000
+2020-05-05T09:46:36.809Z [winston-test] info: Listening on port 4000
+2020-05-05T09:46:46.354Z [winston-test] info: category...
+2020-05-05T09:46:53.549Z [winston-test] info: category...
+2020-05-05T09:47:24.880Z [winston-test] info: category...
+2020-05-05T09:48:17.919Z [winston-test] info: Listening on port 4000
+2020-05-05T09:48:30.804Z [winston-test] error: uncaughtException: Cannot read property 'views' of null
+TypeError: Cannot read property 'views' of null
+    at /Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:23:13
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/model.js:4766:16
+    at /Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:4404:12
+    at model.Query.Query._completeOne (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:2088:12)
+    at Immediate.<anonymous> (/Applications/woobeenkun/myBlog/server/node_modules/mongoose/lib/query.js:2150:10)
+    at Immediate.<anonymous> (/Applications/woobeenkun/myBlog/server/node_modules/mquery/lib/utils.js:116:16)
+    at processImmediate (internal/timers.js:439:21)
+    at process.topLevelDomainCallback (domain.js:131:23)
+2020-05-05T09:53:20.765Z [winston-test] info: Listening on port 4000
+2020-05-05T09:53:27.623Z [winston-test] info: Listening on port 4000
+2020-05-05T09:53:58.228Z [winston-test] info: Listening on port 4000
+2020-05-05T09:54:03.170Z [winston-test] info: category...
+2020-05-05T09:55:52.820Z [winston-test] info: Listening on port 4000
+2020-05-05T09:57:18.976Z [winston-test] info: Listening on port 4000
+2020-05-05T09:57:40.210Z [winston-test] info: category...
+2020-05-05T09:59:24.195Z [winston-test] info: Listening on port 4000
+2020-05-05T09:59:31.241Z [winston-test] info: category...
+2020-05-05T10:00:03.091Z [winston-test] info: Listening on port 4000
+2020-05-05T10:00:08.124Z [winston-test] info: category...
+2020-05-05T10:00:50.172Z [winston-test] info: Listening on port 4000
+2020-05-05T10:01:18.327Z [winston-test] info: Listening on port 4000
+2020-05-05T10:01:23.859Z [winston-test] info: category...
+2020-05-05T10:01:42.937Z [winston-test] info: category...

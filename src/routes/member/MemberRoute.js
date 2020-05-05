@@ -6,7 +6,6 @@ const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const util = require('../../util/util');
 
 passport.serializeUser((member, done) => {
     done(null, member.userEmail);
@@ -34,10 +33,11 @@ passport.use('local' , new LocalStrategy({
     });
 }));
 
-router.post('/login' , (req , res , next) => {
+router.post('/login' , async (req , res , next) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
+
     passport.authenticate('local' , (err , member , info) => {
         if(err) {
             result.code = 'DR01';

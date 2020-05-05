@@ -1,7 +1,6 @@
 const Member = require('../../models/member');
 const crypto = require('crypto');
 
-
 const MemberService = {};
 
 MemberService.getMembers = () => {
