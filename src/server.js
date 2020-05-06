@@ -1,5 +1,4 @@
 const express = require('express');
-// import express from 'express';
 const app = express();
 const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
