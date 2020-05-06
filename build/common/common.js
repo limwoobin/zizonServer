@@ -4,7 +4,7 @@ var status = {
     DR00: 'SUCCESS',
     DR01: 'FAIL',
     DR02: '잘못된 파라미터 값',
-    DR03: '로그인되지 않는 사용자'
+    DR03: '로그인되지 않은 사용자'
 };
 
 var Result = {};

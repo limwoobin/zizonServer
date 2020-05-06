@@ -3,12 +3,15 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var config = require('../config/config.json');
 var db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function () {
     console.log('Connected to mongod server');
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/mongodb_tutorial');
+var connectUrl = 'mongodb://' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.dbs;
+
+mongoose.connect(connectUrl);
 
 module.exports = router;

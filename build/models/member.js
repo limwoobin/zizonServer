@@ -5,6 +5,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
 var connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tutorial');
+var crypto = require('crypto');
 
 autoIncrement.initialize(connection);
 
@@ -32,10 +33,6 @@ memberSchema.plugin(autoIncrement.plugin, {
 });
 
 memberSchema.statics.findByUserEmail = function (userEmail) {
-    return this.findOne({ userEmail: userEmail }).exec();
-};
-
-memberSchema.statics.findByUserEmailOrUserNm = function (userEmail) {
     return this.findOne({ userEmail: userEmail }).exec();
 };
 

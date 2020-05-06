@@ -21,9 +21,7 @@ UtilFunc.prototype.checkBoardId = function (req, res, next) {
 
 UtilFunc.prototype.isLogged = function (req, res, next) {
   var result = common.result;
-  var rs = req.session;
-  var userEmail = req.body.userEmail || req.params.userEmail;
-  if (!rs.userEmail) {
+  if (!req.user) {
     result.code = 'DR03';
     result.message = common.status.DR03;
     return res.json(result);
