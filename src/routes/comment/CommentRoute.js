@@ -7,7 +7,7 @@ const ChildComment = require('../../models/childComment');
 const common = require('../../common/common');
 const util = require('../../util/util');
 
-router.get('/test' , (req , res) => {
+router.get('/test' , async (req , res) => {
     result.code = 'DR00';
     result.message = common.status.DR01;
     result.data = 'asd';
@@ -49,7 +49,7 @@ router.post('/write' , util.checkBoardId , async (req , res) => {
     return res.json(result); 
 })
 
-router.post('/update' , (req , res) => {
+router.post('/update' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
@@ -74,6 +74,25 @@ router.post('/update' , (req , res) => {
         result.data = comment;
         return res.json(result);
     })
+})
+
+router.get('/list/:id' , async (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;    
+    console.log(req.params.id);
+
+    try{
+        const comments = await CommentService.getComments(req.params.id);
+        result.data = comments;
+    }catch(err){
+        result.code = 'DR00';
+        result.message = common.status.DR00;    
+        result.data = err;
+        return res.json(result);
+    }
+
+    return res.json(result);
 })
 
 module.exports = router;
