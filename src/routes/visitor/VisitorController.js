@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Visitor = require('../../models/visitor');
 const common = require('../../common/common');
-const util = require('../../util/util');
 const moment = require('moment');
 const today = moment().format('YYYY-MM-DD');
 

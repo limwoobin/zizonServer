@@ -3,6 +3,7 @@ const router = express.Router();
 const CategoryService = require('./CategoryService');
 const common = require('../../common/common');
 const logger = require('../../config/winston');
+const session = require('express-session');
 
 
 router.get('/list' , async (req , res) => {
@@ -21,5 +22,11 @@ router.get('/list' , async (req , res) => {
     }
     return res.json(result); 
 });
+
+router.get('/testket' , (req , res) => {
+    console.log(req.sessionID);
+    // req.session.user = 'drogba';
+    return res.json('aa');
+})
 
 module.exports = router;
