@@ -2,6 +2,9 @@ const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const config = require('./config.json');
 const logger = require('./winston');
+const Member = require('../models/member');
+const crypto = require('crypto');
+const configFunc = require('./config');
 
 const transporter = nodemailer.createTransport(smtpTransport({
     service: config.mailInfo.service,
@@ -15,12 +18,13 @@ const transporter = nodemailer.createTransport(smtpTransport({
 const mailConfig = {};
 
 mailConfig.passwordFindMail = (toEmail) => {
-    return new Promise((resolve , reject) => {
+    return new Promise( async (resolve , reject) => {
+        let randomPwd = await configFunc.getRandomString();
         let mailOptions = {
             from: config.mailInfo.mail,
             to: toEmail,
-            subject: '임시패스워드를 보내드립니다.',
-            text: 'zzz',
+            subject: 'Drogbalog에서 임시패스워드를 보내드립니다.',
+            text: `임시 패스워드: ${randomPwd}`,
         };
     
         transporter.sendMail(mailOptions , (err , info) => {
@@ -28,10 +32,27 @@ mailConfig.passwordFindMail = (toEmail) => {
                 logger.info(err);
                 reject(err);
             }else{
-                logger.info('EmailSend Success' + info.response);
-                
-
-                resolve(info.response);
+                Member.findOne({userEmail: toEmail} , (err , member) => {
+                    if(err){
+                        logger.info(err);
+                        reject(err);
+                    }
+                    crypto.pbkdf2(randomPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
+                        let newPwd = key.toString('base64');
+                        console.log(randomPwd);
+                        Member.findOneAndUpdate(
+                            {userEmail: toEmail}, 
+                            {$set : {"userPwd": newPwd}},
+                            (err , data) => {
+                            if(err){
+                                logger.info(err);
+                                reject(err);   
+                            }
+                            logger.info(info.response);
+                            resolve('DR00');
+                        });
+                    });
+                });
             };
         })
     })

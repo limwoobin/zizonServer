@@ -1,8 +1,7 @@
-import http from 'http';
+const crypto = require('crypto');
 
-http.createServer((req , res) => {
-    res.writeHead(200 , {'Content-Type': 'text/plain'})
-    res.end('Hello world')
-}).listen(3500 , '127.0.0.1')
+let aaa = crypto.randomBytes(15, (err, buf) => {
+    console.log(buf.toString('base64'));
+});
 
-console.log('server running!!');
+aaa;
