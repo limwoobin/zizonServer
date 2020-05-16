@@ -4,7 +4,6 @@ var express = require('express');
 var router = express.Router();
 var Visitor = require('../../models/visitor');
 var common = require('../../common/common');
-var util = require('../../util/util');
 var moment = require('moment');
 var today = moment().format('YYYY-MM-DD');
 

@@ -66,6 +66,7 @@ router.post('/login', function () {
                                     result.data = err;
                                     return next(result);
                                 }
+                                req.session.key = req.sessionID;
                                 result.data = member.userEmail;
                                 return res.json(result);
                             });
@@ -83,10 +84,6 @@ router.post('/login', function () {
         return _ref.apply(this, arguments);
     };
 }());
-
-router.get('/loginCheck', function (req, res) {
-    console.log(req.user);
-});
 
 router.get('/members', function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
@@ -232,7 +229,6 @@ router.get('/logout', function (req, res) {
     common.result = {};
     common.result.code = 'DR00';
     common.result.message = common.status.DR00;
-
     req.logout();
     return res.send(common.result);
 });

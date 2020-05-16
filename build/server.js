@@ -1,17 +1,14 @@
 'use strict';
 
 var express = require('express');
-// import express from 'express';
 var app = express();
 var history = require('connect-history-api-fallback');
 var bodyParser = require('body-parser');
-var db = require('./routes/dbConnection');
 var router = require('./routes/router');
 var setting = require('./routes/setting');
 var logger = require('./config/winston');
 var config = require('./config/config.json');
 var session = require('express-session');
-// const visitor = require('./visitor/VisitorFunc');
 var redis = require('redis');
 var redisStore = require('connect-redis')(session);
 var client = redis.createClient();
@@ -36,21 +33,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(compression());
+app.use(compression()); // gzip 압축 사용
 
-// cors 허용
 app.all('/*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     next();
-});
+}); // cors 허용
 
-// app.get('/' , visitor.visitorCount);
-// 방문자 카운트 미들웨어
-
-app.use(db);
 app.use(setting);
-app.use(history());
+// app.use(history()); // client와 연결
 app.use('/', express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 

@@ -24,8 +24,10 @@ router.get('/list' , async (req , res) => {
 });
 
 router.get('/testket' , (req , res) => {
-    console.log(req.sessionID);
-    // req.session.user = 'drogba';
+    req.session.user = 'drogba';
+    req.session.key = req.sessionID;
+    console.log(req.session.passport);
+    
     return res.json('aa');
 })
 

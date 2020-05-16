@@ -55,14 +55,11 @@ router.post('/login' , async (req , res , next) => {
                 result.data = err;
                 return next(result);
             }
+            req.session.key = req.sessionID;
             result.data = member.userEmail;
             return res.json(result);
         });
     })(req , res , next);
-});
-
-router.get('/loginCheck' , (req ,res) => {
-    console.log(req.user);
 });
 
 router.get('/members' , async (req , res) => {
@@ -125,7 +122,6 @@ router.get('/logout' , (req , res) => {
     common.result = {};
     common.result.code = 'DR00';
     common.result.message = common.status.DR00;
-
     req.logout();
     return res.send(common.result);
 });
