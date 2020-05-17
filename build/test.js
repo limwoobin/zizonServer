@@ -1,14 +1,9 @@
 'use strict';
 
-var _http = require('http');
+var crypto = require('crypto');
 
-var _http2 = _interopRequireDefault(_http);
+var aaa = crypto.randomBytes(15, function (err, buf) {
+    console.log(buf.toString('base64'));
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_http2.default.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello world');
-}).listen(3500, '127.0.0.1');
-
-console.log('server running!!');
+aaa;

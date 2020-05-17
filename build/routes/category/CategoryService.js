@@ -6,26 +6,7 @@ var _category2 = _interopRequireDefault(_category);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// export default class CategoryService {
-//     constructor(Category){
-//         this.Category = Category;
-//     }
-
-
-//     getCategories() {
-//         return new Promise(function(resolve , reject){
-//             Category.find((err , categories) => {
-//                 if(err){
-//                     reject(err);
-//                 } 
-//                 resolve(categories);
-//             });
-//         });
-//     }
-// }
-
-var CategoryService = {}; // const Category = require('../../models/category');
-
+var CategoryService = {};
 
 CategoryService.getCategories = function () {
     return new Promise(function (resolve, reject) {

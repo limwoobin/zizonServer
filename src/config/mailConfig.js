@@ -34,22 +34,18 @@ mailConfig.passwordFindMail = (toEmail) => {
                 Member.findOne({userEmail: toEmail})
                 .then(member => {
                     crypto.pbkdf2(randomPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
+                        if(err) reject(err);
                         let newPassword = key.toString('base64');
                         console.log(newPassword);
                         Member.findOneAndUpdate({userEmail: toEmail}, {$set : {"userPwd": newPassword}})
                         .then((result) => {
+                            logger.info(info);
                             logger.info(result);
                             resolve('DR00');
-                        })
-                        .catch(err => {
-                            console.log('씨발~');
-                            logger.info(err);
-                            reject(err);
                         })
                     });
                 })
                 .catch(err => {
-                    console.log('errr~~~');
                     logger.info(err);
                     reject(err);
                 });

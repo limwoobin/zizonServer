@@ -10,6 +10,7 @@ var categoryRouter = require('./category/CategoryRoute');
 var boardRouter = require('./board/BoardRoute');
 var commentRouter = require('./comment/CommentRoute');
 var visitorRouter = require('./visitor/VisitorController');
+var mailRouter = require('./mail/MailRoute');
 var common = require('../common/common');
 
 router.get('/search/:keyword', function (req, res) {
@@ -37,5 +38,6 @@ router.use('/category', categoryRouter);
 router.use('/board', boardRouter);
 router.use('/comment', commentRouter);
 router.use('/visitor', visitorRouter);
+router.use('/mail', mailRouter);
 
 module.exports = router;

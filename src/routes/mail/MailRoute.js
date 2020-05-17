@@ -3,6 +3,7 @@ const router = express.Router();
 const mailConfig = require('../../config/mailConfig');
 const common = require('../../common/common');
 
+
 router.get('/password/find/:toEmail' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
