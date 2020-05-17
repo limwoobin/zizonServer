@@ -26,36 +26,37 @@ mailConfig.passwordFindMail = (toEmail) => {
             subject: 'Drogbalog에서 임시패스워드를 보내드립니다.',
             text: `임시 패스워드: ${randomPwd}`,
         };
-    
+
         transporter.sendMail(mailOptions , (err , info) => {
-            if(err){
-                logger.info(err);
-                reject(err);
+            if(err) {
+                return err;
             }else{
-                Member.findOne({userEmail: toEmail} , (err , member) => {
-                    if(err){
-                        logger.info(err);
-                        reject(err);
-                    }
+                Member.findOne({userEmail: toEmail})
+                .then(member => {
                     crypto.pbkdf2(randomPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
-                        let newPwd = key.toString('base64');
-                        console.log(randomPwd);
-                        Member.findOneAndUpdate(
-                            {userEmail: toEmail}, 
-                            {$set : {"userPwd": newPwd}},
-                            (err , data) => {
-                            if(err){
-                                logger.info(err);
-                                reject(err);   
-                            }
-                            logger.info(info.response);
+                        let newPassword = key.toString('base64');
+                        console.log(newPassword);
+                        Member.findOneAndUpdate({userEmail: toEmail}, {$set : {"userPwd": newPassword}})
+                        .then((result) => {
+                            logger.info(result);
                             resolve('DR00');
-                        });
+                        })
+                        .catch(err => {
+                            console.log('씨발~');
+                            logger.info(err);
+                            reject(err);
+                        })
                     });
+                })
+                .catch(err => {
+                    console.log('errr~~~');
+                    logger.info(err);
+                    reject(err);
                 });
-            };
-        })
+            }
+        });
     })
 }
+
 
 module.exports = mailConfig;

@@ -3713,3 +3713,45 @@ ReferenceError: MailConfig is not defined
 2020-05-16T09:45:37.851Z [winston-test] info: Listening on port 4000
 2020-05-16T09:45:43.678Z [winston-test] info: EmailSend Success250 2.0.0 OK  1589622351 t74sm4002486pfc.64 - gsmtp
 2020-05-16T09:46:58.794Z [winston-test] info: Listening on port 4000
+2020-05-17T07:13:21.646Z [winston-test] info: Listening on port 4000
+2020-05-17T07:13:41.911Z [winston-test] info: Listening on port 4000
+2020-05-17T07:14:06.166Z [winston-test] info: 250 2.0.0 OK  1589699654 188sm2632914pfu.165 - gsmtp
+2020-05-17T07:29:08.493Z [winston-test] info: Listening on port 4000
+2020-05-17T07:30:45.108Z [winston-test] info: Listening on port 4000
+2020-05-17T07:37:05.964Z [winston-test] info: Listening on port 4000
+2020-05-17T07:37:22.038Z [winston-test] info: Listening on port 4000
+2020-05-17T07:40:58.875Z [winston-test] info: Listening on port 4000
+2020-05-17T07:41:10.246Z [winston-test] info: undefined
+2020-05-17T07:41:58.247Z [winston-test] info: Listening on port 4000
+2020-05-17T07:42:03.403Z [winston-test] info: undefined
+2020-05-17T07:43:07.212Z [winston-test] info: Listening on port 4000
+2020-05-17T07:43:10.363Z [winston-test] info: undefined
+2020-05-17T07:43:22.578Z [winston-test] info: Listening on port 4000
+2020-05-17T07:43:33.774Z [winston-test] info: Listening on port 4000
+2020-05-17T07:43:38.112Z [winston-test] info: undefined
+2020-05-17T07:45:38.221Z [winston-test] info: undefined
+2020-05-17T07:53:09.772Z [winston-test] info: Listening on port 4000
+2020-05-17T07:53:19.202Z [winston-test] info: {
+  _id: 5e3520dc48f088474f591e4b,
+  regDate: 2020-02-01T06:55:24.567Z,
+  userEmail: 'drogba02@naver.com',
+  userPwd: '27N0/9mLcaLTxPJUFUO0axHemydXT1yv+4tKO8QsxxgtR55K1Zad1iT7IC1tqUU8jP4KHD5g06utxiNTwxs1fg==',
+  salt: '0q7+CL6VjhSAjZJV/sXMdtoQ/2WmBn8wphXDutR7uvHuPOtP3so5g01RMYzeXiIO9/OouvMSAViP5uyQnqQJcw==',
+  birthday: '1994/08/01',
+  userNm: '임우빈',
+  id: 8,
+  __v: 0
+}
+2020-05-17T07:54:54.994Z [winston-test] info: Listening on port 4000
+2020-05-17T07:55:02.012Z [winston-test] info: {
+  _id: 5e3520dc48f088474f591e4b,
+  regDate: 2020-02-01T06:55:24.567Z,
+  userEmail: 'drogba02@naver.com',
+  userPwd: 'haHLAkq0soG8Al/GVsR1KfDNzIDIFgY3DOu3MjKl6rXiUorfrMKuMiLfu9yar2LLR0dPRhAMXJFW43YUAuBk9A==',
+  salt: '0q7+CL6VjhSAjZJV/sXMdtoQ/2WmBn8wphXDutR7uvHuPOtP3so5g01RMYzeXiIO9/OouvMSAViP5uyQnqQJcw==',
+  birthday: '1994/08/01',
+  userNm: '임우빈',
+  id: 8,
+  __v: 0
+}
+2020-05-17T07:55:17.649Z [winston-test] info: Listening on port 4000

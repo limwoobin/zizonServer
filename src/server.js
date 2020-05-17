@@ -41,7 +41,7 @@ app.all('/*' , (req , res , next) => {
 }); // cors 허용
 
 app.use(setting);
-app.use(history()); // client와 연결
+// app.use(history()); // client와 연결
 app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
 // 훅스버전
 

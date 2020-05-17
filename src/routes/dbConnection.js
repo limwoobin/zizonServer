@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const config = require('../config/config.json');
 const db = mongoose.connection;
+mongoose.Promise = global.Promise;
 db.on('error' , console.error);
 db.once('open' , () => {
     console.log('Connected to mongod server');    
