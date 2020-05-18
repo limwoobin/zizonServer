@@ -58,11 +58,11 @@ exports.deleteBoard = function(board){
 
 exports.getRecentNotice = () => {
     return new Promise((resolve , reject) => {
-        console.log('notice ㅏ맞나?');
         Board.find()
-          .where('boardType').equals('01')
+          .where('boardType').equals('02')
           .sort('-regDate')
-          .limit(2)
+          .limit(3)
+          .select('_id title')
           .then(data => {
               resolve(data);
           }).catch(err => {
