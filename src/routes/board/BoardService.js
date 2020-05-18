@@ -1,13 +1,17 @@
 const Board = require('../../models/board');
 
-exports.getBoardList = function(){
+exports.getBoardList = function(boardType){
     return new Promise(function(resolve , reject){
-        Board.find((err , categories) => {
-            if(err){
-                reject(err);
-            } 
-            resolve(categories);
-        });
+        if(boardType){
+            Board.find({boardType:boardType} , (err , categories) => {
+                if(err){
+                    reject(err);
+                } 
+                resolve(categories);
+            });
+        }else{
+            reject(err);
+        }
     });
 }
 
@@ -50,4 +54,19 @@ exports.deleteBoard = function(board){
             resolve(data);
         })
     });
+}
+
+exports.getRecentNotice = () => {
+    return new Promise((resolve , reject) => {
+        console.log('notice ㅏ맞나?');
+        Board.find()
+          .where('boardType').equals('01')
+          .sort('-regDate')
+          .limit(2)
+          .then(data => {
+              resolve(data);
+          }).catch(err => {
+              reject(err);
+          })
+    })   
 }

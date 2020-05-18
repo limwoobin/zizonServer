@@ -26,14 +26,14 @@ router.post('/test' , (req , res) => {
 })
 
 
-router.get('/list' , async (req , res) => {
+router.get('/list/:type' , async (req , res) => {
     // 예시코드  
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
+    const boardType = req.params.type;
     try{
-        const boards = await BoardService.getBoardList();
-        // const boards = await BoardService.getList();
+        const boards = await BoardService.getBoardList(boardType);
         result.data = boards;
     }catch(err){
         result.code = 'DR00';
@@ -115,7 +115,7 @@ router.delete('/delete' , async (req , res) => {
         const deleteBoard = await BoardService.deleteBoard(board);
         result.data = deleteBoard;
     }catch(err) {
-        console.log('err' , err);
+        logger.info(err);
         result.code = 'DR01';
         result.message = common.status.DR01;
         result.data = err;
@@ -124,5 +124,22 @@ router.delete('/delete' , async (req , res) => {
     return res.json(result);
 });
 
+router.get('/notice' , async (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+    
+    try{
+        const recentNotice = await BoardService.getRecentNotice();
+        result.data = recentNotice;
+    }catch(err){
+        logger.info(err);
+        result.code = 'DR01';
+        result.message = common.status.DR01;
+        result.data = err;
+        return res.json(result);
+    }
+    return res.json(result);
+})
 
 module.exports = router;
