@@ -10,16 +10,16 @@ const imageSchema = new mongoose.Schema({
 });
 
 const boardSchema = new mongoose.Schema({
-    boardId     : {type: Number},                    // id
-    userEmail   : {type: String , required: true},                  // 사용자 계정
-    boardType   : {type: String , required: true },                // '01 - 게시판 , 02 - 공지사항'
-    title       : {type: String , required: true},                      // 제목
-    content     : {type:String},                                    // 내용
-    image       : imageSchema,                                        // 이미지
-    comments    : [],                                              // 댓글
-    views       : {type: Number , default: 0},                         // 조회수
-    regDate     : {type: Date , default: Date.now },                  // 등록일
-    modiDate    : {type: Date , default: Date.now }                 // 수정일
+    boardId     : {type: Number},
+    userEmail   : {type: String , required: true},
+    boardType   : {type: String , required: true },
+    title       : {type: String , required: true},
+    content     : {type: String},
+    image       : imageSchema,
+    comments    : [],
+    views       : {type: Number , default: 0},
+    regDate     : {type: Date , default: Date.now },
+    modiDate    : {type: Date , default: Date.now }
 });
 
 boardSchema.plugin(autoIncrement.plugin , {
@@ -28,5 +28,9 @@ boardSchema.plugin(autoIncrement.plugin , {
     startAt     : 1,
     increment   : 1
 });
+
+boardSchema.statics.findByBoardId = function(_id){
+    return this.findOne({_id}).exec();
+}
 
 module.exports = mongoose.model('board' , boardSchema);

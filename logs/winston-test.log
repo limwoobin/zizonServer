@@ -3892,3 +3892,50 @@ ReferenceError: HTMLAllCollection is not defined
 2020-05-22T05:57:16.662Z [winston-test] info: Listening on port 4000
 2020-05-22T05:57:28.299Z [winston-test] info: Listening on port 4000
 2020-05-22T05:57:31.443Z [winston-test] info: Listening on port 4000
+2020-05-22T05:58:49.894Z [winston-test] info: Listening on port 4000
+2020-05-22T06:05:20.184Z [winston-test] info: Listening on port 4000
+2020-05-22T06:09:17.395Z [winston-test] info: Listening on port 4000
+2020-05-22T06:12:07.026Z [winston-test] error: uncaughtException: db is not defined
+ReferenceError: db is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/models/board.js:33:1)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/board/BoardService.js:1:15)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+2020-05-22T06:13:30.769Z [winston-test] info: Listening on port 4000
+2020-05-22T06:13:51.926Z [winston-test] info: Listening on port 4000
+2020-05-22T06:14:04.037Z [winston-test] info: Listening on port 4000
+2020-05-22T06:14:45.276Z [winston-test] info: Listening on port 4000
+2020-05-22T06:14:55.926Z [winston-test] info: Listening on port 4000
+2020-05-22T06:15:06.916Z [winston-test] info: Listening on port 4000
+2020-05-22T06:15:26.147Z [winston-test] info: Listening on port 4000
+2020-05-22T06:15:40.820Z [winston-test] info: Listening on port 4000
+2020-05-22T06:15:45.914Z [winston-test] info: Listening on port 4000
+2020-05-22T06:15:58.017Z [winston-test] info: Listening on port 4000
+2020-05-22T06:16:02.884Z [winston-test] info: Listening on port 4000
+2020-05-22T06:16:16.689Z [winston-test] info: Listening on port 4000
+2020-05-22T06:16:23.950Z [winston-test] info: Listening on port 4000
+2020-05-22T06:16:51.802Z [winston-test] info: Listening on port 4000
+2020-05-22T06:17:41.171Z [winston-test] info: Listening on port 4000
+2020-05-22T06:17:54.285Z [winston-test] info: Listening on port 4000
+2020-05-22T06:18:04.007Z [winston-test] info: Listening on port 4000
+2020-05-22T06:18:27.363Z [winston-test] info: Listening on port 4000
+2020-05-22T06:18:56.921Z [winston-test] info: Listening on port 4000
+2020-05-22T06:19:32.394Z [winston-test] info: Listening on port 4000
+2020-05-22T06:20:06.048Z [winston-test] info: Listening on port 4000
+2020-05-22T06:20:13.277Z [winston-test] info: Listening on port 4000
+2020-05-22T06:20:31.624Z [winston-test] info: Listening on port 4000
+2020-05-22T06:20:41.800Z [winston-test] info: Listening on port 4000
+2020-05-22T06:21:00.390Z [winston-test] info: Listening on port 4000
+2020-05-22T06:21:06.555Z [winston-test] info: Listening on port 4000

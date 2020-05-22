@@ -25,7 +25,6 @@ router.post('/test' , (req , res) => {
     })
 })
 
-
 router.get('/list/:type' , async (req , res) => {
     // 예시코드  
     const result = common.result;
@@ -51,14 +50,15 @@ router.get('/view/:id' , util.checkBoardId ,  async (req , res) => {
     const _id = req.params.id;
     try{
         const board = await BoardService.getBoard(_id);
+        // const board = await Board.findByBoardId(_id);
         result.data = board;
     }catch(err){
         result.code = 'DR01';
         result.message = common.status.DR01;
         result.data = err;
-        return res.json(result);
+        res.json(result);
     }
-    return res.json(result);
+    res.json(result);
 })
 
 router.post('/write' , async (req , res) => {
