@@ -6,6 +6,7 @@ const memberRouter = require('./member/MemberRoute');
 const customerRouter = require('./customer/CustomerRoute');
 const categoryRouter = require('./category/CategoryRoute');
 const boardRouter = require('./board/BoardRoute');
+const postRouter = require('./post/PostRoute');
 const commentRouter = require('./comment/CommentRoute');
 const visitorRouter = require('./visitor/VisitorController');
 const mailRouter = require('./mail/MailRoute');
@@ -35,8 +36,10 @@ router.use('/member' , memberRouter);
 router.use('/customer' , customerRouter);
 router.use('/category' , categoryRouter);
 router.use('/board' , boardRouter);
+router.use('/post' , postRouter);
 router.use('/comment' , commentRouter);
 router.use('/visitor' , visitorRouter);
 router.use('/mail' , mailRouter);
+
 
 module.exports = router;

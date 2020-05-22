@@ -3818,3 +3818,62 @@ ReferenceError: MailConfig is not defined
 2020-05-22T04:53:13.023Z [winston-test] info: Listening on port 4000
 2020-05-22T04:53:36.904Z [winston-test] info: Listening on port 4000
 2020-05-22T04:54:43.481Z [winston-test] info: Listening on port 4000
+2020-05-22T04:57:53.980Z [winston-test] info: Listening on port 4000
+2020-05-22T04:58:02.088Z [winston-test] info: Listening on port 4000
+2020-05-22T04:58:40.169Z [winston-test] info: Listening on port 4000
+2020-05-22T05:04:27.770Z [winston-test] info: Listening on port 4000
+2020-05-22T05:09:42.383Z [winston-test] error: uncaughtException: HTMLAllCollection is not defined
+ReferenceError: HTMLAllCollection is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/models/post.js:12:26)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/post/PostService.js:1:14)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+2020-05-22T05:10:03.275Z [winston-test] error: uncaughtException: HTMLAllCollection is not defined
+ReferenceError: HTMLAllCollection is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/models/post.js:12:26)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/post/PostService.js:1:14)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+2020-05-22T05:10:12.659Z [winston-test] error: uncaughtException: HTMLAllCollection is not defined
+ReferenceError: HTMLAllCollection is not defined
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/models/post.js:12:26)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/Applications/woobeenkun/myBlog/server/src/routes/post/PostService.js:1:14)
+    at Module._compile (internal/modules/cjs/loader.js:956:30)
+    at loader (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:144:5)
+    at Object.require.extensions.<computed> [as .js] (/Applications/woobeenkun/myBlog/server/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (internal/modules/cjs/loader.js:812:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:724:14)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+2020-05-22T05:10:20.977Z [winston-test] info: Listening on port 4000
