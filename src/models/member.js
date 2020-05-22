@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
-const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tutorial');
+const config = require('../config/config');
+const connection = mongoose.createConnection(config.dbInfo);
 const crypto = require('crypto');
 
 

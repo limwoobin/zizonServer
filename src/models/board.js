@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
-const connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tutorial');
+const config = require('../config/config');
+const connection = mongoose.createConnection(config.dbInfo);
+
 
 autoIncrement.initialize(connection);
 
@@ -29,7 +31,7 @@ boardSchema.plugin(autoIncrement.plugin , {
     increment   : 1
 });
 
-boardSchema.statics.findByBoardId = function(_id){
+boardSchema.statics.findByBoardId = _id => {
     return this.findOne({_id}).exec();
 }
 

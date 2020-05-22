@@ -50,15 +50,15 @@ router.get('/view/:id' , util.checkBoardId ,  async (req , res) => {
     const _id = req.params.id;
     try{
         const board = await BoardService.getBoard(_id);
-        // const board = await Board.findByBoardId(_id);
         result.data = board;
     }catch(err){
+        console.log(err);
         result.code = 'DR01';
         result.message = common.status.DR01;
         result.data = err;
-        res.json(result);
+        return res.json(result);
     }
-    res.json(result);
+    return res.json(result);
 })
 
 router.post('/write' , async (req , res) => {

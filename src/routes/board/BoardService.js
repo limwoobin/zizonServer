@@ -16,7 +16,16 @@ exports.getBoardList = function(boardType){
 }
 
 exports.getBoard = _id => {
-    return Board.findByBoardId(_id);
+    return new Promise(function(resolve , reject){
+        Board.findOne({_id:_id} , (err , boardData) => {
+            if(err){
+                reject(err);
+            }
+            boardData.views++;
+            boardData.save();
+            resolve(boardData);
+        });
+    });
 }
 
 exports.updateBoard = function(board){

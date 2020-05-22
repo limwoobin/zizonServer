@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const config = require('./config.json');
 
 const getIpAddressFromRequest = (req) => {
     const ipAddr = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -14,5 +15,8 @@ const getRandomString = () => {
     });
 }
 
+const dbInfo = `mongodb://${config.mongodb.host}:${config.mongodb.port}/${config.mongodb.dbs}`;
+
 module.exports.getIpAddressFromRequest = getIpAddressFromRequest;
 module.exports.getRandomString = getRandomString;
+module.exports.dbInfo = dbInfo;
