@@ -2,14 +2,18 @@
 
 var Board = require('../../models/board');
 
-exports.getBoardList = function () {
+exports.getBoardList = function (boardType) {
     return new Promise(function (resolve, reject) {
-        Board.find(function (err, categories) {
-            if (err) {
-                reject(err);
-            }
-            resolve(categories);
-        });
+        if (boardType) {
+            Board.find({ boardType: boardType }, function (err, categories) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(categories);
+            });
+        } else {
+            reject(err);
+        }
     });
 };
 
@@ -49,6 +53,16 @@ exports.deleteBoard = function (board) {
                 reject(err.message);
             }
             resolve(data);
+        });
+    });
+};
+
+exports.getRecentNotice = function () {
+    return new Promise(function (resolve, reject) {
+        Board.find().where('boardType').equals('02').sort('-regDate').limit(3).select('_id title').then(function (data) {
+            resolve(data);
+        }).catch(function (err) {
+            reject(err);
         });
     });
 };

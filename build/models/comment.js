@@ -2,7 +2,8 @@
 
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-var connection = mongoose.createConnection('mongodb://127.0.0.1:27017/mongodb_tutorial');
+var config = require('../config/config');
+var connection = mongoose.createConnection(config.dbInfo);
 
 autoIncrement.initialize(connection);
 

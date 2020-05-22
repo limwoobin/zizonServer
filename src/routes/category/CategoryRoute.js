@@ -3,8 +3,6 @@ const router = express.Router();
 const CategoryService = require('./CategoryService');
 const common = require('../../common/common');
 const logger = require('../../config/winston');
-const session = require('express-session');
-
 
 router.get('/list' , async (req , res) => {
     logger.info('category...');
@@ -22,13 +20,5 @@ router.get('/list' , async (req , res) => {
     }
     return res.json(result); 
 });
-
-router.get('/testket' , (req , res) => {
-    req.session.user = 'drogba';
-    req.session.key = req.sessionID;
-    console.log(req.session.passport);
-    
-    return res.json('aa');
-})
 
 module.exports = router;

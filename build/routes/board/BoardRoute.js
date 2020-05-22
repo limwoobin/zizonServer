@@ -29,9 +29,9 @@ router.post('/test', function (req, res) {
     });
 });
 
-router.get('/list', function () {
+router.get('/list/:type', function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-        var result, boards;
+        var result, boardType, boards;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -41,36 +41,36 @@ router.get('/list', function () {
 
                         result.code = 'DR00';
                         result.message = common.status.DR00;
-                        _context.prev = 3;
-                        _context.next = 6;
-                        return BoardService.getBoardList();
+                        boardType = req.params.type;
+                        _context.prev = 4;
+                        _context.next = 7;
+                        return BoardService.getBoardList(boardType);
 
-                    case 6:
+                    case 7:
                         boards = _context.sent;
 
-                        // const boards = await BoardService.getList();
                         result.data = boards;
-                        _context.next = 16;
+                        _context.next = 17;
                         break;
 
-                    case 10:
-                        _context.prev = 10;
-                        _context.t0 = _context['catch'](3);
+                    case 11:
+                        _context.prev = 11;
+                        _context.t0 = _context['catch'](4);
 
                         result.code = 'DR00';
                         result.message = common.status.DR00;
                         result.data = _context.t0;
                         return _context.abrupt('return', res.json(result));
 
-                    case 16:
+                    case 17:
                         return _context.abrupt('return', res.json(result));
 
-                    case 17:
+                    case 18:
                     case 'end':
                         return _context.stop();
                 }
             }
-        }, _callee, undefined, [[3, 10]]);
+        }, _callee, undefined, [[4, 11]]);
     }));
 
     return function (_x, _x2) {
@@ -99,22 +99,23 @@ router.get('/view/:id', util.checkBoardId, function () {
                         board = _context2.sent;
 
                         result.data = board;
-                        _context2.next = 17;
+                        _context2.next = 18;
                         break;
 
                     case 11:
                         _context2.prev = 11;
                         _context2.t0 = _context2['catch'](4);
 
+                        console.log(_context2.t0);
                         result.code = 'DR01';
                         result.message = common.status.DR01;
                         result.data = _context2.t0;
                         return _context2.abrupt('return', res.json(result));
 
-                    case 17:
+                    case 18:
                         return _context2.abrupt('return', res.json(result));
 
-                    case 18:
+                    case 19:
                     case 'end':
                         return _context2.stop();
                 }
@@ -269,7 +270,7 @@ router.delete('/delete', function () {
                         _context5.prev = 12;
                         _context5.t0 = _context5['catch'](5);
 
-                        console.log('err', _context5.t0);
+                        logger.info(_context5.t0);
                         result.code = 'DR01';
                         result.message = common.status.DR01;
                         result.data = _context5.t0;
@@ -288,6 +289,55 @@ router.delete('/delete', function () {
 
     return function (_x9, _x10) {
         return _ref5.apply(this, arguments);
+    };
+}());
+
+router.get('/recent/notice', function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(req, res) {
+        var result, recentNotice;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
+                    case 0:
+                        result = common.result;
+
+                        result.code = 'DR00';
+                        result.message = common.status.DR00;
+
+                        _context6.prev = 3;
+                        _context6.next = 6;
+                        return BoardService.getRecentNotice();
+
+                    case 6:
+                        recentNotice = _context6.sent;
+
+                        result.data = recentNotice;
+                        _context6.next = 17;
+                        break;
+
+                    case 10:
+                        _context6.prev = 10;
+                        _context6.t0 = _context6['catch'](3);
+
+                        logger.info(_context6.t0);
+                        result.code = 'DR01';
+                        result.message = common.status.DR01;
+                        result.data = _context6.t0;
+                        return _context6.abrupt('return', res.json(result));
+
+                    case 17:
+                        return _context6.abrupt('return', res.json(result));
+
+                    case 18:
+                    case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, undefined, [[3, 10]]);
+    }));
+
+    return function (_x11, _x12) {
+        return _ref6.apply(this, arguments);
     };
 }());
 

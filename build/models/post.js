@@ -7,33 +7,23 @@ var connection = mongoose.createConnection(config.dbInfo);
 
 autoIncrement.initialize(connection);
 
-var imageSchema = new mongoose.Schema({
-    width: Number,
-    height: Number
-});
-
-var boardSchema = new mongoose.Schema({
-    boardId: { type: Number },
+var postSchema = new mongoose.Schema({
+    postId: { type: Number },
     userEmail: { type: String, required: true },
-    boardType: { type: String, required: true },
+    postType: { type: String, required: true },
     title: { type: String, required: true },
     content: { type: String },
-    image: imageSchema,
     comments: [],
     views: { type: Number, default: 0 },
     regDate: { type: Date, default: Date.now },
     modiDate: { type: Date, default: Date.now }
 });
 
-boardSchema.plugin(autoIncrement.plugin, {
-    model: 'board',
-    field: 'boardId',
+postSchema.plugin(autoIncrement.plugin, {
+    model: 'post',
+    field: 'postId',
     startAt: 1,
     increment: 1
 });
 
-boardSchema.statics.findByBoardId = function (_id) {
-    return undefined.findOne({ _id: _id }).exec();
-};
-
-module.exports = mongoose.model('board', boardSchema);
+module.exports = mongoose.model('post', postSchema);
