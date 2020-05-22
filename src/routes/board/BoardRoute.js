@@ -124,7 +124,7 @@ router.delete('/delete' , async (req , res) => {
     return res.json(result);
 });
 
-router.get('/notice' , async (req , res) => {
+router.get('/recent/notice' , async (req , res) => {
     const result = common.result;
     result.code = 'DR00';
     result.message = common.status.DR00;
