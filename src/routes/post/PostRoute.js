@@ -13,4 +13,12 @@ router.get('/list/:postType' , async (req , res) => {
     res.json(result);
 })
 
+router.get('/list/:postId' , async (req , res) => {
+    const result = common.result;
+    result.code = 'DR00';
+    result.message = common.status.DR00;
+
+    res.json(result);
+})
+
 module.exports = router;

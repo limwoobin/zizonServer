@@ -10,21 +10,21 @@ const imageSchema = new mongoose.Schema({
 });
 
 const commentSchema = new mongoose.Schema({
-    commentId: {type:Number},
-    board:{type:mongoose.Schema.Types.ObjectId, ref:'board' , required:true},
-    userEmail: {type:String},
-    content: {type:String},
-    image: imageSchema,
-    childComments:[],
-    regDate: {type:Date , default:Date.now},
-    modiDate: {type:Date , default:Date.now},
+    commentId       : {type: Number},
+    board           : {type: mongoose.Schema.Types.ObjectId, ref: 'board' , required: true},
+    userEmail       : {type: String},
+    content         : {type: String},
+    image           : imageSchema,
+    childComments   : [],
+    regDate         : {type: Date , default: Date.now},
+    modiDate        : {type: Date , default: Date.now},
 })
 
 commentSchema.plugin(autoIncrement.plugin , {
-    model : 'comment',
-    field : 'commentId',
-    startAt : 0,
-    increment : 1
+    model       : 'comment',
+    field       : 'commentId',
+    startAt     : 0,
+    increment   : 1
 });
 
 module.exports = mongoose.model('comment' , commentSchema);
