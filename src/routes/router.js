@@ -12,7 +12,6 @@ const visitorRouter = require('./visitor/VisitorController');
 const mailRouter = require('./mail/MailRoute');
 const common = require('../common/common');
 
-
 router.get('/search/:keyword' , (req , res) => {
     const result = common.result;
     result.code = 'DR00';
@@ -21,14 +20,6 @@ router.get('/search/:keyword' , (req , res) => {
     const keyword = req.params.keyword;
     result.data = keyword;
     return res.json(result);
-})
-
-router.get('/testapi' , (req , res) => {
-    
-    req.session.test = 'test??';
-    console.log(req.session);
-    // delete req.session.test;
-    return res.send(req.session.test);
 })
 
 router.use(upload.array());

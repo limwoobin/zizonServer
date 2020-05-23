@@ -12,7 +12,7 @@ router.get('/list/:postType' , async (req , res) => {
     result.setMessage = code.success.message;
     const postType = req.params.postType;
     try{
-        const posts = postService.getPosts(postType);
+        const posts = await postService.getPosts(postType);
         result.data = posts;
     }catch(err){
         logger.debug(err.message);
@@ -24,12 +24,23 @@ router.get('/list/:postType' , async (req , res) => {
     return res.json(result);
 })
 
-router.get('/list/:postId' , async (req , res) => {
+router.get('/view/:id' , util.checkPostId , async (req , res) => {
     const result = new Result();
-    result.setCode = 'DR00';
-    result.setMessage = 'asdasd';
-
-    res.json(result);
+    result.setCode = code.success.code;
+    result.setMessage = code.success.message;
+    const postId = req.params.postId;
+    
+    try{
+        const post = await postService.getPost(postId);
+        result.setData = post;
+    }catch(err){
+        logger.debug(err.message);
+        result.setCode = code.fail.code;
+        result.setMessage = code.fail.message;
+        result.setData = err.message;
+        return res.json(result);
+    }
+    return res.json(result);
 })
 
 module.exports = router;

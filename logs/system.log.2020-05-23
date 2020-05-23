@@ -18,3 +18,73 @@
 2020-05-23 18:45:04 [INFO] - Listening on port 4000
 2020-05-23 18:45:18 [INFO] - Listening on port 4000
 2020-05-23 18:45:19 [DEBUG] - postService.getPosts is not a function
+2020-05-23 19:18:05 [INFO] - Listening on port 4000
+2020-05-23 19:18:10 [INFO] - Listening on port 4000
+2020-05-23 19:19:23 [INFO] - Listening on port 4000
+2020-05-23 19:19:41 [INFO] - Listening on port 4000
+2020-05-23 19:22:24 [INFO] - Listening on port 4000
+2020-05-23 19:23:05 [INFO] - Listening on port 4000
+2020-05-23 19:23:32 [INFO] - Listening on port 4000
+2020-05-23 19:23:37 [INFO] - Listening on port 4000
+2020-05-23 19:24:22 [DEBUG] - Cast to ObjectId failed for value "asdasdf" at path "_id" for model "post"
+2020-05-23 19:24:52 [DEBUG] - Cast to ObjectId failed for value "_f34fdfsdfasf" at path "_id" for model "post"
+2020-05-23 19:24:59 [INFO] - Listening on port 4000
+2020-05-23 19:24:59 [DEBUG] - Cast to ObjectId failed for value "_f34fdfsdfasf" at path "_id" for model "post"
+2020-05-23 19:25:04 [INFO] - Listening on port 4000
+2020-05-23 19:25:20 [INFO] - Listening on port 4000
+2020-05-23 19:25:21 [DEBUG] - Cast to number failed for value "_f34fdfsdfasf" at path "postId" for model "post"
+2020-05-23 19:25:25 [INFO] - Listening on port 4000
+2020-05-23 19:26:51 [INFO] - Listening on port 4000
+2020-05-23 19:26:52 [DEBUG] - Cast to ObjectId failed for value "_f34fdfsdfasf" at path "_id" for model "post"
+2020-05-23 19:28:04 [INFO] - Listening on port 4000
+2020-05-23 19:28:53 [INFO] - Listening on port 4000
+2020-05-23 19:29:18 [INFO] - Listening on port 4000
+2020-05-23 19:29:27 [INFO] - Listening on port 4000
+2020-05-23 19:30:38 [INFO] - Listening on port 4000
+2020-05-23 19:30:43 [INFO] - Listening on port 4000
+2020-05-23 19:31:35 [INFO] - Listening on port 4000
+2020-05-23 19:31:39 [INFO] - Listening on port 4000
+2020-05-23 19:31:53 [INFO] - Listening on port 4000
+2020-05-23 19:34:53 [INFO] - Listening on port 4000
+2020-05-23 19:35:17 [INFO] - Listening on port 4000
+2020-05-23 19:35:50 [INFO] - Listening on port 4000
+2020-05-23 19:35:53 [INFO] - Listening on port 4000
+2020-05-23 19:36:01 [INFO] - Listening on port 4000
+2020-05-23 19:36:16 [INFO] - Listening on port 4000
+2020-05-23 19:38:13 [INFO] - Listening on port 4000
+2020-05-23 19:38:19 [INFO] - undefined
+2020-05-23 19:39:01 [INFO] - Listening on port 4000
+2020-05-23 19:40:16 [INFO] - Listening on port 4000
+2020-05-23 19:40:34 [INFO] - Listening on port 4000
+2020-05-23 19:41:02 [INFO] - Listening on port 4000
+2020-05-23 19:41:54 [INFO] - Listening on port 4000
+2020-05-23 19:42:01 [INFO] - Listening on port 4000
+2020-05-23 19:42:48 [INFO] - Listening on port 4000
+2020-05-23 19:42:55 [INFO] - Listening on port 4000
+2020-05-23 19:43:05 [INFO] - Listening on port 4000
+2020-05-23 19:43:25 [INFO] - Listening on port 4000
+2020-05-23 19:43:49 [INFO] - Listening on port 4000
+2020-05-23 19:45:10 [INFO] - Listening on port 4000
+2020-05-23 19:45:32 [INFO] - Listening on port 4000
+2020-05-23 19:45:35 [INFO] - undefined
+2020-05-23 19:46:02 [INFO] - Listening on port 4000
+2020-05-23 19:46:02 [INFO] - undefined
+2020-05-23 19:47:05 [INFO] - Listening on port 4000
+2020-05-23 19:47:08 [INFO] - undefined
+2020-05-23 19:47:47 [INFO] - Listening on port 4000
+2020-05-23 19:49:22 [INFO] - Listening on port 4000
+2020-05-23 19:49:30 [INFO] - Listening on port 4000
+2020-05-23 19:51:19 [INFO] - Listening on port 4000
+2020-05-23 19:52:06 [INFO] - Listening on port 4000
+2020-05-23 19:52:09 [INFO] - Listening on port 4000
+2020-05-23 19:52:20 [INFO] - Listening on port 4000
+2020-05-23 19:52:42 [INFO] - Listening on port 4000
+2020-05-23 19:52:50 [INFO] - Listening on port 4000
+2020-05-23 19:53:12 [INFO] - Listening on port 4000
+2020-05-23 19:53:38 [INFO] - Listening on port 4000
+2020-05-23 19:54:11 [INFO] - Listening on port 4000
+2020-05-23 19:54:17 [INFO] - Listening on port 4000
+2020-05-23 19:54:28 [INFO] - Listening on port 4000
+2020-05-23 19:54:46 [INFO] - Listening on port 4000
+2020-05-23 19:54:56 [INFO] - Listening on port 4000
+2020-05-23 19:55:17 [INFO] - Listening on port 4000
