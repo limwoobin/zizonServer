@@ -1,0 +1,20 @@
+2020-05-23 18:39:47 [INFO] - Listening on port 4000
+2020-05-23 18:39:49 [DEBUG] - undefined
+2020-05-23 18:39:49 [INFO] - undefined
+2020-05-23 18:41:44 [INFO] - Listening on port 4000
+2020-05-23 18:41:47 [DEBUG] - undefined
+2020-05-23 18:42:18 [INFO] - Listening on port 4000
+2020-05-23 18:42:21 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:42:35 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:42:36 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:42:37 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:43:11 [INFO] - Listening on port 4000
+2020-05-23 18:43:14 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:43:15 [DEBUG] - function toString() { [native code] }
+2020-05-23 18:44:49 [INFO] - Listening on port 4000
+2020-05-23 18:44:57 [INFO] - Listening on port 4000
+2020-05-23 18:44:58 [DEBUG] - postService.getPosts is not a function
+2020-05-23 18:44:59 [DEBUG] - postService.getPosts is not a function
+2020-05-23 18:45:04 [INFO] - Listening on port 4000
+2020-05-23 18:45:18 [INFO] - Listening on port 4000
+2020-05-23 18:45:19 [DEBUG] - postService.getPosts is not a function
