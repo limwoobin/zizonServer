@@ -4049,3 +4049,113 @@ Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.
 2020-05-22T08:24:53.158Z [winston-test] error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
 Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
+2020-05-23T08:09:31.126Z [winston-test] info: Listening on port 4000
+2020-05-23T08:09:35.774Z [winston-test] info: category...
+2020-05-23T08:12:54.128Z [winston-test] info: Listening on port 4000
+2020-05-23T08:12:56.054Z [winston-test] info: Listening on port 4000
+2020-05-23T08:13:13.141Z [winston-test] info: Listening on port 4000
+2020-05-23T08:13:18.073Z [winston-test] info: Listening on port 4000
+2020-05-23T08:13:53.213Z [winston-test] info: Listening on port 4000
+2020-05-23T08:15:14.162Z [winston-test] info: Listening on port 4000
+2020-05-23T08:16:02.935Z [winston-test] info: Listening on port 4000
+2020-05-23T08:16:38.769Z [winston-test] info: Listening on port 4000
+2020-05-23T08:16:42.732Z [winston-test] info: undefined
+2020-05-23T08:16:57.896Z [winston-test] info: Listening on port 4000
+2020-05-23T08:17:00.367Z [winston-test] info: undefined
+2020-05-23T08:17:18.354Z [winston-test] info: Listening on port 4000
+2020-05-23T08:17:20.485Z [winston-test] info: undefined
+2020-05-23T08:17:46.768Z [winston-test] info: Listening on port 4000
+2020-05-23T08:18:18.953Z [winston-test] info: Listening on port 4000
+2020-05-23T08:19:11.501Z [winston-test] info: Listening on port 4000
+2020-05-23T08:19:16.201Z [winston-test] info: undefined
+2020-05-23T08:19:36.602Z [winston-test] info: Listening on port 4000
+2020-05-23T08:20:10.733Z [winston-test] info: Listening on port 4000
+2020-05-23T08:20:30.415Z [winston-test] info: Listening on port 4000
+2020-05-23T08:20:48.251Z [winston-test] info: Listening on port 4000
+2020-05-23T08:22:07.232Z [winston-test] info: Listening on port 4000
+2020-05-23T08:22:15.527Z [winston-test] info: Listening on port 4000
+2020-05-23T08:22:27.443Z [winston-test] info: Listening on port 4000
+2020-05-23T08:22:41.300Z [winston-test] info: Listening on port 4000
+2020-05-23T08:22:55.537Z [winston-test] info: Listening on port 4000
+2020-05-23T08:24:08.305Z [winston-test] info: Listening on port 4000
+2020-05-23T08:25:36.495Z [winston-test] info: Listening on port 4000
+2020-05-23T08:25:40.472Z [winston-test] info: Listening on port 4000
+2020-05-23T08:25:52.266Z [winston-test] info: Listening on port 4000
+2020-05-23T08:25:54.826Z [winston-test] info: undefined
+2020-05-23T08:25:59.662Z [winston-test] info: undefined
+2020-05-23T08:26:51.333Z [winston-test] info: Listening on port 4000
+2020-05-23T08:27:19.094Z [winston-test] info: Listening on port 4000
+2020-05-23T08:27:27.985Z [winston-test] info: Listening on port 4000
+2020-05-23T08:27:37.837Z [winston-test] info: Listening on port 4000
+2020-05-23T08:27:53.891Z [winston-test] info: Listening on port 4000
+2020-05-23T08:29:13.369Z [winston-test] info: Listening on port 4000
+2020-05-23T08:29:31.613Z [winston-test] info: Listening on port 4000
+2020-05-23T08:29:52.655Z [winston-test] info: Listening on port 4000
+2020-05-23T08:30:18.428Z [winston-test] info: Listening on port 4000
+2020-05-23T08:30:56.179Z [winston-test] info: Listening on port 4000
+2020-05-23T08:31:07.650Z [winston-test] info: Listening on port 4000
+2020-05-23T08:31:38.152Z [winston-test] info: Listening on port 4000
+2020-05-23T08:31:51.133Z [winston-test] info: Listening on port 4000
+2020-05-23T08:31:54.237Z [winston-test] info: Listening on port 4000
+2020-05-23T08:39:39.835Z [winston-test] info: Listening on port 4000
+2020-05-23T08:40:03.830Z [winston-test] info: Listening on port 4000
+2020-05-23T08:40:09.346Z [winston-test] info: Listening on port 4000
+2020-05-23T08:40:45.172Z [winston-test] info: Listening on port 4000
+2020-05-23T08:41:12.863Z [winston-test] info: Listening on port 4000
+2020-05-23T08:42:12.556Z [winston-test] info: Listening on port 4000
+2020-05-23T08:42:36.720Z [winston-test] info: Listening on port 4000
+2020-05-23T08:44:56.627Z [winston-test] info: Listening on port 4000
+2020-05-23T08:45:47.042Z [winston-test] info: Listening on port 4000
+2020-05-23T08:45:50.702Z [winston-test] info: Listening on port 4000
+2020-05-23T08:46:31.176Z [winston-test] info: Listening on port 4000
+2020-05-23T08:47:35.945Z [winston-test] info: Listening on port 4000
+2020-05-23T08:47:47.771Z [winston-test] info: Listening on port 4000
+2020-05-23T08:48:28.395Z [winston-test] info: Listening on port 4000
+2020-05-23T08:48:38.016Z [winston-test] info: Listening on port 4000
+2020-05-23T08:48:50.512Z [winston-test] info: Listening on port 4000
+2020-05-23T08:49:09.497Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:00.820Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:20.367Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:22.066Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:35.910Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:40.412Z [winston-test] info: Listening on port 4000
+2020-05-23T08:50:47.784Z [winston-test] info: Listening on port 4000
+2020-05-23T08:51:04.591Z [winston-test] info: Listening on port 4000
+2020-05-23T08:51:51.478Z [winston-test] info: Listening on port 4000
+2020-05-23T08:53:05.573Z [winston-test] info: Listening on port 4000
+2020-05-23T08:53:19.570Z [winston-test] info: Listening on port 4000
+2020-05-23T08:55:05.486Z [winston-test] info: Listening on port 4000
+2020-05-23T08:58:25.413Z [winston-test] info: Listening on port 4000
+2020-05-23T08:58:34.071Z [winston-test] info: Listening on port 4000
+2020-05-23T08:58:37.377Z [winston-test] info: Listening on port 4000
+2020-05-23T09:03:44.079Z [winston-test] info: Listening on port 4000
+2020-05-23T09:04:15.948Z [winston-test] info: Listening on port 4000
+2020-05-23T09:04:29.650Z [winston-test] info: Listening on port 4000
+2020-05-23T09:04:59.608Z [winston-test] info: Listening on port 4000
+2020-05-23T09:05:12.304Z [winston-test] info: Listening on port 4000
+2020-05-23T09:05:23.216Z [winston-test] info: Listening on port 4000
+2020-05-23T09:05:30.842Z [winston-test] info: Listening on port 4000
+2020-05-23T09:06:17.546Z [winston-test] info: Listening on port 4000
+2020-05-23T09:06:18.971Z [winston-test] info: Listening on port 4000
+2020-05-23T09:07:05.643Z [winston-test] info: Listening on port 4000
+2020-05-23T09:07:22.619Z [winston-test] info: Listening on port 4000
+2020-05-23T09:08:02.436Z [winston-test] info: Listening on port 4000
+2020-05-23T09:08:08.369Z [winston-test] info: Listening on port 4000
+2020-05-23T09:08:26.649Z [winston-test] info: Listening on port 4000
+2020-05-23T09:08:41.670Z [winston-test] info: Listening on port 4000
+2020-05-23T09:08:56.212Z [winston-test] info: Listening on port 4000
+2020-05-23T09:09:16.523Z [winston-test] info: Listening on port 4000
+2020-05-23T09:09:23.767Z [winston-test] info: Listening on port 4000
+2020-05-23T09:10:25.470Z [winston-test] info: Listening on port 4000
+2020-05-23T09:11:16.761Z [winston-test] info: Listening on port 4000
+2020-05-23T09:11:18.845Z [winston-test] info: Listening on port 4000
+2020-05-23T09:11:38.569Z [winston-test] info: Listening on port 4000
+2020-05-23T09:12:51.960Z [winston-test] info: Listening on port 4000
+2020-05-23T09:16:53.166Z [winston-test] info: Listening on port 4000
+2020-05-23T09:17:42.984Z [winston-test] info: Listening on port 4000
+2020-05-23T09:17:49.691Z [winston-test] info: Listening on port 4000
+2020-05-23T09:18:24.780Z [winston-test] info: Listening on port 4000
+2020-05-23T09:18:37.735Z [winston-test] info: Listening on port 4000
+2020-05-23T09:18:40.727Z [winston-test] info: Listening on port 4000
+2020-05-23T09:18:43.954Z [winston-test] info: Listening on port 4000
+2020-05-23T09:19:03.999Z [winston-test] info: Listening on port 4000
