@@ -1,7 +1,9 @@
-const crypto = require('crypto');
+const a = 5;
 
-let aaa = crypto.randomBytes(15, (err, buf) => {
-    console.log(buf.toString('base64'));
-});
 
-aaa;
+
+if(a == 4){
+    console.log(1);
+}else {
+    console.log(2);
+}
