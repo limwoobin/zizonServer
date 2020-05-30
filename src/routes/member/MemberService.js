@@ -52,9 +52,26 @@ MemberService.updateMember = (MemberVO , userEmail) => {
         if(MemberVO.userEmail !== userEmail) {
             reject('사용자의 세션이 만료되었습니다.');
         }
-        resolve('aa');
+        Member.findOne({userEmail: MemberVO.userEmail})
+            .then(member => {
+                crypto.pbkdf2(MemberVO.userPwd , member.salt, 102391, 64, 'sha512', (err, key) => {
+                    if(err) reject(err);
+                        let newPassword = key.toString('base64');
+                        console.log(newPassword);
+                        Member.findOneAndUpdate({userEmail: Member.userEmail}, 
+                            {$set : {"userPwd": newPassword}})
+                        .then((result) => {
+                            logger.info(info);
+                            logger.info(result);
+                            resolve('success');
+                        })
+                    });
+                })
+                .catch(err => {
+                    logger.info(err);
+                    reject(err);
+                });
     });
-    // Member.findOneAndUpdate()
 }
 
 module.exports = MemberService;
