@@ -26,17 +26,17 @@ MemberService.findMember = (userEmail) => {
     })
 }
 
-MemberService.insertMember = (memberVO) => {
+MemberService.insertMember = (MemberVO) => {
     return new Promise((resolve , reject) => {
         crypto.randomBytes(64, (err, buf) => {
             if(err){
                 reject(err);
             }
-            crypto.pbkdf2(memberVO.userPwd , buf.toString('base64'), 102391, 64, 'sha512', (err, key) => {
-                console.log(memberVO);
-                memberVO.userPwd = key.toString('base64');
-                memberVO.salt = buf.toString('base64');
-                memberVO.save((err) => {
+            crypto.pbkdf2(MemberVO.userPwd , buf.toString('base64'), 102391, 64, 'sha512', (err, key) => {
+                console.log(MemberVO);
+                MemberVO.userPwd = key.toString('base64');
+                MemberVO.salt = buf.toString('base64');
+                MemberVO.save((err) => {
                     if(err){
                         reject(err);
                     }
@@ -45,6 +45,10 @@ MemberService.insertMember = (memberVO) => {
             });
         });
     })
+}
+
+MemberService.updateMember = (MemberVO) => {
+    // Member.findOneAndUpdate()
 }
 
 module.exports = MemberService;

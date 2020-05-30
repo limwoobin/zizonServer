@@ -3,6 +3,7 @@ class Result{
         this.code = '';
         this.message = '';
         this.data = Object;
+        this.err = Object;
     }
 
     set setCode(code) {
@@ -15,6 +16,10 @@ class Result{
 
     set setData(data) {
         this.data = data;
+    }
+
+    set setErr(err) {
+        this.err = err;
     }
 }
 

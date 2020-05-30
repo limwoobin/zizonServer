@@ -6,6 +6,9 @@ const common = require('../../common/common');
 const crypto = require('crypto');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const Result = require('../../common/result');
+const code = require('../../common/codeInfo');
+const logger = require('../../config/winston');
 
 passport.serializeUser((member, done) => {
     done(null, member.userEmail);
@@ -101,10 +104,10 @@ router.post('/insert' , async (req , res) => {
     result.message = common.status.DR00;
     result.data = null;
     
-    let memberVO = new Member(req.body);
+    let MemberVO = new Member(req.body);
 
     try{
-        const insertMember = await MemberService.insertMember(memberVO);
+        const insertMember = await MemberService.insertMember(MemberVO);
         console.log('insertMember' , insertMember);
         result.code = 'DR00';
         result.message = common.status.DR00;
@@ -125,5 +128,25 @@ router.get('/logout' , (req , res) => {
     req.logout();
     return res.send(common.result);
 });
+
+router.post('/update/info' , async (req , res) => {
+    const result = new Result();
+    result.setCode = code.success.code;
+    result.setMessage = code.success.message;
+    
+    try {
+        let MemberVO = new Member(req.body);
+        const updateMember = await MemberService.updateMember(MemberVO);
+        result.setData = updateMember;
+    } catch(err) {
+        logger.info(err.message);
+        result.setCode = code.fail.code;
+        result.setMessage = code.fail.message;
+        result.setErr = err.message;
+        return res.json(result);
+    }
+
+    return res.json(result);
+})
 
 module.exports = router;
