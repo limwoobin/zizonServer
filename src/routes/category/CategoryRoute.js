@@ -21,4 +21,13 @@ router.get('/list' , async (req , res) => {
     return res.json(result); 
 });
 
+router.get('/test' , (req , res) => {
+    
+    
+    console.log(req.sessionID);
+    req.session.key = req.sessionID;
+    console.log('key:' + req.session.key);
+    return res.json('aa');
+})
+
 module.exports = router;

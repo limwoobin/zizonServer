@@ -9,6 +9,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const Result = require('../../common/result');
 const code = require('../../common/codeInfo');
 const logger = require('../../config/winston');
+const util = require('../../util/util');
 
 passport.serializeUser((member, done) => {
     done(null, member.userEmail);
@@ -129,14 +130,14 @@ router.get('/logout' , (req , res) => {
     return res.send(common.result);
 });
 
-router.post('/update/info' , async (req , res) => {
+router.get('/update/info' , util.sessionCheck , async (req , res) => {
     const result = new Result();
     result.setCode = code.success.code;
     result.setMessage = code.success.message;
     
     try {
         let MemberVO = new Member(req.body);
-        const updateMember = await MemberService.updateMember(MemberVO);
+        const updateMember = await MemberService.updateMember(MemberVO , req.session.userEmail);
         result.setData = updateMember;
     } catch(err) {
         logger.info(err.message);

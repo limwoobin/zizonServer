@@ -47,7 +47,13 @@ MemberService.insertMember = (MemberVO) => {
     })
 }
 
-MemberService.updateMember = (MemberVO) => {
+MemberService.updateMember = (MemberVO , userEmail) => {
+    return new Promise((resolve , reject) => {
+        if(MemberVO.userEmail !== userEmail) {
+            reject('사용자의 세션이 만료되었습니다.');
+        }
+        resolve('aa');
+    });
     // Member.findOneAndUpdate()
 }
 

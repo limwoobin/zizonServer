@@ -44,6 +44,16 @@ UtilFunc.prototype.isLogged = function(req , res , next){
   next();
 }
 
+UtilFunc.prototype.sessionCheck = (req , res , next) => {
+  const result = common.result;
+  if(req.session.userEmail || req.session.key) {
+    result.code = 'DR01';
+    result.message = common.status.DR01;
+    return res.json(result); 
+  }
+  next();
+}
+
 const util = new UtilFunc();
 
 module.exports = util;
