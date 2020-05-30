@@ -1,4 +1,4 @@
 boardType
-01 - 자유게시판
-02 - 공지사항
-03 - 생각정리
+board - 자유게시판
+notice - 공지사항
+think - 생각정리

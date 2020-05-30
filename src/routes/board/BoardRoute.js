@@ -76,7 +76,7 @@ router.post('/write' , async (req , res) => {
     board.image = req.body.image;
     try{
         const writeBoard = await BoardService.writeBoard(board);
-        if(writeBoard !== 'DR00'){
+        if(writeBoard !== 'success'){
             result.code = code.fail.code;
             result.message = code.fail.message;
             return res.json(result);

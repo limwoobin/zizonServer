@@ -28,6 +28,15 @@ exports.getBoard = _id => {
     });
 }
 
+exports.writeBoard = (board) => {
+    return new Promise((resolve , reject) => {
+        board.save((err) => {
+            if(err) reject(err);
+            resolve('success');
+        })
+    })
+}
+
 exports.updateBoard = function(board){
     return new Promise(function(resolve , reject){
         Board.findOneAndUpdate({boardId:board.id , userEmail:board.userEmail}, (
@@ -59,7 +68,7 @@ exports.deleteBoard = function(board){
 exports.getRecentNotice = () => {
     return new Promise((resolve , reject) => {
         Board.find()
-          .where('boardType').equals('02')
+          .where('boardType').equals('notice')
           .sort('-regDate')
           .limit(3)
           .select('_id title')
