@@ -134,7 +134,7 @@ router.get('/recent/notice' , async (req , res) => {
     
     try{
         const recentNotice = await BoardService.getRecentNotice();
-        result.data = recentNotice;
+        result.setData = recentNotice;
     }catch(err){
         logger.info(err.message);
         result.code = code.fail.code;

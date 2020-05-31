@@ -1,9 +1,28 @@
-const a = 5;
 
-
-
-if(a == 4){
-    console.log(1);
-}else {
-    console.log(2);
+function excution(){
+    console.log('111');
+    setTimeout(() => {
+        console.log('excution');
+    } , 0);
+    console.log('222');
 }
+
+function A(){
+    console.log('A');
+    excution();
+}
+
+function B(){
+    console.log('B');
+    A();
+}
+
+function C(){
+    console.log('C');
+    B();
+}
+
+
+
+C();
+// excution();
