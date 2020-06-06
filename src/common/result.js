@@ -1,3 +1,5 @@
+const code = require('./codeInfo');
+
 class Result{
     constructor() {
         this.code = '';

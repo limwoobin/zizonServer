@@ -60,5 +60,13 @@ router.get('/recent/posts' , async (req , res) => {
     return res.json(result);
 })
 
+router.get('/write' , (req , res) => {
+    const result = new Result();
+    result.setCode = code.success.code;
+    result.setMessage = code.success.message;
+
+    return res.json(result);
+})
+
 
 module.exports = router;

@@ -22,9 +22,6 @@ router.get('/list' , async (req , res) => {
 });
 
 router.get('/test' , (req , res) => {
-    
-    
-    console.log(req.sessionID);
     req.session.key = req.sessionID;
     console.log('key:' + req.session.key);
     return res.json('aa');
