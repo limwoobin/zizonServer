@@ -60,12 +60,9 @@ router.get('/recent/posts' , async (req , res) => {
     return res.json(result);
 })
 
-router.get('/write' , (req , res) => {
-    const result = new Result();
-    result.setCode = code.success.code;
-    result.setMessage = code.success.message;
-
-    return res.json(result);
+router.get('/write' , async (req , res) => {
+    const writePost = await PostService.WritePost(req.body);
+    return res.json(writePost);
 })
 
 

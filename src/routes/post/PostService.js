@@ -30,3 +30,18 @@ exports.getRecentPosts = () => {
             })
     })
 }
+
+exports.WritePost = (body) => {
+    return new Promise((resolve , reject) => {
+        let post = new Post();
+        post.userEmail = body.userEmail;
+        post.postType = body.postType;
+        post.title = body.title;
+        post.content = body.content;
+        post.image = body.image;
+        post.save((err) => {
+            if(err) reject(err);
+            resolve('success');
+        });
+    })
+}
