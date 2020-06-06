@@ -9,14 +9,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CategoryService = {};
 
 CategoryService.getCategories = function () {
-    return new Promise(function (resolve, reject) {
-        _category2.default.find(function (err, categories) {
-            if (err) {
-                reject(err);
-            }
-            resolve(categories);
-        });
-    });
+    return _category2.default.find();
 };
 
 module.exports = CategoryService;

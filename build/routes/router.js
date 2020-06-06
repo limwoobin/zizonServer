@@ -24,14 +24,6 @@ router.get('/search/:keyword', function (req, res) {
     return res.json(result);
 });
 
-router.get('/testapi', function (req, res) {
-
-    req.session.test = 'test??';
-    console.log(req.session);
-    // delete req.session.test;
-    return res.send(req.session.test);
-});
-
 router.use(upload.array());
 router.use('/member', memberRouter);
 router.use('/customer', customerRouter);

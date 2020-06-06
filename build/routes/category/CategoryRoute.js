@@ -7,7 +7,6 @@ var router = express.Router();
 var CategoryService = require('./CategoryService');
 var common = require('../../common/common');
 var logger = require('../../config/winston');
-var session = require('express-session');
 
 router.get('/list', function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
@@ -57,11 +56,9 @@ router.get('/list', function () {
     };
 }());
 
-router.get('/testket', function (req, res) {
-    req.session.user = 'drogba';
+router.get('/test', function (req, res) {
     req.session.key = req.sessionID;
-    console.log(req.session.passport);
-
+    console.log('key:' + req.session.key);
     return res.json('aa');
 });
 

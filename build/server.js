@@ -30,6 +30,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 

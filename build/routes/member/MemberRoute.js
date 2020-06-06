@@ -10,6 +10,10 @@ var common = require('../../common/common');
 var crypto = require('crypto');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var Result = require('../../common/result');
+var code = require('../../common/codeInfo');
+var logger = require('../../config/winston');
+var util = require('../../util/util');
 
 passport.serializeUser(function (member, done) {
     done(null, member.userEmail);
@@ -175,7 +179,7 @@ router.get('/overlap/check/:userEmail', function () {
 
 router.post('/insert', function () {
     var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
-        var result, memberVO, insertMember;
+        var result, MemberVO, insertMember;
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
@@ -186,10 +190,10 @@ router.post('/insert', function () {
                         result.message = common.status.DR00;
                         result.data = null;
 
-                        memberVO = new Member(req.body);
+                        MemberVO = new Member(req.body);
                         _context4.prev = 5;
                         _context4.next = 8;
-                        return MemberService.insertMember(memberVO);
+                        return MemberService.insertMember(MemberVO);
 
                     case 8:
                         insertMember = _context4.sent;
@@ -232,5 +236,55 @@ router.get('/logout', function (req, res) {
     req.logout();
     return res.send(common.result);
 });
+
+router.get('/update/info', util.sessionCheck, function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(req, res) {
+        var result, MemberVO, updateMember;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+                switch (_context5.prev = _context5.next) {
+                    case 0:
+                        result = new Result();
+
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
+
+                        _context5.prev = 3;
+                        MemberVO = new Member(req.body);
+                        _context5.next = 7;
+                        return MemberService.updateMember(MemberVO, req.session.userEmail);
+
+                    case 7:
+                        updateMember = _context5.sent;
+
+                        result.setData = updateMember;
+                        _context5.next = 18;
+                        break;
+
+                    case 11:
+                        _context5.prev = 11;
+                        _context5.t0 = _context5['catch'](3);
+
+                        logger.info(_context5.t0.message);
+                        result.setCode = code.fail.code;
+                        result.setMessage = code.fail.message;
+                        result.setErr = _context5.t0.message;
+                        return _context5.abrupt('return', res.json(result));
+
+                    case 18:
+                        return _context5.abrupt('return', res.json(result));
+
+                    case 19:
+                    case 'end':
+                        return _context5.stop();
+                }
+            }
+        }, _callee5, undefined, [[3, 11]]);
+    }));
+
+    return function (_x10, _x11) {
+        return _ref5.apply(this, arguments);
+    };
+}());
 
 module.exports = router;

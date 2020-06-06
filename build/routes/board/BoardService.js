@@ -30,6 +30,15 @@ exports.getBoard = function (_id) {
     });
 };
 
+exports.writeBoard = function (board) {
+    return new Promise(function (resolve, reject) {
+        board.save(function (err) {
+            if (err) reject(err);
+            resolve('success');
+        });
+    });
+};
+
 exports.updateBoard = function (board) {
     return new Promise(function (resolve, reject) {
         Board.findOneAndUpdate({ boardId: board.id, userEmail: board.userEmail }, {
@@ -59,7 +68,7 @@ exports.deleteBoard = function (board) {
 
 exports.getRecentNotice = function () {
     return new Promise(function (resolve, reject) {
-        Board.find().where('boardType').equals('02').sort('-regDate').limit(3).select('_id title').then(function (data) {
+        Board.find().where('boardType').equals('notice').sort('-regDate').limit(3).select('_id title').then(function (data) {
             resolve(data);
         }).catch(function (err) {
             reject(err);

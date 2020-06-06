@@ -8,18 +8,20 @@ var BoardService = require('./BoardService');
 var Board = require('../../models/board');
 var common = require('../../common/common');
 var util = require('../../util/util');
+var Result = require('../../common/result');
+var code = require('../../common/codeInfo');
 
 router.post('/test', function (req, res) {
-    var result = common.result;
-    result.code = 'DR00';
-    result.message = common.status.DR00;
+    var result = new Result();
+    result.setCode = code.success.code;
+    result.setMessage = code.success.message;
     var board = new Board();
     board = req.body;
     Board.findOneAndUpdate({ id: board.id, userEmail: board.userEmail }, { content: board.content }, { new: true }, function (err, data) {
         if (err) {
             console.log(err);
-            result.code = 'DR01';
-            result.message = common.status.DR01;
+            result.code = code.fail.code;
+            result.message = code.fail.message;
             result.data = status(500).json({ err: err });
             return res.json(result);
         }
@@ -37,10 +39,10 @@ router.get('/list/:type', function () {
                 switch (_context.prev = _context.next) {
                     case 0:
                         // 예시코드  
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
                         boardType = req.params.type;
                         _context.prev = 4;
                         _context.next = 7;
@@ -57,9 +59,9 @@ router.get('/list/:type', function () {
                         _context.prev = 11;
                         _context.t0 = _context['catch'](4);
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
-                        result.data = _context.t0;
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
+                        result.data = _context.t0.message;
                         return _context.abrupt('return', res.json(result));
 
                     case 17:
@@ -86,10 +88,10 @@ router.get('/view/:id', util.checkBoardId, function () {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
                         _id = req.params.id;
                         _context2.prev = 4;
                         _context2.next = 7;
@@ -107,9 +109,9 @@ router.get('/view/:id', util.checkBoardId, function () {
                         _context2.t0 = _context2['catch'](4);
 
                         console.log(_context2.t0);
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
-                        result.data = _context2.t0;
+                        result.code = code.success.code;
+                        result.message = code.success.message;
+                        result.data = _context2.t0.message;
                         return _context2.abrupt('return', res.json(result));
 
                     case 18:
@@ -135,10 +137,11 @@ router.post('/write', function () {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
+
                         board = new Board();
 
                         board.boardType = req.body.boardType;
@@ -153,13 +156,13 @@ router.post('/write', function () {
                     case 12:
                         writeBoard = _context3.sent;
 
-                        if (!(writeBoard !== 'DR00')) {
+                        if (!(writeBoard !== 'success')) {
                             _context3.next = 17;
                             break;
                         }
 
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
                         return _context3.abrupt('return', res.json(result));
 
                     case 17:
@@ -170,9 +173,9 @@ router.post('/write', function () {
                         _context3.prev = 19;
                         _context3.t0 = _context3['catch'](9);
 
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
-                        result.data = _context3.t0;
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
+                        result.data = _context3.t0.message;
                         return _context3.abrupt('return', res.json(result));
 
                     case 25:
@@ -201,10 +204,10 @@ router.post('/update', function () {
                         board = new Board();
 
                         board = req.body;
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
                         _context4.prev = 5;
                         _context4.next = 8;
                         return BoardService.updateBoard(board);
@@ -220,9 +223,9 @@ router.post('/update', function () {
                         _context4.prev = 12;
                         _context4.t0 = _context4['catch'](5);
 
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
-                        result.data = _context4.t0;
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
+                        result.data = _context4.t0.message;
                         return _context4.abrupt('return', res.json(result));
 
                     case 18:
@@ -248,10 +251,10 @@ router.delete('/delete', function () {
             while (1) {
                 switch (_context5.prev = _context5.next) {
                     case 0:
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
                         board = new Board();
 
                         board = req.body;
@@ -271,9 +274,9 @@ router.delete('/delete', function () {
                         _context5.t0 = _context5['catch'](5);
 
                         logger.info(_context5.t0);
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
-                        result.data = _context5.t0;
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
+                        result.data = _context5.t0.message;
                         return _context5.abrupt('return', res.json(result));
 
                     case 19:
@@ -299,10 +302,10 @@ router.get('/recent/notice', function () {
             while (1) {
                 switch (_context6.prev = _context6.next) {
                     case 0:
-                        result = common.result;
+                        result = new Result();
 
-                        result.code = 'DR00';
-                        result.message = common.status.DR00;
+                        result.setCode = code.success.code;
+                        result.setMessage = code.success.message;
 
                         _context6.prev = 3;
                         _context6.next = 6;
@@ -311,7 +314,7 @@ router.get('/recent/notice', function () {
                     case 6:
                         recentNotice = _context6.sent;
 
-                        result.data = recentNotice;
+                        result.setData = recentNotice;
                         _context6.next = 17;
                         break;
 
@@ -319,10 +322,10 @@ router.get('/recent/notice', function () {
                         _context6.prev = 10;
                         _context6.t0 = _context6['catch'](3);
 
-                        logger.info(_context6.t0);
-                        result.code = 'DR01';
-                        result.message = common.status.DR01;
-                        result.data = _context6.t0;
+                        logger.info(_context6.t0.message);
+                        result.code = code.fail.code;
+                        result.message = code.fail.message;
+                        result.data = _context6.t0.message;
                         return _context6.abrupt('return', res.json(result));
 
                     case 17:

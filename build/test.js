@@ -1,9 +1,27 @@
 'use strict';
 
-var crypto = require('crypto');
+function excution() {
+    console.log('111');
+    setTimeout(function () {
+        console.log('excution');
+    }, 0);
+    console.log('222');
+}
 
-var aaa = crypto.randomBytes(15, function (err, buf) {
-    console.log(buf.toString('base64'));
-});
+function A() {
+    console.log('A');
+    excution();
+}
 
-aaa;
+function B() {
+    console.log('B');
+    A();
+}
+
+function C() {
+    console.log('C');
+    B();
+}
+
+C();
+// excution();
