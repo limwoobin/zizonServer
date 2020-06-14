@@ -42,7 +42,7 @@ app.all('/*' , (req , res , next) => {
 
 app.use(setting);
 app.use(history()); // client와 연결
-app.use('/' , express.static(__dirname + "/../../../appHooks/build"));
+app.use('/' , express.static(__dirname + "/../../../typescript_web/build"));
 // 훅스버전
 
 app.use(bodyParser.json());
