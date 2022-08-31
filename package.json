@@ -39,7 +39,7 @@
     "jayson": "^3.2.0",
     "method-override": "^3.0.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.28",
+    "moment-timezone": "^0.5.35",
     "mongoose": "^5.8.2",
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "^1.9.1",
